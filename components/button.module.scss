@@ -9,10 +9,21 @@
   text-transform: uppercase;
   @include borderRadius(1.5rem);
 
+  .rightIcon {
+    margin-left: .5rem;
+    font-weight: 700;
+    @include defaultTransition;
+  }
+
   &:hover,
   &:active,
   &:focus {
     color: $white;
     text-decoration: none;
+
+    .rightIcon {
+      margin-left: 1rem;
+      margin-right: -.5rem;
+    }
   }
 }
