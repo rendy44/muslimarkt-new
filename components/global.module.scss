@@ -22,12 +22,18 @@
 
   @include breakpoint(768px) {
     padding: 6rem 0;
+    .inner {
+      h2.title {
+        margin-bottom: 4rem;
+      }
+    }
   }
 
   @include breakpoint(992px) {
     padding: 9rem 0;
     .inner {
       h2.title {
+        margin-bottom: 6rem;
         font-size: 2.5rem;
       }
     }
