@@ -52,7 +52,7 @@
           margin-left: 1rem;
 
           a {
-            padding: .5rem 1rem;
+            padding: .75rem 1.5rem;
             line-height: 1;
             border: 1px solid transparent;
             font-weight: 600;
@@ -140,10 +140,15 @@
               font-size: 1rem;
               font-weight: 500;
               line-height: 1.4;
+              margin: 0;
             }
 
-            a:first-child {
-              margin-right: .5rem;
+            a {
+              margin-bottom: .5rem;
+
+              &:first-child {
+                margin-right: .5rem;
+              }
             }
           }
         }
