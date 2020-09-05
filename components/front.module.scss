@@ -117,3 +117,145 @@
     }
   }
 }
+
+.why {
+  background-color: $main_dark;
+
+  .inner {
+    h2 {
+      color: $white;
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+
+    .item {
+      margin-bottom: 2rem;
+      @include defaultTransition;
+
+      .inner {
+        border: 1px solid rgba($black, .1);
+        padding: 2rem 1rem;
+        background-color: lighten($main_dark, 5%);
+        @include boxShadow;
+        @include defaultTransition;
+        @include borderRadius(1rem);
+
+        .icon {
+          text-align: center;
+          margin-bottom: 1rem;
+
+          img {
+            max-width: 48px;
+            max-height: 48px;
+          }
+        }
+
+        .detail {
+          text-align: center;
+
+          h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: lighten($main_dark, 30%);
+            text-transform: uppercase;
+          }
+
+          p {
+            font-size: 1rem;
+            line-height: 1.4;
+            margin: 0;
+            color: $white;
+          }
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        .inner {
+          @include customBoxShadow(1px 1px 16px 12px rgba($black, .1));
+        }
+      }
+    }
+
+    @include breakpoint(768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .item {
+        width: 50%;
+        margin-bottom: 0;
+
+        &:nth-child(odd) {
+          padding-right: 1rem;
+
+          &:not(:first-child) {
+            margin-top: -4rem;
+          }
+        }
+
+        &:nth-child(even) {
+          margin-top: 6rem;
+          padding-left: 1rem;
+
+          &:last-child {
+            margin-top: 2rem;
+          }
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          @include zoom(1.05);
+        }
+      }
+    }
+
+    @include breakpoint(992px) {
+      .item {
+        .inner {
+          padding: 3rem;
+          display: flex;
+          align-items: center;
+
+          .icon {
+            margin-bottom: 0;
+
+            img {
+              max-width: 60px;
+              max-height: 60px;
+            }
+          }
+
+          .detail {
+            padding-left: 3rem;
+            text-align: left;
+          }
+        }
+
+        &:nth-child(odd) {
+          padding-right: 2rem;
+
+          &:not(:first-child) {
+            margin-top: -2rem;
+          }
+        }
+
+        &:nth-child(even) {
+          padding-left: 2rem;
+
+          &:last-child {
+            margin-top: 4rem;
+          }
+        }
+      }
+    }
+  }
+}

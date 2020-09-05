@@ -22,8 +22,9 @@ GlobalPage.propTypes = {
 }
 
 const Section = (props) => {
+    const elmClass = props.isDark ? `${styles.section} ${styles.dark}` : styles.section
     return (
-        <div className={props.extraClass ? `${styles.section} ${props.extraClass}` : styles.section}>
+        <div className={props.extraClass ? `${elmClass} ${props.extraClass}` : elmClass}>
             <div className={'frow-container'}>
                 <div className={styles.inner}>
                     {props.title && <h2 className={styles.title}>{props.title}</h2>}
@@ -36,7 +37,8 @@ const Section = (props) => {
 Section.propTypes = {
     id: PropTypes.string.isRequired,
     extraClass: PropTypes.string,
-    title: PropTypes.string
+    title: PropTypes.string,
+    isDark: PropTypes.bool
 }
 
 export {GlobalPage, Section}

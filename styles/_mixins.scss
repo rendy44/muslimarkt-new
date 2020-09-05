@@ -45,9 +45,9 @@
 }
 
 @mixin customBoxShadow($args...) {
-  -webkit-box-shadow: $args;
-  -moz-box-shadow: $args;
-  box-shadow: $args;
+  -webkit-box-shadow: $args !important;
+  -moz-box-shadow: $args !important;
+  box-shadow: $args !important;
 }
 
 @mixin textShadow($color: rgba($black, .4)) {

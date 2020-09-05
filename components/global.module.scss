@@ -1,7 +1,7 @@
 @import "styles/mainUtil";
 
 .section {
-  padding: 2rem 0;
+  padding: 3rem 0;
 
   .inner {
     h2.title {
@@ -12,12 +12,20 @@
     }
   }
 
+  &.dark {
+    .inner {
+      h2.title {
+        color: $white;
+      }
+    }
+  }
+
   @include breakpoint(768px) {
-    padding: 4rem 0;
+    padding: 6rem 0;
   }
 
   @include breakpoint(992px) {
-    padding: 8rem 0;
+    padding: 9rem 0;
     .inner {
       h2.title {
         font-size: 2.5rem;

@@ -13,3 +13,8 @@ html, body {
 .outline {
   border-color: rgba($white, .1) !important;
 }
+
+.outline-invert {
+  border-color: rgba($black, .1) !important;
+  color: $default_black !important;
+}
