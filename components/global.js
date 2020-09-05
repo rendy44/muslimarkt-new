@@ -25,15 +25,18 @@ const Section = (props) => {
     return (
         <div className={props.extraClass ? `${styles.section} ${props.extraClass}` : styles.section}>
             <div className={'frow-container'}>
-                <div className={'frow'}>
-                    <div className={'col-sm-1-1'}>{props.children}</div>
+                <div className={styles.inner}>
+                    {props.title && <h2 className={styles.title}>{props.title}</h2>}
+                    {props.children}
                 </div>
             </div>
         </div>
     )
 }
 Section.propTypes = {
-    extraClass: PropTypes.string
+    id: PropTypes.string.isRequired,
+    extraClass: PropTypes.string,
+    title: PropTypes.string
 }
 
 export {GlobalPage, Section}

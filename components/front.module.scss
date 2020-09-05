@@ -59,3 +59,61 @@
     }
   }
 }
+
+.about {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      max-width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .block {
+      h2 {
+        text-align: center;
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+        line-height: 1.4;
+      }
+    }
+  }
+
+  @include breakpoint(768px) {
+    .wrapper {
+      flex-direction: row;
+      align-items: center;
+
+      img {
+        max-width: calc(50% - 2rem);
+        margin-right: 2rem;
+      }
+
+      .block {
+        h2 {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    .wrapper {
+      img {
+        max-width: calc(40% - 2rem);
+      }
+
+      .block {
+        padding-left: 2rem;
+
+        h2 {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
+}
