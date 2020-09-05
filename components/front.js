@@ -7,7 +7,7 @@ const Hero = () => {
     return (
         <Section id={'hero'} extraClass={styles.hero}>
             <h1 className={styles.title}>Portal Pekerjaan<br/>Kaum Muslimin</h1>
-            <p className={styles.lead}>Insya Allah amanah dan barakah</p>
+            <p className={styles.lead}>Insya Allah berkah dan amanah</p>
             <div className={styles.action}>
                 <LinkButton href={'/semua-lowongan'} label={'Telusuri Lowongan'} variant={'warning'}/>
             </div>
