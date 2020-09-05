@@ -27,7 +27,7 @@ const About = () => {
                     <h2>Apa itu Muslimarkt?</h2>
                     <p>Muslimarkt ialah portal pekerjaan kaum muslimin, memiliki misi untuk penghubungkan para pengusaha
                         muslim dengan para talenta muslim dalam ikatan profesionalisme.</p>
-                    <LinkButton href={'/tentang'} label={'Selengkapnya'} variant={'outline-invert'}
+                    <LinkButton href={'/tentang'} label={'Selengkapnya'} variant={'outline-invert warning'}
                                 rightIcon={<Icon icon={arrowRight} size={16}/>}/>
                 </div>
             </div>
