@@ -317,4 +317,17 @@
       }
     }
   }
+
+  @include breakpoint(768px) {
+    .item {
+      blockquote {
+        font-size: 1.25rem;
+        padding: 4rem;
+
+        &:before {
+          font-size: 6rem;
+        }
+      }
+    }
+  }
 }

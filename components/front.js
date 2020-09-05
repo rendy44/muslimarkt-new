@@ -97,7 +97,7 @@ const Testimonial = () => {
     return (
         <Section extraClass={styles.testimonial} id={'testimonial'} title={'Kata mereka tentang Muslimarkt?'}>
             <div className={'frow'}>
-                <div className={'col-sm-2-3 col-md-1-2'}>
+                <div className={'col-sm-3-4 col-md-2-3'}>
                     <Slider onChangePage={onChangePage}>
                         <SliderItem isActive={page === 1}>
                             <TestimonialItem
