@@ -27,7 +27,7 @@ const Section = (props) => {
         <div className={props.extraClass ? `${elmClass} ${props.extraClass}` : elmClass}>
             <div className={'frow-container'}>
                 <div className={styles.inner}>
-                    {props.title && <h2 className={styles.title}>{props.title}</h2>}
+                    {props.title && <div className={'frow'}><div className={'col-sm-2-3'}><h2 className={styles.title}>{props.title}</h2></div></div>}
                     {props.children}
                 </div>
             </div>

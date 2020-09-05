@@ -261,3 +261,60 @@
     }
   }
 }
+
+.testimonial {
+  background-color: $light;
+
+  .item {
+    display: flex;
+    flex-direction: column;
+
+    blockquote {
+      background-color: lighten($main_dark, 20%);
+      padding: 2rem 2rem 2rem 3rem;
+      margin: 0 0 2rem;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      overflow: hidden;
+      color: $white;
+      @include borderRadius(1rem);
+
+      &:before {
+        content: '"';
+        font-size: 4rem;
+        position: absolute;
+        top: -.5rem;
+        left: 1rem;
+      }
+    }
+
+    .author {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-left: 2rem;
+        max-width: 60px;
+        max-height: 60px;
+        @include borderRadius(50%);
+      }
+
+      .name {
+        padding-left: 1rem;
+
+        p {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 600;
+
+          span {
+            margin-top: .5rem;
+            font-size: 90%;
+            font-weight: 400;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

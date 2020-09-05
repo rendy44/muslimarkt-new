@@ -1,0 +1,97 @@
+@import "styles/mainUtil";
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  //height: 300px;
+
+  .inner {
+    position: relative;
+    height: 100%;
+
+    .item {
+      position: relative;
+      display: none;
+      @include defaultTransition;
+
+      > p {
+        text-align: justify;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      > * {
+        display: block;
+      }
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  .navigation {
+    top: 50%;
+    width: 100%;
+    position: absolute;
+    display: none;
+    z-index: 3;
+    justify-content: space-between;
+
+    > button {
+      background-color: transparent;
+      border: none;
+
+      &.next {
+        color: $main;
+      }
+
+      &.prev {
+        color: $main;
+      }
+
+      &.hide {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .dots {
+    margin-top: 2rem;
+    text-align: center;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        display: inline-block;
+        margin: 0 .5rem;
+
+        a {
+          display: block;
+          width: 20px;
+          height: 20px;
+          background-color: gray;
+          @include borderRadius(50%);
+        }
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &.active {
+          a {
+            background-color: $warning;
+          }
+        }
+      }
+    }
+  }
+}
