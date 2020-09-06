@@ -1,8 +1,8 @@
 import {GenericPage} from "../components/global";
 
-export default function PageAbout() {
+export default function PageTermsOfService() {
     return (
-        <GenericPage title={'Tentang Muslimarkt'}>
+        <GenericPage title={'Kebijakan Layanan'}>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum egestas odio sed efficitur.
                 Pellentesque ut convallis erat. Integer pharetra luctus eros eget euismod. Donec luctus pharetra diam
                 nec dictum. Vivamus eget purus ut dui maximus vulputate ac ac libero. Mauris egestas urna sed feugiat
