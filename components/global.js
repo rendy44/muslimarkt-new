@@ -19,22 +19,39 @@ const GlobalPage = (props) => {
         </>
     )
 }
-GlobalPage.propTypes = {
-    docTitle: PropTypes.string.isRequired
+const GenericPage = (props) => {
+    return (
+        <GlobalPage docTitle={props.title}>
+            <Section id={'title'} extraClass={styles.pageTitle}>
+                <h1>{props.title}</h1>
+            </Section>
+            <Section id={'content'} extraClass={styles.pageContent}>
+                {props.children}
+            </Section>
+        </GlobalPage>
+    )
 }
-
 const Section = (props) => {
     const elmClass = props.isDark ? `${styles.section} ${styles.dark}` : styles.section
     return (
         <div className={props.extraClass ? `${elmClass} ${props.extraClass}` : elmClass}>
             <div className={'frow-container'}>
                 <div className={styles.inner}>
-                    {props.title && <div className={props.isTitleCenter ? 'frow text-center':'frow row-start'}><div className={'col-sm-2-3'}><h2 className={styles.title}>{props.title}</h2></div></div>}
+                    {props.title && <div className={props.isTitleCenter ? 'frow text-center' : 'frow row-start'}>
+                        <div className={'col-sm-2-3'}><h2 className={styles.title}>{props.title}</h2></div>
+                    </div>}
                     {props.children}
                 </div>
             </div>
         </div>
     )
+}
+
+GlobalPage.propTypes = {
+    docTitle: PropTypes.string.isRequired
+}
+GenericPage.propTypes = {
+    title: PropTypes.string.isRequired
 }
 Section.propTypes = {
     id: PropTypes.string.isRequired,
@@ -44,4 +61,4 @@ Section.propTypes = {
     isDark: PropTypes.bool
 }
 
-export {GlobalPage, Section}
+export {GlobalPage, GenericPage, Section}
