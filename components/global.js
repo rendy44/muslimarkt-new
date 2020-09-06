@@ -27,7 +27,7 @@ const Section = (props) => {
         <div className={props.extraClass ? `${elmClass} ${props.extraClass}` : elmClass}>
             <div className={'frow-container'}>
                 <div className={styles.inner}>
-                    {props.title && <div className={'frow'}><div className={'col-sm-2-3'}><h2 className={styles.title}>{props.title}</h2></div></div>}
+                    {props.title && <div className={props.isTitleCenter ? 'frow text-center':'frow row-start'}><div className={'col-sm-2-3'}><h2 className={styles.title}>{props.title}</h2></div></div>}
                     {props.children}
                 </div>
             </div>
@@ -38,6 +38,7 @@ Section.propTypes = {
     id: PropTypes.string.isRequired,
     extraClass: PropTypes.string,
     title: PropTypes.string,
+    isTitleCenter: PropTypes.bool,
     isDark: PropTypes.bool
 }
 

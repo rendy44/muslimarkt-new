@@ -95,7 +95,7 @@ const Testimonial = () => {
     }
 
     return (
-        <Section extraClass={styles.testimonial} id={'testimonial'} title={'Kata mereka tentang Muslimarkt?'}>
+        <Section extraClass={styles.testimonial} id={'testimonial'} title={'Kata mereka tentang Muslimarkt?'} isTitleCenter={true}>
             <div className={'frow'}>
                 <div className={'col-sm-3-4 col-md-2-3'}>
                     <Slider onChangePage={onChangePage}>
@@ -140,4 +140,11 @@ TestimonialItem.propTypes = {
     location: PropTypes.string.isRequired
 }
 
-export {Hero, About, Why, Testimonial}
+const Register = () => {
+    return (
+        <Section id={'register'} title={'Temukan Pekerjaan'}>
+            ok
+        </Section>
+    )
+}
+export {Hero, About, Why, Testimonial, Register}
