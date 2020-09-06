@@ -59,6 +59,8 @@
   }
 
   @include breakpoint(992px) {
+    padding-top: 5rem;
+
     h1 {
       font-size: 3.5rem;
     }
@@ -92,7 +94,7 @@
 
   @include breakpoint(992px) {
     .inner {
-      margin-top: -8rem;
+      margin-top: -6rem;
       padding: 4rem;
 
       p {
