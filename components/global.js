@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import styles from './global.module.scss'
 import {TopNav} from "./header";
 import Head from "next/head";
+import {Footer} from "./footer";
 
 const siteTitle = 'Muslimarkt'
 const siteDescription = 'Portal Pekerjaan Kaum Muslimin'
@@ -14,6 +15,7 @@ const GlobalPage = (props) => {
             </Head>
             <TopNav/>
             {props.children}
+            <Footer siteName={siteTitle}/>
         </>
     )
 }

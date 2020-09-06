@@ -1,0 +1,74 @@
+@import "styles/mainUtil";
+
+footer.footer {
+  padding: 2rem 0 6rem;
+  background-color: $main_dark;
+  color: $white;
+  background-image: url('/city.webp');
+  background-position: bottom;
+  background-repeat: repeat-x;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      text-align: center;
+      margin: 0 0 2rem;
+    }
+
+    .socialNetwork {
+      text-align: center;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: inline-block;
+          margin: 0 .3rem;
+          padding: .5rem;
+          background-color: rgba($white, .8);
+          @include borderRadius(50%);
+          @include defaultTransition;
+          @include boxShadow;
+
+          a {
+            color: $main_dark;
+          }
+
+          &:hover {
+            @include zoom;
+            background-color: $white;
+
+            a {
+              //color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include breakpoint(768px) {
+    .inner {
+      flex-direction: row;
+      justify-content: space-between;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .socialNetwork {
+        ul {
+          li {
+            margin: 0 .5rem;
+            padding: .75rem;
+          }
+        }
+      }
+    }
+  }
+}
