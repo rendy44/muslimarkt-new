@@ -1,11 +1,11 @@
 import {useState} from 'react'
 import PropTypes from 'prop-types'
-import {Section} from "./global";
-import {LinkButton} from "./button";
+import {Section} from "../global";
+import {LinkButton} from "../button";
 import styles from './front.module.scss'
 import Icon from 'react-icons-kit'
 import {arrowRight} from 'react-icons-kit/feather/arrowRight'
-import {Slider, SliderItem} from "./slider";
+import {Slider, SliderItem} from "../slider";
 
 const Hero = () => {
     return (

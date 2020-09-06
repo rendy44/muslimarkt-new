@@ -1,4 +1,4 @@
-import {About, Hero, Register, Testimonial, Why} from "../components/front";
+import {About, Hero, Register, Testimonial, Why} from "../components/pages/front";
 import {GlobalPage} from "../components/global";
 
 export default function Home() {
