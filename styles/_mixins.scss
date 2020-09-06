@@ -22,6 +22,24 @@
   border-radius: $size;
 }
 
+@mixin borderTopRightRadius($size) {
+  -webkit-border-top-right-radius: $size;
+  -moz-border-radius-topright: $size;
+  border-top-right-radius: $size;
+}
+
+@mixin borderTopLeftRadius($size) {
+  -webkit-border-top-left-radius: $size;
+  -moz-border-radius-topleft: $size;
+  border-top-left-radius: $size;
+}
+
+@mixin borderBottomRightRadius($size) {
+  -webkit-border-bottom-right-radius: $size;
+  -moz-border-radius-bottomright: $size;
+  border-bottom-right-radius: $size;
+}
+
 @mixin borderBottomLeftRadius($size) {
   -webkit-border-bottom-left-radius: $size;
   -moz-border-radius-bottomleft: $size;

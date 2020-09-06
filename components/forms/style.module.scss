@@ -1,0 +1,55 @@
+@import "styles/mainUtil";
+
+.form {
+  .fields {
+    margin-bottom: 2rem;
+
+    .group {
+      background-color: $white;
+      border: 1px solid rgba($black, .1);
+      padding: 1rem;
+      border-bottom: none;
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-right: 1.5rem;
+        color: grey;
+      }
+
+      .input {
+        width: calc(100% - 32px);
+
+        > label.label {
+          margin-bottom: 0;
+          font-weight: 600;
+          color: $default_black;
+        }
+
+        > input {
+          border: none;
+          padding: .5rem 0;
+        }
+      }
+
+      &:first-child {
+        @include borderTopLeftRadius(.5rem);
+        @include borderTopRightRadius(.5rem);
+      }
+
+      &:last-child {
+        border-bottom: 1px solid rgba($black, .1);
+        @include borderBottomLeftRadius(.5rem);
+        @include borderBottomRightRadius(.5rem);
+      }
+    }
+  }
+
+  .action {
+    button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
