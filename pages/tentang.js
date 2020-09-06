@@ -1,6 +1,6 @@
 import {GenericPage, GlobalPage} from "../components/global";
 
-export default function SignIn() {
+export default function PageAbout() {
     return (
         <GenericPage title={'Tentang Muslimarkt'}>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus bibendum egestas odio sed efficitur.
