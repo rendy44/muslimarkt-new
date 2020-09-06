@@ -95,7 +95,8 @@ const Testimonial = () => {
     }
 
     return (
-        <Section extraClass={styles.testimonial} id={'testimonial'} title={'Kata mereka tentang Muslimarkt?'} isTitleCenter={true}>
+        <Section extraClass={styles.testimonial} id={'testimonial'} title={'Kata mereka tentang Muslimarkt?'}
+                 isTitleCenter={true}>
             <div className={'frow'}>
                 <div className={'col-sm-3-4 col-md-2-3'}>
                     <Slider onChangePage={onChangePage}>
@@ -142,8 +143,19 @@ TestimonialItem.propTypes = {
 
 const Register = () => {
     return (
-        <Section id={'register'} title={'Temukan Pekerjaan'}>
-            ok
+        <Section id={'register'} extraClass={styles.register}>
+            <div className={styles.inner}>
+                <h2>Mari Terhubung!</h2>
+                <div className={styles.wrapper}>
+                    <div className={styles.text}>
+                        <p>Para pengusaha dan talenta muslim di seluruh Indonesia sudah menunggu.</p>
+                    </div>
+                    <div className={styles.action}>
+                        <LinkButton href={'/daftar'} label={'Gabung Sekarang'} variant={'warning'}
+                                    rightIcon={<Icon icon={arrowRight} size={16}/>}/>
+                    </div>
+                </div>
+            </div>
         </Section>
     )
 }

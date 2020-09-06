@@ -265,6 +265,7 @@
 
 .testimonial {
   background-color: $light;
+  padding-bottom: 10rem;
 
   .item {
     display: flex;
@@ -320,6 +321,8 @@
   }
 
   @include breakpoint(768px) {
+    padding-bottom: 14rem;
+
     .item {
       blockquote {
         font-size: 1.25rem;
@@ -328,6 +331,88 @@
         &:before {
           font-size: 8rem;
         }
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    padding-bottom: 17rem;
+  }
+}
+
+.register {
+  background-color: $main_dark;
+
+  .inner {
+    margin-top: -9rem;
+    background-color: lighten($main_dark, 10%);
+    padding: 2rem;
+    @include customBoxShadow(1px 1px 16px 12px rgba($black, 0.1));
+    @include borderRadius(1rem);
+
+    h2 {
+      font-size: 2rem;
+      color: $white;
+      margin-bottom: 2rem;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .text {
+        margin-bottom: 3rem;
+
+        p {
+          color: $white;
+          font-size: 1.1rem;
+          line-height: 1.4;
+          margin: 0;
+        }
+      }
+
+      .action {
+        text-align: center;
+      }
+    }
+  }
+
+  @include breakpoint(768px) {
+    .inner {
+      margin-top: -13rem;
+      padding: 4rem;
+      @include borderRadius(2rem);
+
+      h2 {
+        font-size: 2.5rem;
+      }
+
+      .wrapper {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .text {
+          margin-bottom: 0;
+          width: 57%;
+          padding-right: 2rem;
+        }
+
+        .action {
+          width: 43%;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    .inner {
+      margin-top: -18rem;
+      padding: 5rem;
+
+      h2 {
+        font-size: 3rem;
       }
     }
   }

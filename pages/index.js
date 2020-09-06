@@ -8,7 +8,7 @@ export default function Home() {
             <About/>
             <Why/>
             <Testimonial/>
-            {/*<Register/>*/}
+            <Register/>
         </GlobalPage>
     )
 }
