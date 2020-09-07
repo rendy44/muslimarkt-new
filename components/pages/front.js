@@ -19,7 +19,6 @@ const Hero = () => {
         </Section>
     )
 }
-
 const About = () => {
     return (
         <Section id={'about'} extraClass={styles.about}>
@@ -36,7 +35,6 @@ const About = () => {
         </Section>
     )
 }
-
 const WhyItem = (props) => {
     return (
         <div className={styles.item}>
@@ -52,12 +50,6 @@ const WhyItem = (props) => {
         </div>
     )
 }
-WhyItem.propTypes = {
-    iconUrl: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired
-}
-
 const Why = () => {
     return (
         <Section id={'why'} extraClass={styles.why} isDark={true} title={'Mengapa harus Muslimarkt?'}>
@@ -86,7 +78,6 @@ const Why = () => {
         </Section>
     )
 }
-
 const Testimonial = () => {
     const [page, setPage] = useState(1)
 
@@ -134,13 +125,6 @@ const TestimonialItem = (props) => {
         </div>
     )
 }
-TestimonialItem.propTypes = {
-    content: PropTypes.string.isRequired,
-    userUrl: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired
-}
-
 const Register = () => {
     return (
         <Section id={'register'} extraClass={styles.register}>
@@ -151,7 +135,7 @@ const Register = () => {
                         <p>Para pengusaha dan talenta muslim di seluruh Indonesia sudah menunggu.</p>
                     </div>
                     <div className={styles.action}>
-                        <LinkButton href={'/daftar'} label={'Gabung Sekarang'} variant={'warning'}
+                        <LinkButton href={'/daftar'} label={'Ayo Bergabung'} variant={'warning'}
                                     rightIcon={<Icon icon={arrowRight} size={16}/>}/>
                     </div>
                 </div>
@@ -159,4 +143,17 @@ const Register = () => {
         </Section>
     )
 }
+
+WhyItem.propTypes = {
+    iconUrl: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired
+}
+TestimonialItem.propTypes = {
+    content: PropTypes.string.isRequired,
+    userUrl: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired
+}
+
 export {Hero, About, Why, Testimonial, Register}
