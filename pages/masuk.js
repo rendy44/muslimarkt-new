@@ -3,7 +3,7 @@ import Login from "../components/pages/login";
 
 export default function PageLogin() {
     return (
-        <GlobalPage docTitle={'Masuk'}>
+        <GlobalPage docTitle={'Masuk'} isPlainHeader={true}>
             <Login/>
         </GlobalPage>
     )

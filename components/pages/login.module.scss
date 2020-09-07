@@ -6,6 +6,7 @@
   .wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     .illustration {
       margin-bottom: 1rem;
@@ -24,6 +25,34 @@
         font-size: 1.1rem;
         line-height: 1.4;
         margin: 0 0 2rem;
+      }
+    }
+  }
+
+  @include breakpoint(768px) {
+    padding-top: 3rem;
+
+    .wrapper {
+      flex-direction: row;
+
+      .illustration {
+        width: 50%;
+      }
+
+      .form {
+        width: 50%;
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    .wrapper {
+      .illustration {
+        width: 60%;
+      }
+
+      .form {
+        width: 40%;
       }
     }
   }

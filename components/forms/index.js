@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styles from './style.module.scss'
-import {Button} from "../button";
+import {Button, LinkButton} from "../button";
 
 const Form = (props) => {
     return (
@@ -12,6 +12,9 @@ const Form = (props) => {
                 <Button isSubmit={true}
                         label={props.isLoading ? 'Loading...' : (props.submitLabel ? props.submitLabel : 'Submit')}
                         isDisabled={props.isLoading}/>
+                {props.otherLink &&
+                <LinkButton href={props.otherLink} label={props.otherLabel ? props.otherLabel : 'Batal'}
+                            variant={props.otherVariant ? props.otherVariant : 'outline-invert'}/>}
             </div>
         </form>
     )
@@ -39,7 +42,10 @@ const TextBox = (props) => {
 Form.propTypes = {
     onsubmit: PropTypes.func.isRequired,
     submitLabel: PropTypes.string,
-    isLoading: PropTypes.bool
+    isLoading: PropTypes.bool,
+    otherLink: PropTypes.string,
+    otherLabel: PropTypes.string,
+    otherVariant: PropTypes.string
 }
 TextBox.propTypes = {
     name: PropTypes.string.isRequired,

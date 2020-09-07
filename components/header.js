@@ -1,9 +1,10 @@
 import {useState} from 'react';
+import PropTypes from 'prop-types';
 import styles from "./header.module.scss";
 import Link from "next/link";
 import {LinkButton} from "./button";
 
-const TopNav = () => {
+const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
     console.log(isOpened)
     return (
@@ -15,7 +16,7 @@ const TopNav = () => {
                             <a>Muslim<span>arkt</span></a>
                         </Link>
                     </div>
-                    <div className={styles.menu}>
+                    {!props.isPlainHeader && <div className={styles.menu}>
                         <ul>
                             <li>
                                 <LinkButton href={'/perusahaan'} label={'Cari Talenta'} variant={'success'}/>
@@ -64,11 +65,15 @@ const TopNav = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>
     )
+}
+
+TopNav.propTypes = {
+    isPlainHeader: PropTypes.bool
 }
 
 export {TopNav}

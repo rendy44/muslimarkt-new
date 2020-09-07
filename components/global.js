@@ -13,7 +13,7 @@ const GlobalPage = (props) => {
             <Head>
                 <title>{props.docTitle ? `${props.docTitle} | ${siteTitle}` : `${siteTitle} | ${siteDescription}`}</title>
             </Head>
-            <TopNav/>
+            <TopNav isPlainHeader={props.isPlainHeader}/>
             {props.children}
             <Footer siteName={siteTitle}/>
         </>
@@ -48,7 +48,8 @@ const Section = (props) => {
 }
 
 GlobalPage.propTypes = {
-    docTitle: PropTypes.string.isRequired
+    docTitle: PropTypes.string.isRequired,
+    isPlainHeader: PropTypes.bool
 }
 GenericPage.propTypes = {
     title: PropTypes.string.isRequired
