@@ -16,10 +16,10 @@ const FormLogin = () => {
         <>
             <Form onsubmit={handleSubmit(onSubmit)} submitLabel={'Masuk'} otherLink={'/daftar'} otherLabel={'Daftar'}>
                 <TextBox name={'email'} icon={<Icon icon={basic_mail} size={32}/>} label={'Alamat email'} type={'email'}
-                         reference={register({required: true})} placeholder={'Contoh: nama@gmail.com'}/>
+                         reference={register({required: true})} errorsObj={errors} placeholder={'Contoh: nama@gmail.com'}/>
                 <TextBox name={'password'} icon={<Icon icon={basic_lock} size={32}/>} label={'Kata sandi'}
                          type={'password'}
-                         reference={register({required: true, minLength: 8})} placeholder={'Minimal 8 digit'}/>
+                         reference={register({required: true, minLength: 8})} errorsObj={errors} placeholder={'Minimal 8 digit'}/>
             </Form>
         </>
     )

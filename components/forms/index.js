@@ -21,14 +21,14 @@ const Form = (props) => {
 }
 const FormGroup = (props) => {
     return (
-        <div className={styles.group}>
+        <div className={props.isError ? `${styles.group} ${styles.error}` : styles.group}>
             {props.children}
         </div>
     )
 }
 const TextBox = (props) => {
     return (
-        <FormGroup>
+        <FormGroup isError={props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
@@ -37,6 +37,10 @@ const TextBox = (props) => {
             </div>
         </FormGroup>
     )
+}
+
+FormGroup.propTypes = {
+    isError: PropTypes.bool
 }
 
 Form.propTypes = {
@@ -53,6 +57,7 @@ TextBox.propTypes = {
     label: PropTypes.string,
     placeholder: PropTypes.string,
     type: PropTypes.string.isRequired,
-    reference: PropTypes.func.isRequired
+    reference: PropTypes.func.isRequired,
+    errorsObj: PropTypes.object
 }
 export {Form, TextBox}

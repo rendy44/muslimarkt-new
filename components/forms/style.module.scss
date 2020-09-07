@@ -12,6 +12,7 @@
       position: relative;
       display: flex;
       align-items: center;
+      @include defaultTransition;
 
       .icon {
         margin-right: 1.5rem;
@@ -30,6 +31,14 @@
         > input {
           border: none;
           padding: .5rem 0;
+        }
+      }
+
+      &.error {
+        background-color: rgba($danger, .2);
+
+        .icon {
+          color: $danger;
         }
       }
 
