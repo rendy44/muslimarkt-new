@@ -21,7 +21,7 @@ const FormRegister = () => {
         setTimeout(() => {
 
             // Send redirection after success register.
-            router.push('/terdaftar')
+            router.push('/pendaftaran-sukses')
 
         }, 3000)
     }

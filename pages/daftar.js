@@ -1,5 +1,5 @@
 import {GlobalPage} from "../components/global";
-import Register from "../components/pages/daftar";
+import Register from "../components/pages/register";
 
 export default function PageLogin() {
     return (
