@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import styles from './global.module.scss'
+import styles from './styles/global.module.scss'
 import {TopNav} from "./header";
 import Head from "next/head";
 import {Footer} from "./footer";

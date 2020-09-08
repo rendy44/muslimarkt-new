@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import styles from './style.module.scss'
+import styles from './styles/style.module.scss'
 import {Button, LinkButton} from "../button";
 
 const Form = (props) => {

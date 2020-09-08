@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import PropTypes from 'prop-types';
-import styles from "./header.module.scss";
+import styles from "./styles/header.module.scss";
 import Link from "next/link";
 import {LinkButton} from "./button";
 

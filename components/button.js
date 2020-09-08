@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import Link from "next/link";
-import styles from './button.module.scss'
+import styles from './styles/button.module.scss'
 
 const Button = (props) => {
     const variant = props.variant ? props.variant : 'main';

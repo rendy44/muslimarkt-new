@@ -5,7 +5,7 @@ import {telephone} from 'react-icons-kit/metrize/telephone'
 import {mail} from 'react-icons-kit/metrize/mail'
 import {socialTwitter} from 'react-icons-kit/metrize/socialTwitter'
 
-import styles from './footer.module.scss'
+import styles from './styles/footer.module.scss'
 
 const Footer = (props) => {
     return (
