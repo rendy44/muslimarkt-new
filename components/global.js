@@ -3,6 +3,7 @@ import styles from './styles/global.module.scss'
 import {TopNav} from "./header";
 import Head from "next/head";
 import {Footer} from "./footer";
+import ReactLoading from 'react-loading';
 
 const siteTitle = 'Muslimarkt'
 const siteDescription = 'Portal Pekerjaan Kaum Muslimin'
@@ -46,7 +47,13 @@ const Section = (props) => {
         </div>
     )
 }
-
+const FullLoading = () => {
+    return (
+        <div className={styles.full}>
+            <ReactLoading type={'bubbles'} color={'#773377'} width={100}/>
+        </div>
+    )
+}
 GlobalPage.propTypes = {
     docTitle: PropTypes.string.isRequired,
     isPlainHeader: PropTypes.bool
@@ -62,4 +69,4 @@ Section.propTypes = {
     isDark: PropTypes.bool
 }
 
-export {GlobalPage, GenericPage, Section}
+export {GlobalPage, GenericPage, Section, FullLoading}
