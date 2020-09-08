@@ -1,0 +1,33 @@
+@import "styles/mainUtil";
+
+.regSuccess {
+  padding-top: 1rem;
+
+  .wrapper {
+    text-align: center;
+
+    img {
+      margin: 0 auto 1rem;
+      max-width: 100%;
+    }
+
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+  }
+
+  @include breakpoint(768px) {
+    padding-top: 3rem;
+    .wrapper {
+      img {
+        max-width: 50%;
+      }
+    }
+  }
+}
