@@ -3,7 +3,7 @@
 .button {
   cursor: pointer;
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   border: 1px solid rgba($black, .1);
   color: $white;
   font-weight: 600;
@@ -12,8 +12,10 @@
   @include defaultTransition;
 
   .rightIcon {
-    margin-left: .5rem;
+    margin-left: .3rem;
     font-weight: 700;
+    position: absolute;
+    opacity: 0;
     @include defaultTransition;
   }
 
@@ -27,8 +29,8 @@
       @include boxShadow;
 
       .rightIcon {
-        margin-left: 1rem;
-        margin-right: -.5rem;
+        opacity: 1;
+        @include transform(translateX(.3rem));
       }
     }
   }

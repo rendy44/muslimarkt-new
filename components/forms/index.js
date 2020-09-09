@@ -3,6 +3,7 @@ import styles from './styles/style.module.scss'
 import {Button, LinkButton} from "../button";
 import Icon from 'react-icons-kit'
 import {check} from 'react-icons-kit/metrize/check'
+import {arrowRight} from 'react-icons-kit/feather/arrowRight'
 
 const Form = (props) => {
     return (
@@ -13,7 +14,8 @@ const Form = (props) => {
             <div className={styles.action}>
                 <Button isSubmit={true}
                         label={props.isLoading ? 'Loading...' : (props.submitLabel ? props.submitLabel : 'Submit')}
-                        isDisabled={props.isDisabled || props.isLoading}/>
+                        isDisabled={props.isDisabled || props.isLoading}
+                        rightIcon={props.useArrowIcon ? <Icon icon={arrowRight}/> : <></>}/>
                 {props.otherLink &&
                 <LinkButton href={props.otherLink} label={props.otherLabel ? props.otherLabel : 'Batal'}
                             variant={props.otherVariant ? props.otherVariant : 'outline-invert'}/>}
@@ -74,7 +76,8 @@ Form.propTypes = {
     otherLink: PropTypes.string,
     otherLabel: PropTypes.string,
     otherVariant: PropTypes.string,
-    isDisabled: PropTypes.bool
+    isDisabled: PropTypes.bool,
+    useArrowIcon: PropTypes.bool
 }
 TextBox.propTypes = {
     name: PropTypes.string.isRequired,

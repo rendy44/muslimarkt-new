@@ -27,7 +27,7 @@ const FormLogin = () => {
     }
 
     return (isLoading ? <FullLoading/> :
-        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Masuk'} otherLink={'/daftar'} otherLabel={'Daftar'}>
+        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Masuk'} otherLink={'/daftar'} otherLabel={'Daftar'} useArrowIcon={true}>
             <TextBox name={'email'} icon={<Icon icon={basic_mail} size={32}/>} label={'Alamat email'} type={'email'}
                      reference={register({required: true})} errorsObj={errors} placeholder={'Contoh: nama@gmail.com'}/>
             <TextBox name={'password'} icon={<Icon icon={basic_lock} size={32}/>} label={'Kata sandi'}

@@ -19,7 +19,7 @@ const FormAccountType = () => {
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)} isLoading={isLoading} submitLabel={'Lanjutkan'}
-              isDisabled={!isSelected}>
+              isDisabled={!isSelected} useArrowIcon={true}>
             <ImageToggle>
                 <ToggleItem onChange={onChange} name={'type'} value={'personal'} image={'/employee.png'}
                             label={'Saya mendaftar untuk mencari pekerjaan'}/>
