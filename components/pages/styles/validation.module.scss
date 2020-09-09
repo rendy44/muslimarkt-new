@@ -1,0 +1,9 @@
+@import "styles/mainUtil";
+
+.validation {
+  padding-top: 1rem;
+
+  @include breakpoint(768px) {
+    padding-top: 3rem;
+  }
+}

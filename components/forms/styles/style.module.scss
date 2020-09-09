@@ -55,6 +55,88 @@
     }
   }
 
+  .imageToggle {
+    display: flex;
+    flex-direction: column;
+
+    .toggle {
+      margin-bottom: 2rem;
+
+      .inner {
+        text-align: center;
+        padding: 2rem;
+        border: 1px solid rgba($black, .1);
+        position: relative;
+        @include borderRadius(1rem);
+        @include boxShadow;
+
+        .icon {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          color: $success;
+          opacity: 0;
+          @include defaultTransition;
+        }
+
+        input[type=radio] {
+          position: absolute;
+          left: -999999px;
+
+          &:checked {
+            + label {
+              img {
+                @include zoom;
+              }
+
+              + .icon {
+                opacity: 1;
+              }
+            }
+          }
+        }
+
+        label {
+          display: inline-block;
+          margin: 0;
+
+          img {
+            max-width: 100%;
+            margin-bottom: 1rem;
+            @include defaultTransition;
+          }
+
+          p {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin: 0;
+          }
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include breakpoint(768px) {
+      flex-direction: row;
+
+      .toggle {
+        margin-bottom: 0;
+        width: 50%;
+
+        &:nth-child(odd) {
+          padding-right: 1rem;
+        }
+
+        &:nth-child(even) {
+          padding-left: 1rem;
+        }
+      }
+    }
+  }
+
   .action {
     button {
       margin-right: 1rem;

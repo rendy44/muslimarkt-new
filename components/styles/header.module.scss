@@ -35,6 +35,12 @@
           text-decoration: none;
         }
       }
+
+      &.plain {
+        a {
+          pointer-events: none;
+        }
+      }
     }
 
     .menu {

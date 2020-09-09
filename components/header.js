@@ -11,7 +11,7 @@ const TopNav = (props) => {
         <div className={isOpened ? `${styles.nav} ${styles.open}` : styles.nav}>
             <div className={'frow-container'}>
                 <div className={styles.inner}>
-                    <div className={styles.brand}>
+                    <div className={props.isPlainHeader ? `${styles.brand} ${styles.plain}`:styles.brand}>
                         <Link href={'/'}>
                             <a>Muslim<span>arkt</span></a>
                         </Link>

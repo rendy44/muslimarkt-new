@@ -1,6 +1,7 @@
 @import "../../styles/mainUtil";
 
 .button {
+  cursor: pointer;
   display: inline-block;
   padding: 1rem 2rem;
   border: 1px solid rgba($black, .1);
@@ -8,6 +9,7 @@
   font-weight: 600;
   text-transform: uppercase;
   @include borderRadius(1.5rem);
+  @include defaultTransition;
 
   .rightIcon {
     margin-left: .5rem;
@@ -18,12 +20,21 @@
   &:hover,
   &:active,
   &:focus {
-    color: $white;
-    text-decoration: none;
+    &:not(:disabled) {
+      outline: none;
+      color: $white;
+      text-decoration: none;
+      @include boxShadow;
 
-    .rightIcon {
-      margin-left: 1rem;
-      margin-right: -.5rem;
+      .rightIcon {
+        margin-left: 1rem;
+        margin-right: -.5rem;
+      }
     }
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: .8;
   }
 }

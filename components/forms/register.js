@@ -27,7 +27,7 @@ const FormRegister = () => {
     }
 
     return (isLoading ? <FullLoading/> :
-        <Form onsubmit={handleSubmit(onSubmit)} submitLabel={'Daftar'} otherLink={'/masuk'} otherLabel={'Masuk'}>
+        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Daftar'} otherLink={'/masuk'} otherLabel={'Masuk'}>
             <TextBox name={'email'} icon={<Icon icon={basic_mail} size={32}/>} label={'Alamat email'} type={'email'}
                      reference={register({required: true})} errorsObj={errors}
                      placeholder={'Contoh: nama@gmail.com'}/>
