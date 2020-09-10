@@ -53,7 +53,7 @@ const ToggleItem = (props) => {
     return (
         <div className={styles.toggle}>
             <div className={styles.inner}>
-                <input onChange={props.onChange} id={props.value} type={'radio'} name={props.name} value={props.value}/>
+                <input onChange={props.onChange} id={props.value} type={'radio'} name={props.name} value={props.value} ref={props.reference}/>
                 <label htmlFor={props.value}>
                     <img src={props.image} alt={'Radio'}/>
                     <p>{props.label}</p>
@@ -93,6 +93,7 @@ ToggleItem.propTypes = {
     value: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     label: PropTypes.string,
+    reference: PropTypes.func.isRequired,
     onChange: PropTypes.func
 }
 export {Form, TextBox, ImageToggle, ToggleItem}
