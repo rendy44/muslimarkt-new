@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styles from './styles/global.module.scss'
 import {TopNav} from "./header";
 import Head from "next/head";
-import {Footer} from "./footer";
+import {Footer, SimpleFooter} from "./footer";
 import ReactLoading from 'react-loading';
 
 const siteTitle = 'Muslimarkt'
@@ -16,7 +16,7 @@ const GlobalPage = (props) => {
             </Head>
             <TopNav isPlainHeader={props.isPlainHeader}/>
             {props.children}
-            <Footer siteName={siteTitle}/>
+            {props.isSimpleFooter ? <SimpleFooter siteName={siteTitle}/> : <Footer siteName={siteTitle}/>}
         </>
     )
 }
@@ -56,7 +56,8 @@ const FullLoading = () => {
 }
 GlobalPage.propTypes = {
     docTitle: PropTypes.string.isRequired,
-    isPlainHeader: PropTypes.bool
+    isPlainHeader: PropTypes.bool,
+    isSimpleFooter: PropTypes.bool
 }
 GenericPage.propTypes = {
     title: PropTypes.string.isRequired

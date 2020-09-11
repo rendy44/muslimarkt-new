@@ -1,12 +1,9 @@
 @import "../../styles/mainUtil";
 
 footer.footer {
-  padding: 2rem 0 6rem;
-  background-color: $main_dark;
+  padding: 2rem;
+  background-color: $dark;
   color: $white;
-  background-image: url('/city.webp');
-  background-position: bottom;
-  background-repeat: repeat-x;
 
   .inner {
     display: flex;
@@ -50,6 +47,14 @@ footer.footer {
         }
       }
     }
+  }
+
+  &.rich {
+    padding: 2rem 0 6rem;
+    background-color: $main_dark;
+    background-image: url('/city.webp');
+    background-position: bottom;
+    background-repeat: repeat-x;
   }
 
   @include breakpoint(768px) {
