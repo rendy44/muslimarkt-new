@@ -6,12 +6,12 @@ import {LinkButton} from "./button";
 
 const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
-    console.log(isOpened)
+    const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
     return (
-        <div className={isOpened ? `${styles.nav} ${styles.open}` : styles.nav}>
-            <div className={'frow-container'}>
+        <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
+            <div className={!props.isDashboard ? 'frow-container' : ''}>
                 <div className={styles.inner}>
-                    <div className={props.isPlainHeader ? `${styles.brand} ${styles.plain}`:styles.brand}>
+                    <div className={props.isPlainHeader ? `${styles.brand} ${styles.plain}` : styles.brand}>
                         <Link href={'/'}>
                             <a>Muslim<span>arkt</span></a>
                         </Link>
@@ -73,7 +73,8 @@ const TopNav = (props) => {
 }
 
 TopNav.propTypes = {
-    isPlainHeader: PropTypes.bool
+    isPlainHeader: PropTypes.bool,
+    isDashboard: PropTypes.bool
 }
 
 export {TopNav}

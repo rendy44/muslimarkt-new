@@ -9,14 +9,16 @@ const siteTitle = 'Muslimarkt'
 const siteDescription = 'Portal Pekerjaan Kaum Muslimin'
 
 const GlobalPage = (props) => {
+    const maybeFooter = !props.isNoFooter ? (props.isSimpleFooter ? <SimpleFooter siteName={siteTitle}/> :
+        <Footer siteName={siteTitle}/>) : <></>
     return (
         <>
             <Head>
                 <title>{props.docTitle ? `${props.docTitle} | ${siteTitle}` : `${siteTitle} | ${siteDescription}`}</title>
             </Head>
-            <TopNav isPlainHeader={props.isPlainHeader}/>
+            <TopNav isPlainHeader={props.isPlainHeader} isDashboard={props.isDashboard}/>
             {props.children}
-            {props.isSimpleFooter ? <SimpleFooter siteName={siteTitle}/> : <Footer siteName={siteTitle}/>}
+            {maybeFooter}
         </>
     )
 }
@@ -57,7 +59,9 @@ const FullLoading = () => {
 GlobalPage.propTypes = {
     docTitle: PropTypes.string.isRequired,
     isPlainHeader: PropTypes.bool,
-    isSimpleFooter: PropTypes.bool
+    isDashboard: PropTypes.bool,
+    isSimpleFooter: PropTypes.bool,
+    isNoFooter: PropTypes.bool
 }
 GenericPage.propTypes = {
     title: PropTypes.string.isRequired

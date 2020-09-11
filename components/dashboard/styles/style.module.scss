@@ -1,0 +1,66 @@
+@import "styles/mainUtil";
+
+.wrapper {
+  //position: relative;
+  display: flex;
+  min-height: calc(100vh - 46px);
+  overflow: hidden;
+
+  .left {
+    width: 190px;
+    background-color: $main_dark;
+    color: $white;
+
+    .inner {
+      //position: sticky;
+      //left: 0;
+      //top: 0;
+
+      ul.links {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        font-size: 1rem;
+        font-weight: 500;
+
+        li {
+          display: block;
+
+          a {
+            padding: .75rem 1rem;
+            color: $white;
+            display: flex;
+            align-items: center;
+
+            i {
+              color: rgba($white, .7);
+            }
+
+            span {
+              margin-left: .75rem;
+            }
+          }
+
+          &.title {
+            background-color: lighten($main_dark, 5%);
+
+            span {
+              font-size: 80%;
+              color: rgba($white, .75);
+              padding: .75rem 1rem;
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .center {
+    //position: relative;
+    width: calc(100% - 190px);
+    background-color: $light;
+    padding: 1rem;
+    @include defaultTransition;
+  }
+}

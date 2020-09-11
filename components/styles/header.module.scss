@@ -162,6 +162,25 @@
     }
   }
 
+  &.dashboard {
+    background-color: $main_dark;
+    height: 46px;
+    padding: 0 1rem;
+
+    .inner {
+      .brand {
+        a {
+          font-size: 1rem;
+          color: $white;
+
+          span {
+            color: lighten($main_dark, 30%);
+          }
+        }
+      }
+    }
+  }
+
   &.open {
 
     .inner {
