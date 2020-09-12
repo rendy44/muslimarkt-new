@@ -3,8 +3,10 @@
 .wrapper {
   position: relative;
   overflow: hidden;
+  min-height: calc(100vh - 46px);
 
   .left {
+    padding-bottom: 2rem;
     z-index: 2;
     width: 190px;
     background-color: $main_dark;

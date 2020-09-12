@@ -1,0 +1,69 @@
+@import "styles/mainUtil";
+
+.panel {
+  background-color: $white;
+  border: 1px solid rgba($black, .1);
+  margin-bottom: 1rem;
+  @include defaultBorderRadius;
+
+  .title {
+    font-weight: 600;
+    font-size: 90%;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid rgba($black, .1);
+  }
+
+  .body {
+    padding: 0 1rem;
+    //padding: .75rem 1rem 1rem;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  a {
+    color: lighten($main_dark, 35%);
+  }
+
+  ul {
+    padding-left: 1.2rem;
+
+    li {
+      line-height: 1.4;
+    }
+  }
+
+  &.noTitle {
+    .body {
+      padding-top: 1rem;
+    }
+  }
+
+  @include breakpoint(768px) {
+    margin-bottom: 2rem;
+
+    .title {
+      padding: .75rem 1.5rem;
+    }
+    .body {
+      padding: 0 1.5rem;
+    }
+    &.noTitle {
+      .body {
+        padding-top: 1.5rem;
+      }
+    }
+  }
+}
