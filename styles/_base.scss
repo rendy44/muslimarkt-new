@@ -8,6 +8,7 @@ html, body {
 @each $name, $color in $colors {
   .#{$name} {
     background-color: $color;
+    color: $white !important;
   }
 }
 
