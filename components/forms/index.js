@@ -52,6 +52,18 @@ const TextBox = (props) => {
         </FormGroup>
     )
 }
+const TextArea = (props) => {
+    return (
+        <FormGroup isError={props.errorsObj[props.name]}>
+            {props.icon && <div className={styles.icon}>{props.icon}</div>}
+            <div className={styles.input}>
+                {props.label && <label className={styles.label}>{props.label}</label>}
+                <textarea id={props.name} name={props.name} ref={props.reference}
+                          placeholder={props.placeholder}/>
+            </div>
+        </FormGroup>
+    )
+}
 const DropDown = (props) => {
     let valueHtml = []
 
@@ -81,24 +93,46 @@ const DateDropDown = (props) => {
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
-                <div className={'frow'}>
-                    <div className={'col-xs-2-9'}>
+                <div className={styles.multi}>
+                    <div>
                         <select id={`${props.id}_day`} name={`${props.name}_day`} ref={props.reference}>
                             <DropDownValues
                                 values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}/>
                         </select>
                     </div>
-                    <div className={'col-xs-3-9'}>
+                    <div>
                         <select id={`${props.id}_month`} name={`${props.name}_month`} ref={props.reference}>
                             <DropDownValues
                                 values={['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']}/>
                         </select>
                     </div>
-                    <div className={'col-xs-4-9'}>
+                    <div>
                         <select id={`${props.id}_year`} name={`${props.name}_year`} ref={props.reference}>
                             <DropDownValues
                                 values={yearVal}/>
                         </select>
+                    </div>
+                </div>
+            </div>
+        </FormGroup>
+    )
+}
+const IdInput = (props) => {
+    return (
+        <FormGroup isError={props.errorsObj[`${props.name}_value`]}>
+            {props.icon && <div className={styles.icon}>{props.icon}</div>}
+            <div className={styles.input}>
+                {props.label && <label className={styles.label}>{props.label}</label>}
+                <div className={styles.multi}>
+                    <div>
+                        <select id={`${props.id}_type`} name={`${props.name}_type`} ref={props.reference}>
+                            <DropDownValues
+                                values={['KTP', 'SIM', 'Passport']}/>
+                        </select>
+                    </div>
+                    <div>
+                        <input id={`${props.id}_value`} name={`${props.name}_value`} type={'text'} ref={props.reference}
+                               placeholder={props.placeholder}/>
                     </div>
                 </div>
             </div>
@@ -143,12 +177,28 @@ Form.propTypes = {
     isDisabled: PropTypes.bool,
     useArrowIcon: PropTypes.bool
 }
+IdInput.propTypes = {
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.object,
+    label: PropTypes.string,
+    placeholder: PropTypes.string,
+    reference: PropTypes.func.isRequired,
+    errorsObj: PropTypes.object.isRequired
+}
 TextBox.propTypes = {
     name: PropTypes.string.isRequired,
     icon: PropTypes.object,
     label: PropTypes.string,
     placeholder: PropTypes.string,
     type: PropTypes.string.isRequired,
+    reference: PropTypes.func.isRequired,
+    errorsObj: PropTypes.object.isRequired
+}
+TextArea.propTypes = {
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.object,
+    label: PropTypes.string,
+    placeholder: PropTypes.string,
     reference: PropTypes.func.isRequired,
     errorsObj: PropTypes.object.isRequired
 }
@@ -177,4 +227,4 @@ ToggleItem.propTypes = {
     reference: PropTypes.func.isRequired,
     onChange: PropTypes.func
 }
-export {Form, TextBox, DropDown, DateDropDown, ImageToggle, ToggleItem}
+export {Form, TextBox, TextArea, DropDown, DateDropDown, IdInput, ImageToggle, ToggleItem}

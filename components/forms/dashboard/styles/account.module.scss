@@ -1,1 +1,9 @@
 @import "styles/mainUtil";
+
+.innerBox {
+  margin-bottom: 1rem;
+
+  @include breakpoint(992px) {
+    margin-bottom: 0;
+  }
+}

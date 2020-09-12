@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import styles from './styles/style.module.scss'
 import Icon from 'react-icons-kit'
 import Link from "next/link";
-import {user} from 'react-icons-kit/feather/user'
-import {briefcase} from 'react-icons-kit/feather/briefcase'
-import {paperclip} from 'react-icons-kit/feather/paperclip'
+import {attachment} from 'react-icons-kit/icomoon/attachment'
+import {briefcase} from 'react-icons-kit/entypo/briefcase'
+import {starFull} from 'react-icons-kit/icomoon/starFull'
 import {settings} from 'react-icons-kit/feather/settings'
-import {bookOpen} from 'react-icons-kit/feather/bookOpen'
+import {user} from 'react-icons-kit/ikons/user'
 import {save} from 'react-icons-kit/feather/save'
-import {star} from 'react-icons-kit/feather/star'
+import {cap} from 'react-icons-kit/entypo/cap'
 import {activity} from 'react-icons-kit/feather/activity'
 import {useState} from "react";
 
@@ -20,7 +20,8 @@ const GlobalDashboardPage = (props) => {
     }
 
     return (
-        <GlobalPage docTitle={props.title} isPlainHeader={true} isDashboard={true} isNoFooter={true} isOpen={isOpened} onClick={onClick}>
+        <GlobalPage docTitle={props.title} isPlainHeader={true} isDashboard={true} isNoFooter={true} isOpen={isOpened}
+                    onClick={onClick}>
             <div className={isOpened ? `${styles.wrapper} ${styles.open}` : styles.wrapper}>
                 <Sidebar/>
                 <div className={styles.center}>
@@ -41,11 +42,11 @@ const Sidebar = (props) => {
                 <LinkItem label={'Pengaturan'} isTitle={true}/>
                 <LinkItem label={'Akun'} link={'/akun/edit'} icon={user}/>
                 <LinkItem label={'Pengalaman'} link={'/akun/pengalaman'} icon={briefcase}/>
-                <LinkItem label={'Pendidikan'} link={'/akun/pendidikan'} icon={bookOpen}/>
-                <LinkItem label={'CV'} link={'/akun/cv'} icon={paperclip}/>
+                <LinkItem label={'Pendidikan'} link={'/akun/pendidikan'} icon={cap}/>
+                <LinkItem label={'CV'} link={'/akun/cv'} icon={attachment}/>
                 <LinkItem label={'Lainya'} link={'/akun/lain'} icon={settings}/>
                 <LinkItem label={'Lowongan'} isTitle={true}/>
-                <LinkItem label={'Rekomendasi'} link={'/akun/rekomendasi'} icon={star}/>
+                <LinkItem label={'Rekomendasi'} link={'/akun/rekomendasi'} icon={starFull}/>
                 <LinkItem label={'Disimpan'} link={'/akun/disimpan'} icon={save}/>
             </SidebarLinks>
         </aside>

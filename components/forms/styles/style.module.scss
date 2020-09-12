@@ -22,13 +22,32 @@
       .input {
         width: calc(100% - 32px);
 
+        .multi {
+          display: flex;
+
+          > div {
+
+            select {
+              margin-right: 2rem;
+            }
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
         > label.label {
           margin-bottom: 0;
           font-weight: 600;
           color: $default_black;
         }
 
-        > input,
+        textarea,
+        input[type=text],
+        input[type=number],
+        input[type=email],
+        input[type=password],
         select {
           height: unset;
           font-size: 1rem;
@@ -46,7 +65,8 @@
         }
       }
 
-      &:first-child {
+      &:first-child,
+      &:only-child {
         @include borderTopLeftRadius(.5rem);
         @include borderTopRightRadius(.5rem);
       }
