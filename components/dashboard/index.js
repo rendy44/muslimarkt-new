@@ -24,7 +24,9 @@ const GlobalDashboardPage = (props) => {
             <div className={isOpened ? `${styles.wrapper} ${styles.open}` : styles.wrapper}>
                 <Sidebar/>
                 <div className={styles.center}>
-                    <button onClick={onClick}>Ok Ya</button>
+                    <div className={styles.top}>
+                        {!props.isHideTitle && <h1>{props.title}</h1>}
+                    </div>
                     {props.children}
                 </div>
             </div>
@@ -66,7 +68,8 @@ const LinkItem = (props) => {
 }
 
 GlobalDashboardPage.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    isHideTitle: PropTypes.bool
 }
 LinkItem.propTypes = {
     isTitle: PropTypes.bool,
