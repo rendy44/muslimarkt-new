@@ -18,6 +18,7 @@ const GlobalDashboardPage = (props) => {
     const onClick = (e) => {
         setIsOpened(!isOpened)
     }
+    console.log(isOpened)
     return (
         <GlobalPage docTitle={props.title} isPlainHeader={true} isDashboard={true} isNoFooter={true}>
             <div className={isOpened ? `${styles.wrapper} ${styles.open}` : styles.wrapper}>
@@ -33,20 +34,18 @@ const GlobalDashboardPage = (props) => {
 const Sidebar = (props) => {
     return (
         <aside className={styles.left}>
-            <div className={styles.inner}>
-                <SidebarLinks>
-                    <LinkItem label={'Dasbor'} link={'/akun'} icon={activity}/>
-                    <LinkItem label={'Pengaturan'} isTitle={true}/>
-                    <LinkItem label={'Akun'} link={'/akun/edit'} icon={user}/>
-                    <LinkItem label={'Pengalaman'} link={'/akun/pengalaman'} icon={briefcase}/>
-                    <LinkItem label={'Pendidikan'} link={'/akun/pendidikan'} icon={bookOpen}/>
-                    <LinkItem label={'CV'} link={'/akun/cv'} icon={paperclip}/>
-                    <LinkItem label={'Lainya'} link={'/akun/lain'} icon={settings}/>
-                    <LinkItem label={'Lowongan'} isTitle={true}/>
-                    <LinkItem label={'Rekomendasi'} link={'/akun/rekomendasi'} icon={star}/>
-                    <LinkItem label={'Disimpan'} link={'/akun/disimpan'} icon={save}/>
-                </SidebarLinks>
-            </div>
+            <SidebarLinks>
+                <LinkItem label={'Dasbor'} link={'/akun'} icon={activity}/>
+                <LinkItem label={'Pengaturan'} isTitle={true}/>
+                <LinkItem label={'Akun'} link={'/akun/edit'} icon={user}/>
+                <LinkItem label={'Pengalaman'} link={'/akun/pengalaman'} icon={briefcase}/>
+                <LinkItem label={'Pendidikan'} link={'/akun/pendidikan'} icon={bookOpen}/>
+                <LinkItem label={'CV'} link={'/akun/cv'} icon={paperclip}/>
+                <LinkItem label={'Lainya'} link={'/akun/lain'} icon={settings}/>
+                <LinkItem label={'Lowongan'} isTitle={true}/>
+                <LinkItem label={'Rekomendasi'} link={'/akun/rekomendasi'} icon={star}/>
+                <LinkItem label={'Disimpan'} link={'/akun/disimpan'} icon={save}/>
+            </SidebarLinks>
         </aside>
     )
 }

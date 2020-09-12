@@ -2,6 +2,7 @@
 
 html, body {
   font-family: 'Quicksand', sans-serif;
+  background-color: $light;
 }
 
 @each $name, $color in $colors {

@@ -174,7 +174,8 @@
           color: $white;
 
           span {
-            color: lighten($main_dark, 30%);
+            //color: lighten($main_dark, 30%);
+            color: rgba($white, .5);
           }
         }
       }

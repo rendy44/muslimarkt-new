@@ -1,6 +1,7 @@
 @import "styles/mainUtil";
 
 .validation {
+  background-color: $white;
   padding-top: 1rem;
 
   @include breakpoint(768px) {
