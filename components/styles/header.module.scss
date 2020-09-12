@@ -169,6 +169,24 @@
 
     .inner {
       .brand {
+        button.dashboardMenu {
+          background-color: transparent;
+          color: $white;
+          border: none;
+          padding: 0;
+          margin-right: 1rem;
+          @include defaultTransition;
+
+          &:focus,
+          &:active {
+            outline: none;
+          }
+
+          &.open {
+            color: lighten($main_dark, 20%);
+          }
+        }
+
         a {
           font-size: 1rem;
           color: $white;
@@ -231,6 +249,10 @@
   @include breakpoint(768px) {
     .inner {
       .brand {
+        button.dashboardMenu {
+          display: none;
+        }
+
         a {
           font-size: 1.75rem;
         }

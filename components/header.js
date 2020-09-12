@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from "./styles/header.module.scss";
 import Link from "next/link";
 import {LinkButton} from "./button";
+import Icon from 'react-icons-kit'
+import {menu} from 'react-icons-kit/feather/menu'
 
 const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
@@ -12,6 +14,9 @@ const TopNav = (props) => {
             <div className={!props.isDashboard ? 'frow-container' : ''}>
                 <div className={styles.inner}>
                     <div className={props.isPlainHeader ? `${styles.brand} ${styles.plain}` : styles.brand}>
+                        {props.isDashboard && <button className={props.isOpen ? `${styles.dashboardMenu} ${styles.open}` : styles.dashboardMenu} onClick={props.onClick}>
+                            <Icon icon={menu} size={32}/>
+                        </button>}
                         <Link href={'/'}>
                             <a>Muslim<span>arkt</span></a>
                         </Link>
@@ -74,7 +79,9 @@ const TopNav = (props) => {
 
 TopNav.propTypes = {
     isPlainHeader: PropTypes.bool,
-    isDashboard: PropTypes.bool
+    isDashboard: PropTypes.bool,
+    onClick: PropTypes.func,
+    isOpen: PropTypes.bool
 }
 
 export {TopNav}

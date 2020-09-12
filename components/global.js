@@ -16,7 +16,8 @@ const GlobalPage = (props) => {
             <Head>
                 <title>{props.docTitle ? `${props.docTitle} | ${siteTitle}` : `${siteTitle} | ${siteDescription}`}</title>
             </Head>
-            <TopNav isPlainHeader={props.isPlainHeader} isDashboard={props.isDashboard}/>
+            <TopNav isPlainHeader={props.isPlainHeader} isDashboard={props.isDashboard} onClick={props.onClick}
+                    isOpen={props.isOpen}/>
             {props.children}
             {maybeFooter}
         </>
@@ -57,6 +58,8 @@ const FullLoading = () => {
     )
 }
 GlobalPage.propTypes = {
+    onClick: PropTypes.func,
+    isOpen: PropTypes.bool,
     docTitle: PropTypes.string.isRequired,
     isPlainHeader: PropTypes.bool,
     isDashboard: PropTypes.bool,

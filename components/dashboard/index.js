@@ -18,9 +18,9 @@ const GlobalDashboardPage = (props) => {
     const onClick = (e) => {
         setIsOpened(!isOpened)
     }
-    console.log(isOpened)
+
     return (
-        <GlobalPage docTitle={props.title} isPlainHeader={true} isDashboard={true} isNoFooter={true}>
+        <GlobalPage docTitle={props.title} isPlainHeader={true} isDashboard={true} isNoFooter={true} isOpen={isOpened} onClick={onClick}>
             <div className={isOpened ? `${styles.wrapper} ${styles.open}` : styles.wrapper}>
                 <Sidebar/>
                 <div className={styles.center}>

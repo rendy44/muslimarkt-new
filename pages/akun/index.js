@@ -2,7 +2,7 @@ import {GlobalDashboardPage} from "../../components/dashboard";
 
 export default function PageAccount() {
     return (
-        <GlobalDashboardPage title={'Akun'}>
+        <GlobalDashboardPage title={'Dasbor'}>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel neque pellentesque, maximus diam
                 non, congue metus. Nullam sed fringilla eros, nec faucibus risus. Orci varius natoque penatibus et
                 magnis dis parturient montes, nascetur ridiculus mus. Sed eleifend id leo nec efficitur. Mauris tortor
