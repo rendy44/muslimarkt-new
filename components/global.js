@@ -4,6 +4,8 @@ import {TopNav} from "./header";
 import Head from "next/head";
 import {Footer, SimpleFooter} from "./footer";
 import ReactLoading from 'react-loading';
+import Icon from 'react-icons-kit'
+import {block} from 'react-icons-kit/ikons/block'
 
 const siteTitle = 'Muslimarkt'
 const siteDescription = 'Portal Pekerjaan Kaum Muslimin'
@@ -57,6 +59,15 @@ const FullLoading = () => {
         </div>
     )
 }
+const NotFound = (props) => {
+    return (
+        <div className={styles.notFound}>
+            <Icon icon={block} size={16}/>
+            <p>{props.content}</p>
+        </div>
+    )
+}
+
 GlobalPage.propTypes = {
     onClick: PropTypes.func,
     isOpen: PropTypes.bool,
@@ -76,5 +87,7 @@ Section.propTypes = {
     isTitleCenter: PropTypes.bool,
     isDark: PropTypes.bool
 }
-
-export {GlobalPage, GenericPage, Section, FullLoading}
+NotFound.propTypes = {
+    content: PropTypes.string.isRequired
+}
+export {GlobalPage, GenericPage, Section, FullLoading, NotFound}

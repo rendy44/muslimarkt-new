@@ -2,6 +2,7 @@ import {GlobalDashboardPage} from "../../components/dashboard";
 import {Panel} from "../../components/dashboard/front";
 import Link from "next/link";
 import {LinkButton} from "../../components/button";
+import {NotFound} from "../../components/global";
 
 export default function PageAccount() {
     return (
@@ -35,17 +36,19 @@ export default function PageAccount() {
                     </Panel>
                 </div>
                 <div className={'col-md-1-2'}>
-                    <Panel title={'Judul Panel Pertama'}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod dictum libero vel
-                            dapibus. Cras gravida tellus eget viverra gravida. Donec at nisi elit.</p>
+                    <Panel title={'Status Lamaran'}>
+                        <NotFound content={'Belum ada lamaran dikirim.'}/>
+                    </Panel>
+                    <Panel title={'Jadwal Wawancara'}>
+                        <NotFound content={'Belum ada jadwal wawancara.'}/>
                     </Panel>
                 </div>
                 <div className={'col-md-1-2'}>
-                    <Panel title={'Judul Panel Kedua'}>
-                        <p>Quisque aliquet mollis felis vel consectetur. Duis dictum eget eros a feugiat. Ut et est sit
-                            amet sapien ultrices ultrices eget eget eros. Mauris dui sem, faucibus malesuada ante in,
-                            accumsan feugiat enim. Nunc vel rhoncus augue, vitae pretium libero. Fusce fringilla
-                            consequat massa.</p>
+                    <Panel title={'Lowongan Disimpan'}>
+                        <NotFound content={'Belum ada lowongan disimpan.'}/>
+                    </Panel>
+                    <Panel title={'Rekomendasi Lowongan'}>
+                        <NotFound content={'Belum ada rekomendasi lowongan.'}/>
                     </Panel>
                 </div>
             </div>

@@ -112,3 +112,16 @@
     }
   }
 }
+
+.notFound {
+  display: flex;
+  margin: 1rem 0;
+
+  i {
+    color: $warning;
+  }
+
+  p {
+    margin: 0 0 0 1rem;
+  }
+}
