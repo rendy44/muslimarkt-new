@@ -28,7 +28,11 @@
           color: $default_black;
         }
 
-        > input {
+        > input,
+        select {
+          height: unset;
+          font-size: 1rem;
+          margin: 0;
           border: none;
           padding: .5rem 0;
         }
