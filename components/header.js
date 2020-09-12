@@ -21,7 +21,7 @@ const TopNav = (props) => {
                             <a>Muslim<span>arkt</span></a>
                         </Link>
                     </div>
-                    {!props.isPlainHeader && <div className={styles.menu}>
+                    {!props.isPlainHeader && !props.isLoggedIn && <div className={styles.menu}>
                         <ul>
                             <li>
                                 <LinkButton href={'/perusahaan'} label={'Cari Talenta'} variant={'success'}/>
@@ -71,6 +71,7 @@ const TopNav = (props) => {
                             </div>
                         </div>
                     </div>}
+                    {props.isLoggedIn && <></>}
                 </div>
             </div>
         </div>
@@ -81,7 +82,9 @@ TopNav.propTypes = {
     isPlainHeader: PropTypes.bool,
     isDashboard: PropTypes.bool,
     onClick: PropTypes.func,
-    isOpen: PropTypes.bool
+    isOpen: PropTypes.bool,
+    isLoggedIn: PropTypes.bool,
+    isRightOpen: PropTypes.bool
 }
 
 export {TopNav}
