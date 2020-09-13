@@ -4,8 +4,7 @@ import {TopNav} from "./header";
 import Head from "next/head";
 import {Footer, SimpleFooter} from "./footer";
 import ReactLoading from 'react-loading';
-import Icon from 'react-icons-kit'
-import {block} from 'react-icons-kit/ikons/block'
+import NotificationLineIcon from "remixicon-react/NotificationLineIcon";
 
 const siteTitle = 'Muslimarkt'
 const siteDescription = 'Portal Pekerjaan Kaum Muslimin'
@@ -62,7 +61,7 @@ const FullLoading = () => {
 const NotFound = (props) => {
     return (
         <div className={styles.notFound}>
-            <Icon icon={block} size={16}/>
+            <NotificationLineIcon size={16}/>
             <p>{props.content}</p>
         </div>
     )

@@ -24,15 +24,30 @@
 
         .multi {
           display: flex;
+          align-items: center;
 
-          > div {
+          .inner {
+            display: flex;
 
-            select {
-              margin-right: 2rem;
+            > div {
+
+              select {
+                margin-right: 2rem;
+              }
+
+              &:last-child {
+                margin-right: 0;
+              }
             }
+          }
 
-            &:last-child {
-              margin-right: 0;
+          .cb {
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+
+            label {
+              margin: 0 0 0 .5rem;
             }
           }
         }

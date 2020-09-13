@@ -1,9 +1,6 @@
 import {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import styles from './style.module.scss'
-import Icon from 'react-icons-kit'
-import {chevronRight} from 'react-icons-kit/feather/chevronRight'
-import {chevronLeft} from 'react-icons-kit/feather/chevronLeft'
 
 const Slider = (props) => {
     const [page, setPage] = useState(1);
@@ -33,14 +30,6 @@ const Slider = (props) => {
         <div className={styles.wrapper}>
             <div className={styles.inner}>
                 {props.children}
-            </div>
-            <div className={styles.navigation}>
-                <button className={page <= 1 ? `${styles.prev} ${styles.hide}` : styles.prev}
-                        onClick={prev}><Icon icon={chevronLeft} size={48}/>
-                </button>
-                <button className={page >= maxPage ? `${styles.next} ${styles.hide}` : styles.next}
-                        onClick={next}><Icon icon={chevronRight} size={48}/>
-                </button>
             </div>
             <div className={styles.dots}>
                 <ul>{dots}</ul>

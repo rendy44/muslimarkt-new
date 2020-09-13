@@ -1,18 +1,17 @@
 import {GlobalPage} from "../global";
 import PropTypes from 'prop-types'
 import styles from './styles/style.module.scss'
-import Icon from 'react-icons-kit'
 import Link from "next/link";
-import {attachment} from 'react-icons-kit/icomoon/attachment'
-import {briefcase} from 'react-icons-kit/entypo/briefcase'
-import {starFull} from 'react-icons-kit/icomoon/starFull'
-import {settings} from 'react-icons-kit/feather/settings'
-import {user} from 'react-icons-kit/ikons/user'
-import {save} from 'react-icons-kit/feather/save'
-import {cap} from 'react-icons-kit/entypo/cap'
-import {plus} from 'react-icons-kit/feather/plus'
-import {activity} from 'react-icons-kit/feather/activity'
 import {useState} from "react";
+import AddLineIcon from "remixicon-react/AddLineIcon";
+import DashboardLineIcon from "remixicon-react/DashboardLineIcon";
+import UserLineIcon from "remixicon-react/UserLineIcon";
+import SuitcaseLineIcon from "remixicon-react/SuitcaseLineIcon";
+import AttachmentLineIcon from "remixicon-react/AttachmentLineIcon";
+import SettingsLineIcon from "remixicon-react/SettingsLineIcon";
+import StarLineIcon from "remixicon-react/StarLineIcon";
+import SaveLineIcon from "remixicon-react/SaveLineIcon";
+import AwardLineIcon from "remixicon-react/AwardLineIcon";
 
 const GlobalDashboardPage = (props) => {
     const [isOpened, setIsOpened] = useState(false);
@@ -29,7 +28,7 @@ const GlobalDashboardPage = (props) => {
                     <div className={styles.top}>
                         {!props.isHideTitle && <h1>{props.title}</h1>}
                         {props.addNewLink && <Link
-                            href={props.addNewLink}><a><Icon icon={plus} size={32}/><span>Tambah</span></a></Link>}
+                            href={props.addNewLink}><a><AddLineIcon sizs={32}/><span>Tambah</span></a></Link>}
                     </div>
                     {props.children}
                 </div>
@@ -41,16 +40,16 @@ const Sidebar = (props) => {
     return (
         <aside className={styles.left}>
             <SidebarLinks>
-                <LinkItem label={'Dasbor'} link={'/akun'} icon={activity}/>
+                <LinkItem label={'Dasbor'} link={'/akun'} icon={<DashboardLineIcon size={24}/>}/>
                 <LinkItem label={'Pengaturan'} isTitle={true}/>
-                <LinkItem label={'Akun'} link={'/akun/edit'} icon={user}/>
-                <LinkItem label={'Pengalaman'} link={'/akun/pengalaman'} icon={briefcase}/>
-                <LinkItem label={'Pendidikan'} link={'/akun/pendidikan'} icon={cap}/>
-                <LinkItem label={'CV'} link={'/akun/cv'} icon={attachment}/>
-                <LinkItem label={'Lainya'} link={'/akun/lain'} icon={settings}/>
+                <LinkItem label={'Akun'} link={'/akun/edit'} icon={<UserLineIcon size={24}/>}/>
+                <LinkItem label={'Pengalaman'} link={'/akun/pengalaman'} icon={<SuitcaseLineIcon size={24}/>}/>
+                <LinkItem label={'Pendidikan'} link={'/akun/pendidikan'} icon={<AwardLineIcon size={24}/>}/>
+                <LinkItem label={'CV'} link={'/akun/cv'} icon={<AttachmentLineIcon size={24}/>}/>
+                <LinkItem label={'Lainya'} link={'/akun/lain'} icon={<SettingsLineIcon size={24}/>}/>
                 <LinkItem label={'Lowongan'} isTitle={true}/>
-                <LinkItem label={'Rekomendasi'} link={'/akun/rekomendasi'} icon={starFull}/>
-                <LinkItem label={'Disimpan'} link={'/akun/disimpan'} icon={save}/>
+                <LinkItem label={'Rekomendasi'} link={'/akun/rekomendasi'} icon={<StarLineIcon size={24}/>}/>
+                <LinkItem label={'Disimpan'} link={'/akun/disimpan'} icon={<SaveLineIcon size={24}/>}/>
             </SidebarLinks>
         </aside>
     )
@@ -61,7 +60,7 @@ const SidebarLinks = (props) => {
     )
 }
 const LinkItem = (props) => {
-    const labelIcon = props.icon ? <a><Icon icon={props.icon} size={18}/><span>{props.label}</span></a> :
+    const labelIcon = props.icon ? <a>{props.icon}<span>{props.label}</span></a> :
         <a><span>{props.label}</span></a>
     return (
         <li className={props.isTitle ? styles.title : ''}>

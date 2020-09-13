@@ -31,32 +31,6 @@
     }
   }
 
-  .navigation {
-    top: 50%;
-    width: 100%;
-    position: absolute;
-    display: none;
-    z-index: 3;
-    justify-content: space-between;
-
-    > button {
-      background-color: transparent;
-      border: none;
-
-      &.next {
-        color: $main;
-      }
-
-      &.prev {
-        color: $main;
-      }
-
-      &.hide {
-        visibility: hidden;
-      }
-    }
-  }
-
   .dots {
     margin-top: 2rem;
     text-align: center;

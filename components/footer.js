@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types'
-import Icon from 'react-icons-kit'
-import {socialFacebook} from 'react-icons-kit/metrize/socialFacebook'
-import {telephone} from 'react-icons-kit/metrize/telephone'
-import {mail} from 'react-icons-kit/metrize/mail'
-import {socialTwitter} from 'react-icons-kit/metrize/socialTwitter'
-
 import styles from './styles/footer.module.scss'
+import FacebookLineIcon from "remixicon-react/FacebookLineIcon";
+import TwitterLineIcon from "remixicon-react/TwitterLineIcon";
+import PhoneLineIcon from "remixicon-react/PhoneLineIcon";
+import MailLineIcon from "remixicon-react/MailLineIcon";
 
 const BaseFooter = (props) => {
     return (
@@ -26,22 +24,22 @@ const Footer = (props) => {
                 <ul>
                     <li>
                         <a href={'https://facebook.com'} target={'_blank'} rel={'nofollow'}>
-                            <Icon icon={socialFacebook} size={24}/>
+                            <FacebookLineIcon size={24}/>
                         </a>
                     </li>
                     <li>
                         <a href={'https://twitter.com'} target={'_blank'} rel={'nofollow'}>
-                            <Icon icon={socialTwitter} size={24}/>
+                            <TwitterLineIcon size={24}/>
                         </a>
                     </li>
                     <li>
                         <a href={'https://whatsapp.com'} target={'_blank'} rel={'nofollow'}>
-                            <Icon icon={telephone} size={24}/>
+                            <PhoneLineIcon size={24}/>
                         </a>
                     </li>
                     <li>
                         <a href={'https://gmail.com'} target={'_blank'} rel={'nofollow'}>
-                            <Icon icon={mail} size={24}/>
+                            <MailLineIcon size={24}/>
                         </a>
                     </li>
                 </ul>

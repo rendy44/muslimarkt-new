@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
 import styles from './styles/style.module.scss'
 import {Button, LinkButton} from "../button";
-import Icon from 'react-icons-kit'
-import {check} from 'react-icons-kit/metrize/check'
-import {arrowRight} from 'react-icons-kit/feather/arrowRight'
+import ArrowRightLineIcon from "remixicon-react/ArrowRightLineIcon";
+import CheckboxCircleLineIcon from "remixicon-react/CheckboxCircleLineIcon";
 
 const DropDownValues = (props) => {
     let valueHtml = []
@@ -25,7 +24,7 @@ const Form = (props) => {
                 <Button isSubmit={true}
                         label={props.isLoading ? 'Loading...' : (props.submitLabel ? props.submitLabel : 'Submit')}
                         isDisabled={props.isDisabled || props.isLoading}
-                        rightIcon={props.useArrowIcon ? <Icon icon={arrowRight}/> : <></>}/>
+                        rightIcon={props.useArrowIcon ? <ArrowRightLineIcon size={20}/> : <></>}/>
                 {props.otherLink &&
                 <LinkButton href={props.otherLink} label={props.otherLabel ? props.otherLabel : 'Batal'}
                             variant={props.otherVariant ? props.otherVariant : 'outline-invert'}/>}
@@ -94,24 +93,33 @@ const DateDropDown = (props) => {
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
                 <div className={styles.multi}>
-                    <div>
-                        <select id={`${props.id}_day`} name={`${props.name}_day`} ref={props.reference}>
-                            <DropDownValues
-                                values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}/>
-                        </select>
+                    <div className={styles.inner}>
+                        {!props.isNoDay && <div>
+                            <select id={`${props.id}_day`} name={`${props.name}_day`} ref={props.reference}>
+                                <DropDownValues
+                                    values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}/>
+                            </select>
+                        </div>}
+                        <div>
+                            <select id={`${props.id}_month`} name={`${props.name}_month`} ref={props.reference}
+                                    disabled={props.isDisabled}>
+                                <DropDownValues
+                                    values={['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']}/>
+                            </select>
+                        </div>
+                        <div>
+                            <select id={`${props.id}_year`} name={`${props.name}_year`} ref={props.reference}
+                                    disabled={props.isDisabled}>
+                                <DropDownValues
+                                    values={yearVal}/>
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <select id={`${props.id}_month`} name={`${props.name}_month`} ref={props.reference}>
-                            <DropDownValues
-                                values={['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']}/>
-                        </select>
-                    </div>
-                    <div>
-                        <select id={`${props.id}_year`} name={`${props.name}_year`} ref={props.reference}>
-                            <DropDownValues
-                                values={yearVal}/>
-                        </select>
-                    </div>
+                    {props.isWithCheckbox && <div className={styles.cb}>
+                        <input id={`${props.name}_cb`} name={`${props.name}_cb`} value={'yes'} type={'checkbox'}
+                               onChange={props.onChangeCheckbox} checked={props.isDisabled}/> <label
+                        htmlFor={`${props.name}_cb`}>{props.labelCheckbox}</label>
+                    </div>}
                 </div>
             </div>
         </FormGroup>
@@ -157,7 +165,7 @@ const ToggleItem = (props) => {
                     <p>{props.label}</p>
                 </label>
                 <div className={styles.icon}>
-                    <Icon icon={check} size={32}/>
+                    <CheckboxCircleLineIcon size={48}/>
                 </div>
             </div>
         </div>
@@ -218,6 +226,11 @@ DateDropDown.propTypes = {
     icon: PropTypes.object,
     label: PropTypes.string,
     reference: PropTypes.func.isRequired,
+    isNoDay: PropTypes.bool,
+    isWithCheckbox: PropTypes.bool,
+    labelCheckbox: PropTypes.string,
+    onChangeCheckbox: PropTypes.func,
+    isDisabled: PropTypes.bool
 }
 ToggleItem.propTypes = {
     name: PropTypes.string.isRequired,

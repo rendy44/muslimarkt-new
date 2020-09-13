@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import {Section} from "../global";
 import {LinkButton} from "../button";
 import styles from './styles/front.module.scss'
-import Icon from 'react-icons-kit'
-import {arrowRight} from 'react-icons-kit/feather/arrowRight'
 import {Slider, SliderItem} from "../slider";
 
 const Hero = () => {
@@ -13,8 +11,7 @@ const Hero = () => {
             <h1 className={styles.title}>Portal Pekerjaan<br/>Kaum Muslimin</h1>
             <p className={styles.lead}>Insya Allah berkah dan amanah</p>
             <div className={styles.action}>
-                <LinkButton href={'/semua-lowongan'} label={'Telusuri Lowongan'} variant={'warning'}
-                            rightIcon={<Icon icon={arrowRight} size={16}/>}/>
+                <LinkButton href={'/semua-lowongan'} label={'Telusuri Lowongan'} variant={'warning'} rightIcon={true}/>
             </div>
         </Section>
     )
@@ -28,8 +25,7 @@ const About = () => {
                     <h2>Apa itu Muslimarkt?</h2>
                     <p>Muslimarkt ialah portal pekerjaan kaum muslimin, memiliki misi untuk penghubungkan para pengusaha
                         muslim dengan para talenta muslim dalam ikatan profesionalisme.</p>
-                    <LinkButton href={'/tentang'} label={'Selengkapnya'} variant={'outline-invert warning'}
-                                rightIcon={<Icon icon={arrowRight} size={16}/>}/>
+                    <LinkButton href={'/tentang'} label={'Selengkapnya'} variant={'outline-invert warning'} rightIcon={true}/>
                 </div>
             </div>
         </Section>
@@ -135,8 +131,7 @@ const Register = () => {
                         <p>Para pengusaha dan talenta muslim di seluruh Indonesia sudah menunggu.</p>
                     </div>
                     <div className={styles.action}>
-                        <LinkButton href={'/daftar'} label={'Ayo Bergabung'} variant={'warning'}
-                                    rightIcon={<Icon icon={arrowRight} size={16}/>}/>
+                        <LinkButton href={'/daftar'} label={'Ayo Bergabung'} variant={'warning'} rightIcon={true}/>
                     </div>
                 </div>
             </div>

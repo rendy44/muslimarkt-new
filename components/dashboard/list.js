@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
 import styles from './styles/list.module.scss'
 import Link from "next/link";
-import Icon from 'react-icons-kit'
-import {trash2} from 'react-icons-kit/feather/trash2'
-import {x} from 'react-icons-kit/feather/x'
+import DeleteBinLineIcon from "remixicon-react/DeleteBinLineIcon";
 
 const ListItems = (props) => {
     return (
@@ -18,7 +16,7 @@ const Item = (props) => {
                     <Link href={props.linkTo}><a>{props.title}</a></Link>
                 </div>
                 <div className={styles.action}>
-                    <button><Icon icon={trash2} size={14}/></button>
+                    <button><DeleteBinLineIcon size={16}/></button>
                 </div>
                 <div className={styles.body}>
                     {props.children}
