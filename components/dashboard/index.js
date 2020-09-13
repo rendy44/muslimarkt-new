@@ -10,6 +10,7 @@ import {settings} from 'react-icons-kit/feather/settings'
 import {user} from 'react-icons-kit/ikons/user'
 import {save} from 'react-icons-kit/feather/save'
 import {cap} from 'react-icons-kit/entypo/cap'
+import {plus} from 'react-icons-kit/feather/plus'
 import {activity} from 'react-icons-kit/feather/activity'
 import {useState} from "react";
 
@@ -27,6 +28,8 @@ const GlobalDashboardPage = (props) => {
                 <div className={styles.center}>
                     <div className={styles.top}>
                         {!props.isHideTitle && <h1>{props.title}</h1>}
+                        {props.addNewLink && <Link
+                            href={props.addNewLink}><a><Icon icon={plus} size={32}/><span>Tambah</span></a></Link>}
                     </div>
                     {props.children}
                 </div>
@@ -70,7 +73,9 @@ const LinkItem = (props) => {
 
 GlobalDashboardPage.propTypes = {
     title: PropTypes.string.isRequired,
-    isHideTitle: PropTypes.bool
+    isHideTitle: PropTypes.bool,
+    addNewLink: PropTypes.string,
+    addNewLabel: PropTypes.string
 }
 LinkItem.propTypes = {
     isTitle: PropTypes.bool,

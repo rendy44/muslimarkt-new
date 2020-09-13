@@ -62,8 +62,45 @@
     padding: 1rem;
 
     .top {
+      //display: flex;
+      //align-items: center;
+      //justify-content: space-between;
+      margin-bottom: 2rem;
+
       h1 {
-        margin-bottom: 2rem;
+        margin: 0 1rem 0 0;
+        line-height: 1;
+        font-weight: 600;
+        font-size: 1.5rem;
+      }
+
+      a {
+        z-index: 999999;
+        position: fixed;
+        bottom: 2rem;
+        right: 1rem;
+        border: 1px solid rgba($black, .1);
+        background-color: $success;
+        height: 48px;
+        width: 48px;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include borderRadius(50%);
+        @include boxShadow;
+        @include defaultTransition;
+
+        span {
+          display: none;
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+          @include zoom(1.1);
+          @include customBoxShadow(1px 1px 1rem .8rem rgba($black, .1));
+        }
       }
     }
   }
@@ -90,10 +127,59 @@
     }
     .center {
       width: calc(100% - 190px);
+
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        h1 {
+          font-size: 1.75rem;
+        }
+
+        a {
+          position: relative;
+          bottom: unset;
+          right: unset;
+          z-index: unset;
+          width: unset;
+          height: unset;
+          padding: .5rem 1rem;
+          font-size: .9rem;
+          transition: none;
+          @include borderRadius(1rem);
+
+          i {
+            display: none !important;
+          }
+
+          span {
+            display: unset;
+          }
+
+          &:hover,
+          &:active,
+          &:focus {
+            text-decoration: none;
+            @include boxShadow;
+            @include zoom(1);
+          }
+        }
+      }
     }
     &.open {
       .center {
         right: unset;
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    .center {
+      .top {
+        h1 {
+          font-size: 2rem;
+        }
       }
     }
   }
