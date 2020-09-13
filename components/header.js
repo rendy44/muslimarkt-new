@@ -7,20 +7,37 @@ import Menu2LineIcon from "remixicon-react/Menu2LineIcon";
 
 const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
             <div className={!props.isDashboard ? 'frow-container' : ''}>
                 <div className={styles.inner}>
                     <div className={props.isPlainHeader ? `${styles.brand} ${styles.plain}` : styles.brand}>
-                        {props.isDashboard && <button className={props.isOpen ? `${styles.dashboardMenu} ${styles.open}` : styles.dashboardMenu} onClick={props.onClick}>
+                        {props.isDashboard && <button
+                            className={props.isOpen ? `${styles.dashboardMenu} ${styles.open}` : styles.dashboardMenu}
+                            onClick={props.onClick}>
                             <Menu2LineIcon size={32}/>
                         </button>}
                         <Link href={'/'}>
                             <a>Muslim<span>arkt</span></a>
                         </Link>
                     </div>
-                    {!props.isPlainHeader && !props.isLoggedIn && <div className={styles.menu}>
+                    {!props.isPlainHeader && isLoggedIn && <div className={styles.menuLoggedIn}>
+                        <ul>
+                            <li>
+                                <div className={styles.profile}>
+                                    <Link href={'/profil'}>
+                                        <a>
+                                            <img src={'/user.png'} alt={'User profile picture'}/>
+                                            <span>Fulan bin Abdullah</span>
+                                        </a>
+                                    </Link>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>}
+                    {!props.isPlainHeader && !isLoggedIn && <div className={styles.menu}>
                         <ul>
                             <li>
                                 <LinkButton href={'/perusahaan'} label={'Cari Talenta'} variant={'success'}/>
@@ -70,7 +87,6 @@ const TopNav = (props) => {
                             </div>
                         </div>
                     </div>}
-                    {props.isLoggedIn && <></>}
                 </div>
             </div>
         </div>
@@ -82,7 +98,6 @@ TopNav.propTypes = {
     isDashboard: PropTypes.bool,
     onClick: PropTypes.func,
     isOpen: PropTypes.bool,
-    isLoggedIn: PropTypes.bool,
     isRightOpen: PropTypes.bool
 }
 
