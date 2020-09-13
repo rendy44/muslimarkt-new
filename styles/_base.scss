@@ -12,6 +12,16 @@ html, body {
   }
 }
 
+button {
+  @include defaultTransition;
+
+  &:active,
+  &:focus {
+    @include zoom(.95);
+    outline: none;
+  }
+}
+
 .outline {
   border-color: rgba($white, .5) !important;
 }

@@ -42,7 +42,7 @@ const FormGroup = (props) => {
 }
 const TextBox = (props) => {
     return (
-        <FormGroup isError={props.errorsObj[props.name]}>
+        <FormGroup isError={!!props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
@@ -54,7 +54,7 @@ const TextBox = (props) => {
 }
 const TextArea = (props) => {
     return (
-        <FormGroup isError={props.errorsObj[props.name]}>
+        <FormGroup isError={!!props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
@@ -73,7 +73,7 @@ const DropDown = (props) => {
         )
     })
     return (
-        <FormGroup isError={props.errorsObj[props.name]}>
+        <FormGroup isError={!!props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
@@ -119,7 +119,7 @@ const DateDropDown = (props) => {
 }
 const IdInput = (props) => {
     return (
-        <FormGroup isError={props.errorsObj[`${props.name}_value`]}>
+        <FormGroup isError={!!props.errorsObj[`${props.name}_value`]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
