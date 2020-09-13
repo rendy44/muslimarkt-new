@@ -1,0 +1,93 @@
+@import "styles/mainUtil";
+
+.items {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    .inner {
+      background-color: $white;
+      border: 1px solid rgba($black, .1);
+      padding: 1rem;
+      @include borderRadius(.5rem);
+
+      .title {
+        margin-bottom: 1rem;
+
+        a {
+          font-weight: 700;
+          font-size: 1.1rem;
+        }
+      }
+
+      .action {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        @include defaultTransition;
+
+        button {
+          cursor: pointer;
+          width: 32px;
+          height: 32px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $danger;
+          color: $white;
+          border: 1px solid rgba($black, .1);
+          @include borderRadius(50%);
+          @include boxShadow;
+
+          i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+          }
+        }
+      }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      .inner {
+        .action {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .item {
+      padding: 0 .5rem;
+      width: 50%;
+
+      .inner {
+        .action {
+          right: 1.5rem;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(1200px) {
+    .item {
+      width: 33.33333333%;
+    }
+  }
+}

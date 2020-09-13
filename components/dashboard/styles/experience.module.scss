@@ -1,0 +1,52 @@
+@import "styles/mainUtil";
+
+.experience {
+  p {
+    margin: 0;
+
+    &.company {
+      margin-bottom: .5rem;
+      font-weight: 500;
+
+      span {
+        margin-left: .25rem;
+
+        &:before {
+          content: '|';
+          margin-right: .25rem;
+        }
+      }
+    }
+
+    &.period {
+      margin-bottom: 1rem;
+      font-size: .9rem;
+    }
+  }
+
+  .details {
+
+  }
+
+  .info {
+    display: flex;
+    font-size: 1rem;
+
+    span {
+      line-height: 1.4;
+      font-size: .95rem;
+
+      &.label {
+        width: 100px;
+        color: lighten($black, 60%);
+        position: relative;
+
+        &:after {
+          content: ':';
+          position: absolute;
+          right: .25rem;
+        }
+      }
+    }
+  }
+}
