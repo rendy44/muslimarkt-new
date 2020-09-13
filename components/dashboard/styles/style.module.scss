@@ -62,9 +62,6 @@
     padding: 1rem;
 
     .top {
-      //display: flex;
-      //align-items: center;
-      //justify-content: space-between;
       margin-bottom: 2rem;
 
       h1 {
@@ -147,10 +144,10 @@
           padding: .5rem 1rem;
           font-size: .9rem;
           transition: none;
-          @include borderRadius(1rem);
+          @include borderRadius(2rem);
 
-          i {
-            display: none !important;
+          svg {
+            margin-right: .5rem;
           }
 
           span {

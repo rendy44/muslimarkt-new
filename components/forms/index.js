@@ -44,7 +44,7 @@ const TextBox = (props) => {
         <FormGroup isError={!!props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
-                {props.label && <label className={styles.label}>{props.label}</label>}
+                {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
                 <input id={props.name} name={props.name} type={props.type} ref={props.reference}
                        placeholder={props.placeholder}/>
             </div>
@@ -56,7 +56,7 @@ const TextArea = (props) => {
         <FormGroup isError={!!props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
-                {props.label && <label className={styles.label}>{props.label}</label>}
+                {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
                 <textarea id={props.name} name={props.name} ref={props.reference}
                           placeholder={props.placeholder}/>
             </div>
@@ -75,8 +75,8 @@ const DropDown = (props) => {
         <FormGroup isError={!!props.errorsObj[props.name]}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
-                {props.label && <label className={styles.label}>{props.label}</label>}
-                <select>{valueHtml}</select>
+                {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
+                <select id={props.name} name={props.name}>{valueHtml}</select>
             </div>
         </FormGroup>
     )
@@ -91,24 +91,25 @@ const DateDropDown = (props) => {
         <FormGroup isError={false}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
-                {props.label && <label className={styles.label}>{props.label}</label>}
+                {props.label && <label htmlFor={props.isNoDay ? `${props.name}_month` : `${props.name}_day`}
+                                       className={styles.label}>{props.label}</label>}
                 <div className={styles.multi}>
                     <div className={styles.inner}>
                         {!props.isNoDay && <div>
-                            <select id={`${props.id}_day`} name={`${props.name}_day`} ref={props.reference}>
+                            <select id={`${props.name}_day`} name={`${props.name}_day`} ref={props.reference}>
                                 <DropDownValues
                                     values={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}/>
                             </select>
                         </div>}
                         <div>
-                            <select id={`${props.id}_month`} name={`${props.name}_month`} ref={props.reference}
+                            <select id={`${props.name}_month`} name={`${props.name}_month`} ref={props.reference}
                                     disabled={props.isDisabled}>
                                 <DropDownValues
                                     values={['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']}/>
                             </select>
                         </div>
                         <div>
-                            <select id={`${props.id}_year`} name={`${props.name}_year`} ref={props.reference}
+                            <select id={`${props.name}_year`} name={`${props.name}_year`} ref={props.reference}
                                     disabled={props.isDisabled}>
                                 <DropDownValues
                                     values={yearVal}/>
@@ -133,13 +134,13 @@ const IdInput = (props) => {
                 {props.label && <label className={styles.label}>{props.label}</label>}
                 <div className={styles.multi}>
                     <div>
-                        <select id={`${props.id}_type`} name={`${props.name}_type`} ref={props.reference}>
+                        <select id={`${props.name}_type`} name={`${props.name}_type`} ref={props.reference}>
                             <DropDownValues
                                 values={['KTP', 'SIM', 'Passport']}/>
                         </select>
                     </div>
                     <div>
-                        <input id={`${props.id}_value`} name={`${props.name}_value`} type={'text'} ref={props.reference}
+                        <input id={`${props.name}_value`} name={`${props.name}_value`} type={'text'} ref={props.reference}
                                placeholder={props.placeholder}/>
                     </div>
                 </div>
@@ -240,4 +241,5 @@ ToggleItem.propTypes = {
     reference: PropTypes.func.isRequired,
     onChange: PropTypes.func
 }
+
 export {Form, TextBox, TextArea, DropDown, DateDropDown, IdInput, ImageToggle, ToggleItem}
