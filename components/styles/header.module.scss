@@ -1,5 +1,52 @@
 @import "../../styles/mainUtil";
 
+.toggle {
+  position: relative;
+  z-index: 999;
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  padding: 0 0 0 1rem;
+  //margin-left: 1.5rem;
+  cursor: pointer;
+
+  span {
+    width: 8px;
+    height: 8px;
+    background-color: gray;
+    display: block;
+    margin-bottom: 5px;
+    @include borderRadius(8px);
+    @include transition(all .5s ease);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.open {
+    padding-left: 0;
+
+    span {
+      width: 50px;
+      background-color: $white;
+
+      &:first-child {
+        @include transform(rotate(-45deg) translate(-8px, 7px));
+        margin-bottom: 0;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:last-child {
+        @include transform(rotate(45deg) translate(-7px, -7px));
+      }
+    }
+  }
+}
+
 .nav {
   z-index: 99;
   top: 0;
@@ -77,31 +124,6 @@
         }
       }
 
-      .toggle {
-        position: relative;
-        z-index: 999;
-        display: inline-block;
-        background-color: transparent;
-        border: none;
-        padding: 0 0 0 1rem;
-        margin-left: 1.5rem;
-        cursor: pointer;
-
-        span {
-          width: 8px;
-          height: 8px;
-          background-color: gray;
-          display: block;
-          margin-bottom: 5px;
-          @include borderRadius(8px);
-          @include transition(all .5s ease);
-
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
       .dropdown {
         top: 0;
         right: 0;
@@ -163,6 +185,9 @@
     }
 
     .menuLoggedIn {
+      display: flex;
+      align-items: center;
+
       ul {
         list-style: none;
         margin: 0;
@@ -242,27 +267,6 @@
       }
 
       .menu {
-        .toggle {
-          padding-left: 0;
-
-          span {
-            width: 50px;
-            background-color: $white;
-
-            &:first-child {
-              @include transform(rotate(-45deg) translate(-8px, 7px));
-              margin-bottom: 0;
-            }
-
-            &:nth-child(2) {
-              opacity: 0;
-            }
-
-            &:last-child {
-              @include transform(rotate(45deg) translate(-7px, -7px));
-            }
-          }
-        }
 
         .dropdown {
           min-height: 450px;

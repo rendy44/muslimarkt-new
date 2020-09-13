@@ -5,9 +5,18 @@ import Link from "next/link";
 import {LinkButton} from "./button";
 import Menu2LineIcon from "remixicon-react/Menu2LineIcon";
 
+const Toggle = (props) => {
+    return (
+        <button className={props.isOpen ? `${styles.toggle} ${styles.open}` : styles.toggle} onClick={props.onClick}>
+            <span/>
+            <span/>
+            <span/>
+        </button>
+    )
+}
 const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
@@ -36,6 +45,9 @@ const TopNav = (props) => {
                                 </div>
                             </li>
                         </ul>
+                        <Toggle onClick={() => {
+                            setIsOpened(!isOpened)
+                        }} isOpen={isOpened}/>
                     </div>}
                     {!props.isPlainHeader && !isLoggedIn && <div className={styles.menu}>
                         <ul>
@@ -48,13 +60,9 @@ const TopNav = (props) => {
                                 </Link>
                             </li>
                         </ul>
-                        <button className={styles.toggle} onClick={() => {
+                        <Toggle onClick={() => {
                             setIsOpened(!isOpened)
-                        }}>
-                            <span/>
-                            <span/>
-                            <span/>
-                        </button>
+                        }} isOpen={isOpened}/>
                         <div className={styles.dropdown}>
                             <div className={'frow-container'}>
                                 <div className={styles.inner}>
@@ -93,6 +101,10 @@ const TopNav = (props) => {
     )
 }
 
+Toggle.propTypes = {
+    onClick: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool
+}
 TopNav.propTypes = {
     isPlainHeader: PropTypes.bool,
     isDashboard: PropTypes.bool,
