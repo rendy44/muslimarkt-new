@@ -270,6 +270,9 @@
 
     .inner {
       .brand {
+        display: flex;
+        align-items: center;
+
         button.dashboardMenu {
           background-color: transparent;
           color: $white;
@@ -294,6 +297,51 @@
 
           span {
             color: $white;
+          }
+        }
+      }
+
+      .menuLoggedIn {
+        ul {
+          li {
+            &:first-child {
+              .profile {
+                a {
+                  img {
+                    height: 26px;
+                    width: 26px;
+                  }
+                }
+              }
+
+              > ul {
+                top: 38px;
+                background-color: $main_dark;
+
+                li {
+                  a {
+                    color: $white;
+
+                    svg {
+                      //color: darken($white, 40%);
+                      color: $white;
+                    }
+
+                    &:hover,
+                    &:active,
+                    &:focus {
+                      background-color: $main;
+                    }
+                  }
+
+                  &:last-child {
+                    a {
+                      border-top: 1px solid rgba($white, .3);
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -383,6 +431,35 @@
                   span {
                     font-weight: 500;
                     display: inline-block;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.dashboard {
+      .inner {
+        .menuLoggedIn {
+          ul {
+            li {
+              &:first-child {
+                .profile {
+                  a {
+                    font-size: .9rem;
+
+                    span {
+                      color: $white;
+                    }
+                  }
+                }
+
+                > ul {
+                  li {
+                    a {
+                      font-size: .9rem;
+                    }
                   }
                 }
               }

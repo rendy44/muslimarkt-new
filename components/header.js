@@ -23,7 +23,7 @@ const TopNav = (props) => {
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
-            <div className={!props.isDashboard ? 'frow-container' : ''}>
+            <div className={!props.isDashboard ? 'frow-container' : 'width-100'}>
                 <div className={styles.inner}>
                     <div className={props.isPlainHeader ? `${styles.brand} ${styles.plain}` : styles.brand}>
                         {props.isDashboard && <button
@@ -35,7 +35,7 @@ const TopNav = (props) => {
                             <a>Muslim<span>arkt</span></a>
                         </Link>
                     </div>
-                    {!props.isPlainHeader && isLoggedIn && <div className={styles.menuLoggedIn}>
+                    {isLoggedIn && (props.isDashboard || !props.isPlainHeader) && <div className={styles.menuLoggedIn}>
                         <ul>
                             <li>
                                 <div className={styles.profile}>
@@ -66,7 +66,7 @@ const TopNav = (props) => {
                             </li>
                         </ul>
                     </div>}
-                    {!props.isPlainHeader && !isLoggedIn && <div className={styles.menu}>
+                    {!isLoggedIn && !props.isPlainHeader && <div className={styles.menu}>
                         <ul>
                             <li>
                                 <LinkButton href={'/perusahaan'} label={'Cari Talenta'} variant={'success'}/>
