@@ -7,7 +7,7 @@ export default function PageEducation() {
         <GlobalDashboardPage title={'Pendidikan'} addNewLink={'/akun/pendidikan/tambah'}>
             <ListItems>
                 <EducationItem slug={'asdipidsa'} institute={'SMK Negeri Ngasem'} dateGraduation={'Jul 2013'}
-                               qualification={'SLTA'} country={'Indonesia'} major={'Rekayasa Perangkat Lunak'}/>
+                               qualification={'SLTA'} major={'Rekayasa Perangkat Lunak'}/>
             </ListItems>
         </GlobalDashboardPage>
     )
