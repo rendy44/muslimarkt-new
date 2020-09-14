@@ -63,7 +63,7 @@
 
     .brand {
       position: relative;
-      z-index: 999;
+      //z-index: 999;
 
       a {
         font-size: 1.5rem;
@@ -357,10 +357,10 @@
     .inner {
       .brand {
         a {
-          color: $white;
+          //color: $white;
 
           span {
-            color: $white;
+            //color: $white;
           }
         }
       }

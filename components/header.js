@@ -22,7 +22,6 @@ const TopNav = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
 
-    console.log(isOpened)
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
             <div className={!props.isDashboard ? 'frow-container' : 'width-100'}>
