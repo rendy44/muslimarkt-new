@@ -5,31 +5,54 @@ import {Form, TextBox} from "./index";
 import {FullLoading} from "../global";
 import MailLineIcon from "remixicon-react/MailLineIcon";
 import LockPasswordLineIcon from "remixicon-react/LockPasswordLineIcon";
+import Register from "../../src/register";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const FormRegister = () => {
+    const [fieldEmail, setFieldEmail] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const {register, handleSubmit, errors} = useForm();
     const router = useRouter()
 
+    const onEmailChange = (e) => {
+        setFieldEmail(e.target.value)
+    }
     const onSubmit = (data) => {
 
         // Enable loading status.
         setIsLoading(true)
 
-        // Perform fake registration process.
-        setTimeout(() => {
+        // Process the registration.
+        Register.do(data)
+            .then(result => {
 
-            // Send redirection after success register.
-            router.push('/pendaftaran-sukses')
+                // Validate result.
+                if (result.data.success) {
 
-        }, 3000)
+                    // Send redirection after success register.
+                    router.push('/pendaftaran-sukses')
+                } else {
+
+                    // Instance sweet alert.
+                    const regAlert = withReactContent(Swal)
+                    regAlert.fire({
+                        text: result.data.data,
+                        icon: 'error'
+                    })
+
+                    // Reset loading status.
+                    setIsLoading(false)
+                }
+            })
     }
 
     return (isLoading ? <FullLoading/> :
-        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Daftar'} otherLink={'/masuk'} otherLabel={'Masuk'} useArrowIcon={true}>
+        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Daftar'} otherLink={'/masuk'} otherLabel={'Masuk'}
+              useArrowIcon={true}>
             <TextBox name={'email'} icon={<MailLineIcon size={32}/>} label={'Alamat email'} type={'email'}
                      reference={register({required: true})} errorsObj={errors}
-                     placeholder={'Contoh: nama@gmail.com'}/>
+                     placeholder={'Contoh: nama@gmail.com'} value={fieldEmail} onChange={onEmailChange}/>
             <TextBox name={'password'} icon={<LockPasswordLineIcon size={32}/>} label={'Kata sandi'}
                      type={'password'}
                      reference={register({required: true, minLength: 8})} errorsObj={errors}

@@ -45,7 +45,7 @@ const TextBox = (props) => {
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
-                <input id={props.name} name={props.name} type={props.type} ref={props.reference}
+                <input onChange={props.onChange} value={props.value} id={props.name} name={props.name} type={props.type} ref={props.reference}
                        placeholder={props.placeholder}/>
             </div>
         </FormGroup>
@@ -201,7 +201,9 @@ TextBox.propTypes = {
     placeholder: PropTypes.string,
     type: PropTypes.string.isRequired,
     reference: PropTypes.func.isRequired,
-    errorsObj: PropTypes.object.isRequired
+    errorsObj: PropTypes.object.isRequired,
+    onChange: PropTypes.func,
+    value: PropTypes.string
 }
 TextArea.propTypes = {
     name: PropTypes.string.isRequired,

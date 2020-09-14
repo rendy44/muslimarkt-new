@@ -19,7 +19,7 @@ const Toggle = (props) => {
 }
 const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
 
     return (
