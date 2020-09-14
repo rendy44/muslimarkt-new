@@ -2,11 +2,8 @@ import {DateDropDown, DropDown, Form, TextArea, TextBox} from "../index";
 import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {FullLoading} from "../../global";
-import CreativeCommonsByLineIcon from "remixicon-react/CreativeCommonsByLineIcon";
-import BuildingLineIcon from "remixicon-react/BuildingLineIcon";
 import FileTextLineIcon from "remixicon-react/FileTextLineIcon";
 import CalendarLineIcon from "remixicon-react/CalendarLineIcon";
-import Calendar2LineIcon from "remixicon-react/Calendar2LineIcon";
 import StackLineIcon from "remixicon-react/StackLineIcon";
 import Building2LineIcon from "remixicon-react/Building2LineIcon";
 import PropTypes from 'prop-types'
@@ -41,7 +38,7 @@ const FormEducation = (props) => {
     }
 
     return (isLoading ? <FullLoading/> :
-        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Simpan'} otherLink={'/akun/pengalaman'}
+        <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Simpan'} otherLink={'/akun/pendidikan'}
               otherLabel={isEdit ? 'Batal' : 'Kembali'}>
             <div className={'frow gutters row-start items-start'}>
                 <div className={'col-md-1-2'}>
@@ -49,7 +46,7 @@ const FormEducation = (props) => {
                         <TextBox name={'institute'} icon={<Building3LineIcon size={32}/>} label={'Institusi'}
                                  type={'text'}
                                  reference={register({required: true})} errorsObj={errors}
-                                 placeholder={'Contoh: Web Developer'}/>
+                                 placeholder={'Nama institusi'}/>
                         <DateDropDown name={'date_graduation'} label={'Tanggal kelulusan'} reference={register}
                                       icon={<CalendarLineIcon size={32}/>} isNoDay={true} isWithCheckbox={true}
                                       labelCheckbox={'Belum lulus'} isDisabled={isCurrentEducation}
