@@ -94,3 +94,25 @@
     }
   }
 }
+
+.info {
+  display: flex;
+  font-size: 1rem;
+
+  span {
+    line-height: 1.4;
+    font-size: .95rem;
+
+    &.label {
+      width: 100px;
+      color: lighten($black, 60%);
+      position: relative;
+
+      &:after {
+        content: ':';
+        position: absolute;
+        right: .25rem;
+      }
+    }
+  }
+}

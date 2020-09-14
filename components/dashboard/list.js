@@ -8,7 +8,6 @@ const ListItems = (props) => {
         <div className={styles.items}>{props.children}</div>
     )
 }
-
 const Item = (props) => {
     return (!props.isDeleted && <div className={props.extraClass ? `${props.extraClass} ${styles.item}` : styles.item}>
             <div className={styles.inner}>
@@ -25,6 +24,14 @@ const Item = (props) => {
         </div>
     )
 }
+const ItemInfo = (props) => {
+    return (
+        <div className={styles.info}>
+            <span className={styles.label}>{props.label}</span>
+            <span>{props.value ? props.value : '-'}</span>
+        </div>
+    )
+}
 
 Item.propTypes = {
     extraClass: PropTypes.string,
@@ -33,5 +40,9 @@ Item.propTypes = {
     linkAs: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
 }
+ItemInfo.propTypes = {
+    label: PropTypes.string,
+    value: PropTypes.string
+}
 
-export {ListItems, Item}
+export {ListItems, Item, ItemInfo}

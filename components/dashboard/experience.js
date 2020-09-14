@@ -1,15 +1,7 @@
-import {Item} from "./list";
+import {Item, ItemInfo} from "./list";
 import styles from './styles/experience.module.scss'
 import PropTypes from 'prop-types'
 
-const Info = (props) => {
-    return (
-        <div className={styles.info}>
-            <span className={styles.label}>{props.label}</span>
-            <span>{props.value ? props.value : '-'}</span>
-        </div>
-    )
-}
 const ExperienceItem = (props) => {
     return (
         <Item linkTo={'/akun/pengalaman/[slug]'} title={props.position} linkAs={`/akun/pengalaman/${props.slug}`}>
@@ -17,18 +9,14 @@ const ExperienceItem = (props) => {
                 <p className={styles.company}>{props.company}<span>{props.location}</span></p>
                 <p className={styles.period}>{props.dateStart} - {props.dateEnd ? props.dateEnd : 'sekarang'}</p>
                 <div className={styles.details}>
-                    <Info label={'Industri'} value={props.industry}/>
-                    <Info label={'Jabatan'} value={props.role}/>
+                    <ItemInfo label={'Industri'} value={props.industry}/>
+                    <ItemInfo label={'Jabatan'} value={props.role}/>
                 </div>
             </div>
         </Item>
     )
 }
 
-Info.propTypes = {
-    label: PropTypes.string,
-    value: PropTypes.string
-}
 ExperienceItem.propTypes = {
     slug: PropTypes.string.isRequired,
     position: PropTypes.string.isRequired,
