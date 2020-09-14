@@ -21,6 +21,8 @@ const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
+
+    console.log(isOpened)
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
             <div className={!props.isDashboard ? 'frow-container' : 'width-100'}>
@@ -40,13 +42,17 @@ const TopNav = (props) => {
                             <li>
                                 <div className={styles.profile}>
                                     <Link href={'#'}>
-                                        <a>
+                                        <a onClick={(e) => {
+                                            e.preventDefault();
+                                            console.log('ok')
+                                            setIsOpened(!isOpened)
+                                        }}>
                                             <img src={'/user.png'} alt={'User profile picture'}/>
                                             <span>Fulan bin Abdullah</span>
                                         </a>
                                     </Link>
                                 </div>
-                                <ul>
+                                <ul className={isOpened ? styles.open : ''}>
                                     <li>
                                         <Link href={'/profil'}>
                                             <a><UserLineIcon size={16}/><span>Lihat profil</span></a>

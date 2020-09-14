@@ -7,7 +7,6 @@
   background-color: transparent;
   border: none;
   padding: 0 0 0 1rem;
-  //margin-left: 1.5rem;
   cursor: pointer;
 
   span {
@@ -200,9 +199,6 @@
           &:first-child {
             .profile {
               a {
-                pointer-events: none;
-                cursor: pointer;
-
                 img {
                   height: 40px;
                   width: 40px;
@@ -216,14 +212,17 @@
             }
 
             > ul {
+              overflow: hidden;
               z-index: 9;
               position: absolute;
-              width: 160px;
               top: 57px;
               right: 0;
+              width: 0;
+              opacity: 0;
               background-color: $white;
               padding: 0.5rem 0;
               @include customBoxShadow(0 .5rem 1rem rgba($black, .1));
+              @include transition(opacity .2s ease);
 
               li {
                 display: block;
@@ -255,6 +254,11 @@
                     border-top: 1px solid rgba($black, .1);
                   }
                 }
+              }
+
+              &.open {
+                width: 160px;
+                opacity: 1;
               }
             }
           }
