@@ -4,6 +4,9 @@ import styles from "./styles/header.module.scss";
 import Link from "next/link";
 import {LinkButton} from "./button";
 import Menu2LineIcon from "remixicon-react/Menu2LineIcon";
+import UserLineIcon from "remixicon-react/UserLineIcon";
+import SettingsLineIcon from "remixicon-react/SettingsLineIcon";
+import LogoutCircleRLineIcon from "remixicon-react/LogoutCircleRLineIcon";
 
 const Toggle = (props) => {
     return (
@@ -16,7 +19,7 @@ const Toggle = (props) => {
 }
 const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
@@ -36,18 +39,32 @@ const TopNav = (props) => {
                         <ul>
                             <li>
                                 <div className={styles.profile}>
-                                    <Link href={'/profil'}>
+                                    <Link href={'#'}>
                                         <a>
                                             <img src={'/user.png'} alt={'User profile picture'}/>
                                             <span>Fulan bin Abdullah</span>
                                         </a>
                                     </Link>
                                 </div>
+                                <ul>
+                                    <li>
+                                        <Link href={'/profil'}>
+                                            <a><UserLineIcon size={16}/><span>Lihat profil</span></a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/akun'}>
+                                            <a><SettingsLineIcon size={16}/><span>Akun saya</span></a>
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link href={'/keluar'}>
+                                            <a><LogoutCircleRLineIcon size={16}/><span>Keluar</span></a>
+                                        </Link>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                        <Toggle onClick={() => {
-                            setIsOpened(!isOpened)
-                        }} isOpen={isOpened}/>
                     </div>}
                     {!props.isPlainHeader && !isLoggedIn && <div className={styles.menu}>
                         <ul>

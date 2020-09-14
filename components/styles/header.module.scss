@@ -195,10 +195,14 @@
 
         li {
           display: inline-block;
+          position: relative;
 
           &:first-child {
             .profile {
               a {
+                pointer-events: none;
+                cursor: pointer;
+
                 img {
                   height: 40px;
                   width: 40px;
@@ -207,6 +211,49 @@
 
                 span {
                   display: none;
+                }
+              }
+            }
+
+            > ul {
+              z-index: 9;
+              position: absolute;
+              width: 160px;
+              top: 57px;
+              right: 0;
+              background-color: $white;
+              padding: 0.5rem 0;
+              @include customBoxShadow(0 .5rem 1rem rgba($black, .1));
+
+              li {
+                display: block;
+
+                a {
+                  display: flex;
+                  align-items: center;
+                  padding: .5rem 1rem;
+                  font-size: 1rem;
+                  @include defaultTransition;
+
+                  svg {
+                    margin-right: .5rem;
+                    color: lighten($black, 40%);
+                  }
+
+                  &:hover,
+                  &:active,
+                  &:focus {
+                    text-decoration: none;
+                    background-color: $light;
+                  }
+                }
+
+                &:last-child {
+                  margin-bottom: 0;
+
+                  a {
+                    border-top: 1px solid rgba($black, .1);
+                  }
                 }
               }
             }
