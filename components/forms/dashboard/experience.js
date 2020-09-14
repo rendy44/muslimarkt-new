@@ -54,7 +54,7 @@ const FormExperience = (props) => {
                                       icon={<CalendarLineIcon size={32}/>} isNoDay={true}/>
                         <DateDropDown name={'date_end'} label={'Tanggal selesai'} reference={register}
                                       icon={<Calendar2LineIcon size={32}/>} isNoDay={true} isWithCheckbox={true}
-                                      labelCheckbox={'Masih bekerja di sini'} isDisabled={isCurrentJob}
+                                      labelCheckbox={'Masih bekerja'} isDisabled={isCurrentJob}
                                       onChangeCheckbox={onChangeEndPeriod}/>
                     </div>
                 </div>
