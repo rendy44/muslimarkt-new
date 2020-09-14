@@ -1,5 +1,5 @@
-import {DateDropDown, DropDown, Form, IdInput, TextArea, TextBox} from "../index";
-import React, {useState} from "react";
+import {DateDropDown, DropDown, Form, TextArea, TextBox} from "../index";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {FullLoading} from "../../global";
 import CreativeCommonsByLineIcon from "remixicon-react/CreativeCommonsByLineIcon";
@@ -10,11 +10,21 @@ import Calendar2LineIcon from "remixicon-react/Calendar2LineIcon";
 import StackLineIcon from "remixicon-react/StackLineIcon";
 import Building2LineIcon from "remixicon-react/Building2LineIcon";
 import industries from '../../../src/industry.json'
+import PropTypes from 'prop-types'
 
 const FormExperience = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isCurrentJob, setIsCurrentJob] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
     const {register, handleSubmit, watch, errors} = useForm();
+
+    useEffect(() => {
+
+        // Check whether currently is editing or not.
+        if (props.slug) {
+            setIsEdit(true)
+        }
+    }, [props])
 
     const onChangeEndPeriod = (e) => {
         setIsCurrentJob(e.target.checked)
@@ -32,7 +42,7 @@ const FormExperience = (props) => {
 
     return (isLoading ? <FullLoading/> :
         <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Simpan'} otherLink={'/akun/pengalaman'}
-              otherLabel={'Kembali'}>
+              otherLabel={isEdit ? 'Batal' : 'Kembali'}>
             <div className={'frow gutters row-start items-start'}>
                 <div className={'col-md-1-2'}>
                     <div className={'mb-1'}>
@@ -67,6 +77,10 @@ const FormExperience = (props) => {
                 </div>
             </div>
         </Form>)
+}
+
+FormExperience.propTypes = {
+    slug: PropTypes.string
 }
 
 export default FormExperience

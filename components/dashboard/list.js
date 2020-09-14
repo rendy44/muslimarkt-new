@@ -13,7 +13,7 @@ const Item = (props) => {
     return (!props.isDeleted && <div className={props.extraClass ? `${props.extraClass} ${styles.item}` : styles.item}>
             <div className={styles.inner}>
                 <div className={styles.title}>
-                    <Link href={props.linkTo}><a>{props.title}</a></Link>
+                    <Link href={props.linkTo} as={props.linkAs}><a>{props.title}</a></Link>
                 </div>
                 <div className={styles.action}>
                     <button><DeleteBinLineIcon size={16}/></button>
@@ -30,6 +30,7 @@ Item.propTypes = {
     extraClass: PropTypes.string,
     isDeleted: PropTypes.bool,
     linkTo: PropTypes.string.isRequired,
+    linkAs: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
 }
 

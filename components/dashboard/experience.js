@@ -12,7 +12,7 @@ const Info = (props) => {
 }
 const ExperienceItem = (props) => {
     return (
-        <Item linkTo={`/akun/pengalaman/${props.slug}`} title={props.position}>
+        <Item linkTo={'/akun/pengalaman/[slug]'} title={props.position} linkAs={`/akun/pengalaman/${props.slug}`}>
             <div className={styles.experience}>
                 <p className={styles.company}>{props.company}<span>{props.location}</span></p>
                 <p className={styles.period}>{props.dateStart} - {props.dateEnd ? props.dateEnd : 'sekarang'}</p>
