@@ -33,6 +33,7 @@ const FormAccountType = () => {
     return (isLoading ? <FullLoading/> :
             <Form onSubmit={handleSubmit(onSubmit)} isLoading={isLoading} submitLabel={'Lanjutkan'}
                   isDisabled={!isSelected} useArrowIcon={true}>
+                <h1>Pilih jenis akun</h1>
                 <ImageToggle>
                     <ToggleItem reference={register} onChange={onChange} name={'type'} value={'personal'}
                                 image={'/employee.png'}

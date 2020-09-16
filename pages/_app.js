@@ -25,7 +25,7 @@ export default function MyApp({Component, pageProps}) {
         destroyCookie(null, key);
     }
     const saveUserData = (data) => {
-        const allowedFields = ['active', 'avatar_url', 'display_name', 'email', 'first_name', 'is_profile_complete', 'last_name']
+        const allowedFields = ['active', 'avatar_url', 'display_name', 'email', 'first_name', 'is_profile_complete', 'last_name', 'type']
         let usedData = {};
 
         // Loop allowed fields.
@@ -70,6 +70,14 @@ export default function MyApp({Component, pageProps}) {
                         // Save login data.
                         saveUserKey(userKey)
                         saveUserData(result.data.data)
+
+                        // Check whether user type is defined or not.
+                        if (!result.data.data.type && !freePage.includes(router.pathname)) {
+
+                            // Force back to validation page.
+                            router.push('/validasi')
+                        }
+
                     } else {
 
                         // Force logout.

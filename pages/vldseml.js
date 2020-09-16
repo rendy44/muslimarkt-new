@@ -4,6 +4,8 @@ import User from "../src/user";
 import {useEffect} from "react";
 import UserContext from "../components/context/user";
 import Head from "next/head";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
 export default function PageEmailValidation() {
     const router = useRouter();
@@ -28,8 +30,18 @@ export default function PageEmailValidation() {
                         // Save loading status.
                         setIsSuccess(true);
 
-                        // Push page route.
-                        router.push('/validasi')
+                        // Instance a new alert.
+                        const MySwal = withReactContent(Swal)
+                        MySwal.fire({
+                            title: 'Berhasil!',
+                            text: 'Silahkan pilih jenis akun yang Anda gunakan.',
+                            icon: 'success',
+                            onClose: () => {
+
+                                // Push page route.
+                                router.push('/validasi')
+                            }
+                        })
                     } else {
                         setDisplayedValue(result.data.data)
                     }
