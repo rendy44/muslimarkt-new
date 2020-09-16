@@ -8,6 +8,7 @@ import UserLineIcon from "remixicon-react/UserLineIcon";
 import SettingsLineIcon from "remixicon-react/SettingsLineIcon";
 import LogoutCircleRLineIcon from "remixicon-react/LogoutCircleRLineIcon";
 import UserContext from "./context/user";
+import {NavName, NavPhoto} from "./placeholder";
 
 const Toggle = (props) => {
     return (
@@ -57,10 +58,10 @@ const TopNav = (props) => {
                                             e.preventDefault();
                                             setIsOpened(!isOpened)
                                         }}>
-                                            {userData.avatar_url && userData.display_name && <>
-                                                <img src={userData.avatar_url} alt={'User profile picture'}/>
-                                                <span>{userData.display_name}</span>
-                                            </>}
+                                            {userData.avatar_url ?
+                                                <img src={userData.avatar_url} alt={'User profile picture'}/> :
+                                                <NavPhoto/>}
+                                            <span>{userData.display_name ? userData.display_name : <NavName/>}</span>
                                         </a>
                                     </Link>
                                 </div>
