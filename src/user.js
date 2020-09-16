@@ -12,4 +12,8 @@ export default class User {
     static detail(key) {
         return new Connector('account/' + key, 'get')
     }
+
+    static switchType(key, args) {
+        return new Connector('account/' + key, 'post', args)
+    }
 }

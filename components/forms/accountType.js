@@ -1,10 +1,14 @@
 import {useState} from "react";
+import PropTypes from 'prop-types'
 import {useForm} from "react-hook-form";
 import {useRouter} from "next/router";
-import {Form, ImageToggle, TextBox, ToggleItem} from "./index";
+import {Form, ImageToggle, ToggleItem} from "./index";
 import {FullLoading} from "../global";
+import user from "../../src/user";
+import withReactContent from "sweetalert2-react-content";
+import Swal from 'sweetalert2'
 
-const FormAccountType = () => {
+const FormAccountType = (props) => {
     const [accountType, setAccountType] = useState('personal')
     const [isSelected, setIsSelected] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -21,28 +25,49 @@ const FormAccountType = () => {
         // Enable loading status.
         setIsLoading(true)
 
-        // Perform fake registration process.
-        setTimeout(() => {
+        user.switchType(props.userKey, data)
+            .then(result => {
 
-            // Send redirection after success register.
-            router.push('personal' === accountType ? '/akun' : '/perusahaan')
+                // Validate result.
+                if (result.data.success) {
 
-        }, 3000)
+                    // Use hard loading.
+                    location.href = 'employee' === accountType ? '/akun' : '/perusahaan'
+                } else {
+
+                    // Normalize loading.
+                    setIsLoading(false)
+
+                    // Instance a new alert.
+                    const errAlert = withReactContent(Swal)
+                    errAlert.fire({
+                        text: result.data.data,
+                        icon: 'error'
+                    })
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     return (isLoading ? <FullLoading/> :
             <Form onSubmit={handleSubmit(onSubmit)} isLoading={isLoading} submitLabel={'Lanjutkan'}
                   isDisabled={!isSelected} useArrowIcon={true}>
                 <ImageToggle>
-                    <ToggleItem reference={register} onChange={onChange} name={'type'} value={'personal'}
+                    <ToggleItem reference={register} onChange={onChange} name={'type'} value={'employee'}
                                 image={'/employee.png'}
                                 label={'Saya mendaftar untuk mencari pekerjaan'}/>
-                    <ToggleItem reference={register} onChange={onChange} name={'type'} value={'company'}
+                    <ToggleItem reference={register} onChange={onChange} name={'type'} value={'employer'}
                                 image={'/building.png'}
                                 label={'Saya mendaftar untuk mencari talenta'}/>
                 </ImageToggle>
             </Form>
     )
+}
+
+FormAccountType.propTypes = {
+    userKey: PropTypes.string.isRequired
 }
 
 export default FormAccountType

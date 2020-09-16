@@ -55,7 +55,7 @@ export default function MyApp({Component, pageProps}) {
     useEffect(() => {
 
         // Define freeAccess Page.
-        const freePage = ['/', '/masuk', '/daftar', '/vldseml'];
+        const freePage = ['/', '/masuk', '/daftar', '/validasi'];
 
         // Make sure that user key is exist.
         if (userKey) {
@@ -75,7 +75,7 @@ export default function MyApp({Component, pageProps}) {
                         if (!result.data.data.type && !freePage.includes(router.pathname)) {
 
                             // Force back to validation page.
-                            router.push('/validasi')
+                            router.push('/jenis')
                         }
 
                     } else {
