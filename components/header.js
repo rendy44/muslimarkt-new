@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import PropTypes from 'prop-types';
 import styles from "./styles/header.module.scss";
 import Link from "next/link";
@@ -7,6 +7,7 @@ import Menu2LineIcon from "remixicon-react/Menu2LineIcon";
 import UserLineIcon from "remixicon-react/UserLineIcon";
 import SettingsLineIcon from "remixicon-react/SettingsLineIcon";
 import LogoutCircleRLineIcon from "remixicon-react/LogoutCircleRLineIcon";
+import UserContext from "./context/user";
 
 const Toggle = (props) => {
     return (
@@ -18,10 +19,21 @@ const Toggle = (props) => {
     )
 }
 const TopNav = (props) => {
+    const [isLoaded, setIsLoaded] = useState(false)
     const [isOpened, setIsOpened] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
+    const {userKey, userData} = useContext(UserContext);
+    useEffect(() => {
 
+        // Check user key availability.
+        if (userKey) {
+
+            // Set status into login.
+            setIsLoggedIn(true)
+            setIsLoaded(true);
+        }
+    }, [userKey])
     return (
         <div className={isOpened ? `${navStyle} ${styles.open}` : navStyle}>
             <div className={!props.isDashboard ? 'frow-container' : 'width-100'}>
@@ -43,11 +55,12 @@ const TopNav = (props) => {
                                     <Link href={'#'}>
                                         <a onClick={(e) => {
                                             e.preventDefault();
-                                            console.log('ok')
                                             setIsOpened(!isOpened)
                                         }}>
-                                            <img src={'/user.png'} alt={'User profile picture'}/>
-                                            <span>Fulan bin Abdullah</span>
+                                            {userData.avatar_url && userData.display_name && <>
+                                                <img src={userData.avatar_url} alt={'User profile picture'}/>
+                                                <span>{userData.display_name}</span>
+                                            </>}
                                         </a>
                                     </Link>
                                 </div>
