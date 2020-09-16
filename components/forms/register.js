@@ -5,7 +5,7 @@ import {Form, TextBox} from "./index";
 import {FullLoading} from "../global";
 import MailLineIcon from "remixicon-react/MailLineIcon";
 import LockPasswordLineIcon from "remixicon-react/LockPasswordLineIcon";
-import Register from "../../src/register";
+import User from "../../src/register";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -24,7 +24,7 @@ const FormRegister = () => {
         setIsLoading(true)
 
         // Process the registration.
-        Register.do(data)
+        User.register(data)
             .then(result => {
 
                 // Validate result.
