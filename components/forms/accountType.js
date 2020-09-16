@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import PropTypes from 'prop-types'
 import {useForm} from "react-hook-form";
 import {useRouter} from "next/router";
@@ -7,13 +7,15 @@ import {FullLoading} from "../global";
 import user from "../../src/user";
 import withReactContent from "sweetalert2-react-content";
 import Swal from 'sweetalert2'
+import UserContext from "../context/user";
 
 const FormAccountType = (props) => {
     const [accountType, setAccountType] = useState('personal')
     const [isSelected, setIsSelected] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
-    const {register, handleSubmit, watch, errors} = useForm();
+    const {register, handleSubmit} = useForm();
     const router = useRouter()
+    const {saveUserType} = useContext(UserContext)
 
     const onChange = (e) => {
         setAccountType(e.target.value)
@@ -31,8 +33,11 @@ const FormAccountType = (props) => {
                 // Validate result.
                 if (result.data.success) {
 
-                    // Use hard loading.
-                    location.href = 'employee' === accountType ? '/akun' : '/perusahaan'
+                    // Update user type.
+                    saveUserType(accountType)
+
+                    // Update page route.
+                    router.push('employee' === accountType ? '/akun' : '/perusahaan')
                 } else {
 
                     // Normalize loading.

@@ -3,17 +3,28 @@ import styles from './styles/accountType.module.scss'
 import FormAccountType from "../forms/accountType";
 import UserContext from "../context/user";
 import {useContext, useEffect, useState} from 'react'
+import {useRouter} from "next/router";
 
 const AccountType = () => {
     const [isLoaded, setIsLoaded] = useState(false)
-    const {userKey} = useContext(UserContext)
+    const {userKey, userType} = useContext(UserContext)
+    const router = useRouter()
+
     useEffect(() => {
 
         // Check whether key is available or not.
         if (userKey) {
-            setIsLoaded(true)
+
+            // Prevent this page revisited.
+            if (userType) {
+
+                // Force to push route.
+                router.push('employee' === userType ? '/akun' : '/perusahaan')
+            } else {
+                setIsLoaded(true)
+            }
         }
-    }, [userKey])
+    }, [userKey, userType])
 
     return (isLoaded ? <Section id={'validation'} extraClass={styles.accountType}>
         <div className={'frow'}>

@@ -40,6 +40,11 @@ export default function MyApp({Component, pageProps}) {
         // Save into cookie.
         saveLocal('uk', userKey)
     }
+    const saveUserType = (userType) => {
+
+        // Save into cookie.
+        saveLocal('ut', userType)
+    }
     const signOut = () => {
 
         // Remove key from cookie.
@@ -51,6 +56,7 @@ export default function MyApp({Component, pageProps}) {
 
     // Get key from cookie.
     const userKey = getLocal('uk');
+    const userType = getLocal('ut')
 
     useEffect(() => {
 
@@ -69,6 +75,7 @@ export default function MyApp({Component, pageProps}) {
 
                         // Save login data.
                         saveUserKey(userKey)
+                        saveUserType(result.data.data.type)
                         saveUserData(result.data.data)
 
                         // Check whether user type is defined or not.
@@ -101,7 +108,9 @@ export default function MyApp({Component, pageProps}) {
             value={{
                 userData: userData,
                 userKey: userKey,
+                userType: userType,
                 saveUserKey: saveUserKey,
+                saveUserType: saveUserType,
                 signOut: signOut
             }}>
             <Component {...pageProps} />
