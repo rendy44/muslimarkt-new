@@ -20,7 +20,6 @@ const Toggle = (props) => {
     )
 }
 const TopNav = (props) => {
-    const [isLoaded, setIsLoaded] = useState(false)
     const [isOpened, setIsOpened] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
@@ -32,7 +31,6 @@ const TopNav = (props) => {
 
             // Set status into login.
             setIsLoggedIn(true)
-            setIsLoaded(true);
         }
     }, [userKey])
     return (
