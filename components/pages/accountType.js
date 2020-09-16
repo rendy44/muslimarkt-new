@@ -1,12 +1,13 @@
 import {Section} from "../global";
-import styles from './styles/validation.module.scss'
+import styles from './styles/accountType.module.scss'
 import FormAccountType from "../forms/accountType";
 
-const Validation = () => {
+const AccountType = () => {
     return (
-        <Section id={'validation'} extraClass={styles.validation}>
+        <Section id={'validation'} extraClass={styles.accountType}>
             <div className={'frow'}>
                 <div className={'col-sm-4-5 col-md-2-3 col-lg-1-2'}>
+                    <h1 className={styles.title}>Pilih Jenis Akun</h1>
                     <FormAccountType/>
                 </div>
             </div>
@@ -14,4 +15,4 @@ const Validation = () => {
     )
 }
 
-export default Validation
+export default AccountType
