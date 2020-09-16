@@ -8,4 +8,8 @@ export default class User {
     static activate(key) {
         return new Connector('validate/' + key, 'post')
     }
+
+    static detail(key) {
+        return new Connector('account/' + key, 'get')
+    }
 }
