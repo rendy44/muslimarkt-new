@@ -1,5 +1,5 @@
 import {DateDropDown, DropDown, Form, TextArea, TextBox} from "../index";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import {useForm} from "react-hook-form";
 import {FullLoading} from "../../global";
 import CreativeCommonsByLineIcon from "remixicon-react/CreativeCommonsByLineIcon";
@@ -11,12 +11,17 @@ import StackLineIcon from "remixicon-react/StackLineIcon";
 import Building2LineIcon from "remixicon-react/Building2LineIcon";
 import industries from '../../../src/industry.json'
 import PropTypes from 'prop-types'
+import Experience from "../../../src/experience";
+import UserContext from "../../context/user";
+import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2";
 
 const FormExperience = (props) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isCurrentJob, setIsCurrentJob] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const {register, handleSubmit, watch, errors} = useForm();
+    const {userKey} = useContext(UserContext)
 
     useEffect(() => {
 
@@ -29,15 +34,41 @@ const FormExperience = (props) => {
     const onChangeEndPeriod = (e) => {
         setIsCurrentJob(e.target.checked)
     }
-    const onSubmit = (data) => {
+    const onSubmit = (data, e) => {
+
+        // Instance result.
+        const expAlert = withReactContent(Swal);
 
         // Enable loading status.
         setIsLoading(true)
 
-        // Perform fake registration process.
-        setTimeout(() => {
+        // Perform request.
+        Experience.add(userKey, data)
+            .then(result => {
 
-        }, 3000)
+                // Prepare alert args.
+                let alertArgs = {
+                    text: result.data.message,
+                    icon: 'error'
+                }
+
+                // Validate request result.
+                if (result.data.success) {
+
+                    // Reset form.
+                    e.target.reset()
+
+                    // Update alert args.
+                    alertArgs.icon = 'success'
+                    alertArgs.text = 'Berhasil disimpan.'
+                }
+
+                // reset loading.
+                setIsLoading(false)
+
+                // Trigger alert.
+                expAlert.fire(alertArgs)
+            })
     }
 
     return (isLoading ? <FullLoading/> :

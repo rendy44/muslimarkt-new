@@ -163,7 +163,7 @@ const DateDropDown = (props) => {
                     </div>
                     {props.isWithCheckbox && <div className={styles.cb}>
                         <input id={`${props.name}_cb`} name={`${props.name}_cb`} value={'yes'} type={'checkbox'}
-                               onChange={props.onChangeCheckbox} checked={props.isDisabled}/> <label
+                               onChange={props.onChangeCheckbox} ref={props.reference} checked={props.isDisabled}/> <label
                         htmlFor={`${props.name}_cb`}>{props.labelCheckbox}</label>
                     </div>}
                 </div>
