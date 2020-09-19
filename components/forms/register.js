@@ -5,7 +5,7 @@ import {Form, TextBox} from "./index";
 import {FullLoading} from "../global";
 import MailLineIcon from "remixicon-react/MailLineIcon";
 import LockPasswordLineIcon from "remixicon-react/LockPasswordLineIcon";
-import User from "../../src/register";
+import User from "../../src/user";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 

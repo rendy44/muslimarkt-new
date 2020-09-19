@@ -47,7 +47,8 @@ const TopNav = (props) => {
                             <a>Muslim<span>arkt</span></a>
                         </Link>
                     </div>
-                    {isLoggedIn && (props.isDashboard || !props.isPlainHeader) && <div className={styles.menuLoggedIn}>
+                    {isLoggedIn && !props.isRegistration && (props.isDashboard || !props.isPlainHeader) &&
+                    <div className={styles.menuLoggedIn}>
                         <ul>
                             <li>
                                 <div className={styles.profile}>
@@ -83,10 +84,10 @@ const TopNav = (props) => {
                             </li>
                         </ul>
                     </div>}
-                    {!isLoggedIn && !props.isPlainHeader && <div className={styles.menu}>
+                    {!isLoggedIn && !props.isRegistration && !props.isPlainHeader && <div className={styles.menu}>
                         <ul>
                             <li>
-                                <LinkButton href={'/perusahaan'} label={'Cari Talenta'} variant={'success'}/>
+                                <LinkButton href={'/daftar'} label={'Daftar'} variant={'success'}/>
                             </li>
                             <li>
                                 <Link href={'/masuk'}>
@@ -120,7 +121,7 @@ const TopNav = (props) => {
                                         </ul>
                                     </div>
                                     <div className={styles.account}>
-                                        <LinkButton href={'/perusahaan'} label={'Cari Talenta'} variant={'success'}/>
+                                        <LinkButton href={'/daftar'} label={'Daftar'} variant={'success'}/>
                                         <LinkButton href={'/masuk'} label={'Masuk'} variant={'outline'}/>
                                         <p>Daftarkan segera perusahaan Anda untuk merekrut talenta muslim yang
                                             profesional.</p>
@@ -142,6 +143,7 @@ Toggle.propTypes = {
 TopNav.propTypes = {
     isPlainHeader: PropTypes.bool,
     isDashboard: PropTypes.bool,
+    isRegistration: PropTypes.bool,
     onClick: PropTypes.func,
     isOpen: PropTypes.bool,
     isRightOpen: PropTypes.bool
