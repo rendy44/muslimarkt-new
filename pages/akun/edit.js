@@ -1,10 +1,10 @@
 import {GlobalDashboardPage} from "../../components/dashboard";
 import FormAccount from "../../components/forms/dashboard/account";
 
-export default function PageEditAccount(){
-    return(
+export default function PageEditAccount() {
+    return (
         <GlobalDashboardPage title={'Edit Akun'}>
-            <FormAccount/>
+            <FormAccount isEdit={true}/>
         </GlobalDashboardPage>
     )
 }
