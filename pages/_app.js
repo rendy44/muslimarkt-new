@@ -49,6 +49,7 @@ export default function MyApp({Component, pageProps}) {
 
         // Remove key from cookie.
         removeLocal('uk')
+        removeLocal('ut')
 
         // Force redirect.
         location.href = '/masuk'
