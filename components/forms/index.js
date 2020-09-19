@@ -114,21 +114,20 @@ const DateDropDown = (props) => {
     useEffect(() => {
 
         // If day value is available.
-        if (props.value[0]) {
+        if (props.value && props.value[0]) {
 
             // Save into state.
             setDayValue(props.value[0])
         }
 
-        if (props.value[1]) {
+        if (props.value && props.value[1]) {
             setMonthValue(props.value[1])
         }
 
-        if (props.value[2]) {
+        if (props.value && props.value[2]) {
             setYearValue(props.value[2])
         }
     }, props.value)
-    console.log(props.value)
     return (
         <FormGroup isError={false}>
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
@@ -188,18 +187,20 @@ const IdInput = (props) => {
             <div className={styles.input}>
                 {props.label && <label className={styles.label}>{props.label}</label>}
                 <div className={styles.multi}>
-                    <div>
-                        <select id={`${props.name}_type`} onChange={onChange} name={`${props.name}_type`}
-                                ref={props.reference}
-                                value={typeValue}>
-                            <DropDownValues
-                                values={['KTP', 'SIM', 'Passport']}/>
-                        </select>
-                    </div>
-                    <div>
-                        <input id={`${props.name}_value`} name={`${props.name}_value`} type={'text'}
-                               ref={props.reference}
-                               placeholder={props.placeholder} defaultValue={props.value ? props.value[1] : ''}/>
+                    <div className={styles.inner}>
+                        <div>
+                            <select id={`${props.name}_type`} onChange={onChange} name={`${props.name}_type`}
+                                    ref={props.reference}
+                                    value={typeValue}>
+                                <DropDownValues
+                                    values={['KTP', 'SIM', 'Passport']}/>
+                            </select>
+                        </div>
+                        <div>
+                            <input id={`${props.name}_value`} name={`${props.name}_value`} type={'text'}
+                                   ref={props.reference}
+                                   placeholder={props.placeholder} defaultValue={props.value ? props.value[1] : ''}/>
+                        </div>
                     </div>
                 </div>
             </div>
