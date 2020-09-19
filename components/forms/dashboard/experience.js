@@ -1,5 +1,6 @@
 import {DateDropDown, DropDown, Form, TextArea, TextBox} from "../index";
 import {useEffect, useState, useContext} from "react";
+import {useRouter} from "next/router";
 import {useForm} from "react-hook-form";
 import {FullLoading} from "../../global";
 import CreativeCommonsByLineIcon from "remixicon-react/CreativeCommonsByLineIcon";
@@ -17,17 +18,41 @@ import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
 
 const FormExperience = (props) => {
+    const [dataDb, setDataDb] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const [isCurrentJob, setIsCurrentJob] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const {register, handleSubmit, watch, errors} = useForm();
     const {userKey} = useContext(UserContext)
+    const router = useRouter()
 
     useEffect(() => {
 
         // Check whether currently is editing or not.
         if (props.slug) {
             setIsEdit(true)
+
+            // Get details.
+            Experience.detail(userKey, props.slug)
+                .then(result => {
+                    console.log(result)
+
+                    // Validate result.
+                    if (result.data.success) {
+
+                        // Parse details.
+                        setDataDb(result.data.data)
+
+                        // Check whether cb is checked or not.
+                        if (result.data.data.date_end_cb) {
+                            setIsCurrentJob(true)
+                        }
+                    } else {
+
+                        // Force redirect.
+                        router.push('/akun/pengalaman')
+                    }
+                })
         }
     }, [props])
 
@@ -42,33 +67,66 @@ const FormExperience = (props) => {
         // Enable loading status.
         setIsLoading(true)
 
-        // Perform request.
-        Experience.add(userKey, data)
-            .then(result => {
+        // Check whether create a new experience or update exisitng.
+        if (isEdit) {
 
-                // Prepare alert args.
-                let alertArgs = {
-                    text: result.data.message,
-                    icon: 'error'
-                }
+            // Perform update request.
+            Experience.update(userKey, props.slug, data)
+                .then(result => {
 
-                // Validate request result.
-                if (result.data.success) {
+                    // Prepare alert args.
+                    let alertArgs = {
+                        text: result.data.message,
+                        icon: 'error'
+                    }
 
-                    // Reset form.
-                    e.target.reset()
+                    // Validate request result.
+                    if (result.data.success) {
 
-                    // Update alert args.
-                    alertArgs.icon = 'success'
-                    alertArgs.text = 'Berhasil disimpan.'
-                }
+                        // Update alert args.
+                        alertArgs.icon = 'success'
+                        alertArgs.text = 'Berhasil disimpan.'
 
-                // reset loading.
-                setIsLoading(false)
+                        // Update preview data.
+                        setDataDb(data)
+                    }
 
-                // Trigger alert.
-                expAlert.fire(alertArgs)
-            })
+                    // reset loading.
+                    setIsLoading(false)
+
+                    // Trigger alert.
+                    expAlert.fire(alertArgs)
+                })
+        } else {
+
+            // Perform request.
+            Experience.add(userKey, data)
+                .then(result => {
+
+                    // Prepare alert args.
+                    let alertArgs = {
+                        text: result.data.message,
+                        icon: 'error'
+                    }
+
+                    // Validate request result.
+                    if (result.data.success) {
+
+                        // Reset form.
+                        e.target.reset()
+
+                        // Update alert args.
+                        alertArgs.icon = 'success'
+                        alertArgs.text = 'Berhasil disimpan.'
+                    }
+
+                    // reset loading.
+                    setIsLoading(false)
+
+                    // Trigger alert.
+                    expAlert.fire(alertArgs)
+                })
+        }
     }
 
     return (isLoading ? <FullLoading/> :
@@ -80,31 +138,34 @@ const FormExperience = (props) => {
                         <TextBox name={'position'} icon={<CreativeCommonsByLineIcon size={32}/>} label={'Posisi'}
                                  type={'text'}
                                  reference={register({required: true})} errorsObj={errors}
-                                 placeholder={'Contoh: Web Developer'}/>
+                                 placeholder={'Contoh: Web Developer'} value={dataDb.position}/>
                         <DateDropDown name={'date_start'} label={'Tanggal mulai'} reference={register}
-                                      icon={<CalendarLineIcon size={32}/>} isNoDay={true}/>
+                                      icon={<CalendarLineIcon size={32}/>} isNoDay={true}
+                                      value={[0, dataDb.date_start_month, dataDb.date_start_year]}/>
                         <DateDropDown name={'date_end'} label={'Tanggal selesai'} reference={register}
                                       icon={<Calendar2LineIcon size={32}/>} isNoDay={true} isWithCheckbox={true}
                                       labelCheckbox={'Masih bekerja'} isDisabled={isCurrentJob}
-                                      onChangeCheckbox={onChangeEndPeriod}/>
+                                      onChangeCheckbox={onChangeEndPeriod}
+                                      value={[0, dataDb.date_end_month, dataDb.date_end_year]}/>
                     </div>
                 </div>
                 <div className={'col-md-1-2'}>
                     <div className={'mb-1'}>
                         <TextBox name={'company'} icon={<BuildingLineIcon size={32}/>} label={'Perusahaan'}
                                  type={'text'} reference={register({required: true})} errorsObj={errors}
-                                 placeholder={'Nama perusahaan'}/>
+                                 placeholder={'Nama perusahaan'} value={dataDb.company}/>
                         <DropDown name={'role'} label={'Jabatan'} reference={register} icon={<StackLineIcon size={32}/>}
                                   errorsObj={errors}
-                                  values={['CEO / Direktur', 'Menejer', 'Supervisor / Kordinator', 'Pegawai', 'Lulusan baru']}/>
+                                  values={['CEO / Direktur', 'Menejer', 'Supervisor / Kordinator', 'Pegawai', 'Lulusan baru']}
+                                  value={dataDb.role}/>
                         <DropDown name={'industry'} label={'Industri'} reference={register} errorsObj={errors}
-                                  values={industries} icon={<Building2LineIcon size={32}/>}/>
+                                  values={industries} icon={<Building2LineIcon size={32}/>} value={dataDb.industry}/>
                     </div>
                 </div>
                 <div className={'col-xs-1-1'}>
                     <TextArea name={'notes'} label={'Catatan'} reference={register} errorsObj={errors}
                               placeholder={'Info tambahan tentang pekerjaan Anda'}
-                              icon={<FileTextLineIcon size={32}/>}/>
+                              icon={<FileTextLineIcon size={32}/>} value={dataDb.notes}/>
                 </div>
             </div>
         </Form>)

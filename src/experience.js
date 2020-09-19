@@ -8,4 +8,12 @@ export default class Experience {
     static get(key) {
         return new Connector('experience/' + key, 'get')
     }
+
+    static detail(key, slug) {
+        return new Connector('experience/' + slug + '/' + key, 'get')
+    }
+
+    static update(key, slug, args) {
+        return new Connector('experience/' + slug + '/' + key, 'put', args)
+    }
 }
