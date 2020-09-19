@@ -8,6 +8,18 @@ const ListItems = (props) => {
         <div className={styles.items}>{props.children}</div>
     )
 }
+const ItemPlaceholder = (props) => {
+    return (
+        <div className={styles.item}>
+            <div className={styles.inner}>
+                <div className={styles.svg}>
+                    {props.children}
+                </div>
+            </div>
+        </div>
+    )
+}
+
 const Item = (props) => {
     return (!props.isDeleted && <div className={props.extraClass ? `${props.extraClass} ${styles.item}` : styles.item}>
             <div className={styles.inner}>
@@ -45,4 +57,4 @@ ItemInfo.propTypes = {
     value: PropTypes.string
 }
 
-export {ListItems, Item, ItemInfo}
+export {ListItems, Item, ItemInfo, ItemPlaceholder}

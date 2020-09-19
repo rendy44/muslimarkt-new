@@ -1,23 +1,51 @@
 import {GlobalDashboardPage} from "../../../components/dashboard";
-import {ListItems} from "../../../components/dashboard/list";
+import {ItemPlaceholder, ListItems} from "../../../components/dashboard/list";
 import ExperienceItem from "../../../components/dashboard/experience";
+import {useState, useContext, useEffect} from 'react'
+import UserContext from "../../../components/context/user";
+import Experience from "../../../src/experience";
+import {PlaceholderExperienceItem} from "../../../components/placeholder";
+import {FullLoading} from "../../../components/global";
 
 export default function PageExperience() {
+    const {userKey} = useContext(UserContext)
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [htmlLayout, setHtmlLayout] = useState([])
+    useEffect(() => {
+        let expItems = []
+
+        // Make sure key is available.
+        if (userKey) {
+
+            // Perform request.
+            Experience.get(userKey)
+                .then(result => {
+
+                    // Validate result.
+                    if (result.data.success) {
+
+                        result.data.data.map((item, index) => {
+                            return (
+                                expItems.push(<ExperienceItem
+                                    key={index} slug={item.slug} position={item.position}
+                                    role={item.role} dateStart={`${item.date_start_month} ${item.date_start_year}`}
+                                    dateEnd={item.date_end_cb ? '' : `${item.date_end_month} ${item.date_end_year}`}
+                                    company={item.company} industry={item.industry}/>)
+                            )
+                        })
+
+                        setHtmlLayout(expItems)
+                    }
+
+                    setIsLoaded(true)
+                })
+        }
+    }, [userKey])
+
     return (
         <GlobalDashboardPage title={'Pengalaman'} addNewLink={'/akun/pengalaman/tambah'}>
             <ListItems>
-                <ExperienceItem
-                    slug={'asdasd'} position={'Junior .Net Developer'} role={'Staff'} dateStart={'Jul 2013'}
-                    location={'Malang'} company={'PT. Alfasoft'} industry={'Konsultan IT'} dateEnd={'Mar 2014'}/>
-                <ExperienceItem
-                    slug={'asert'} position={'Front-end Developer'} role={'Staff'} dateStart={'Sep 2014'}
-                    location={'Malang'} company={'CV. Kodesfoty'} industry={'Konsultan IT'} dateEnd={'Apr 2016'}/>
-                <ExperienceItem
-                    slug={'sfdk'} position={'WordPress Developer'} role={'Staff'} dateStart={'Apr 2016'}
-                    location={'Yogyakarta'} company={'Harnods'} industry={'Konsultan IT'} dateEnd={'Feb 2019'}/>
-                <ExperienceItem
-                    slug={'moipasd'} position={'WordPress Developer'} role={'Staff'} dateStart={'Feb 2019'}
-                    location={'Yogyakarta'} company={'PT. SoftwareSeni'} industry={'Konsultan IT'}/>
+                {isLoaded ? htmlLayout : <FullLoading/>}
             </ListItems>
         </GlobalDashboardPage>
     )
