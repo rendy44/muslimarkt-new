@@ -31,11 +31,11 @@ const FormExperience = (props) => {
         // Check whether currently is editing or not.
         if (props.slug) {
             setIsEdit(true)
+            setIsLoading(true)
 
             // Get details.
             Experience.detail(userKey, props.slug)
                 .then(result => {
-                    console.log(result)
 
                     // Validate result.
                     if (result.data.success) {
@@ -52,6 +52,11 @@ const FormExperience = (props) => {
                         // Force redirect.
                         router.push('/akun/pengalaman')
                     }
+
+                    setIsLoading(false)
+                })
+                .catch(err => {
+                    console.log(err)
                 })
         }
     }, [props])
