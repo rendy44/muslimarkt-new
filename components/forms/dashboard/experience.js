@@ -44,9 +44,7 @@ const FormExperience = (props) => {
                         setDataDb(result.data.data)
 
                         // Check whether cb is checked or not.
-                        if (result.data.data.date_end_cb) {
-                            setIsCurrentJob(true)
-                        }
+                        setIsCurrentJob(!!result.data.data.date_end_cb)
                     } else {
 
                         // Force redirect.

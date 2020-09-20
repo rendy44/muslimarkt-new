@@ -1,10 +1,9 @@
 import {GlobalDashboardPage} from "../../../components/dashboard";
-import {ItemPlaceholder, ListItems} from "../../../components/dashboard/list";
+import {ListItems} from "../../../components/dashboard/list";
 import ExperienceItem from "../../../components/dashboard/experience";
 import {useState, useContext, useEffect} from 'react'
 import UserContext from "../../../components/context/user";
 import Experience from "../../../src/experience";
-import {PlaceholderExperienceItem} from "../../../components/placeholder";
 import {FullLoading} from "../../../components/global";
 
 export default function PageExperience() {
