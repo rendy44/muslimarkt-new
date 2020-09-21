@@ -4,9 +4,10 @@ import Link from "next/link";
 import DeleteBinLineIcon from "remixicon-react/DeleteBinLineIcon";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
-import {useEffect, useState} from "react";
+import {useEffect, useState, useContext} from "react";
 import {FullLoading} from "../global";
 import Connector from "../../src/connector";
+import UserContext from "../context/user";
 
 const ListItems = (props) => {
     return (
@@ -29,6 +30,7 @@ const Item = (props) => {
     const [isDeleted, setIsDeleted] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const delAlert = withReactContent(Swal)
+    const {userKey} = useContext(UserContext)
     useEffect(() => {
         setIsDeleted(props.isDeleted)
     }, [props])
@@ -47,6 +49,29 @@ const Item = (props) => {
 
                     // Set to loading,
                     setIsLoading(true)
+
+                    new Connector(`${props.deleteEndpoint}/${props.slug}/${userKey}`, 'delete')
+                        .then(requestResult => {
+                            if (requestResult.data.success) {
+
+                                // Set delete state.
+                                setIsDeleted(true)
+                            } else {
+
+                                // Reset loading.
+                                setIsLoading(false)
+
+                                // Instance a new alert.
+                                delAlert.fire({
+                                    icon: 'error',
+                                    text: requestResult.data.message
+                                })
+
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        })
                 }
             })
     }
@@ -79,7 +104,9 @@ Item.propTypes = {
     isDeleted: PropTypes.bool,
     linkTo: PropTypes.string.isRequired,
     linkAs: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    deleteEndpoint: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired
 }
 ItemInfo.propTypes = {
     label: PropTypes.string,

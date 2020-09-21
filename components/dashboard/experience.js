@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 
 const ExperienceItem = (props) => {
     return (
-        <Item linkTo={'/akun/pengalaman/[slug]'} title={props.position} linkAs={`/akun/pengalaman/${props.slug}`}>
+        <Item linkTo={'/akun/pengalaman/[slug]'} title={props.position} linkAs={`/akun/pengalaman/${props.slug}`}
+              slug={props.slug} deleteEndpoint={'experience'}>
             <div className={styles.experience}>
                 <p className={styles.company}>{props.company}</p>
                 <p className={styles.period}>{props.dateStart} - {props.dateEnd ? props.dateEnd : 'sekarang'}</p>

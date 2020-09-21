@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 
 const EducationItem = (props) => {
     return (
-        <Item linkTo={'/akun/pendidikan/[slug]'} title={props.institute} linkAs={`/akun/pendidikan/${props.slug}`}>
+        <Item linkTo={'/akun/pendidikan/[slug]'} title={props.institute} linkAs={`/akun/pendidikan/${props.slug}`}
+              slug={props.slug} deleteEndpoint={'education'}>
             <div className={styles.education}>
                 <p className={styles.qualification}>{props.qualification}<span>{props.dateGraduation}</span></p>
                 <p className={styles.major}>{props.major}</p>
