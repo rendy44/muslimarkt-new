@@ -16,4 +16,8 @@ export default class Experience {
     static update(key, slug, args) {
         return new Connector('experience/' + slug + '/' + key, 'put', args)
     }
+
+    static delete(key, slug) {
+        return new Connector('experience/' + slug + '/' + key, 'delete')
+    }
 }
