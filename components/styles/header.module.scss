@@ -221,8 +221,9 @@
               opacity: 0;
               background-color: $white;
               padding: 0.5rem 0;
-              @include customBoxShadow(0 .5rem 1rem rgba($black, .1));
+              @include customBoxShadow(0 .5rem 2rem rgba($black, .1));
               @include transition(opacity .2s ease);
+              @include borderRadius(.4rem);
 
               li {
                 display: block;
@@ -231,7 +232,7 @@
                   display: flex;
                   align-items: center;
                   padding: .5rem 1rem;
-                  font-size: 1rem;
+                  font-size: .9rem;
                   @include defaultTransition;
 
                   svg {
