@@ -19,6 +19,8 @@ const GlobalDashboardPage = (props) => {
         setIsOpened(!isOpened)
     }
 
+    const addNewLbl = <><AddLineIcon
+        sizs={32}/><span>{props.addNewLabel ? props.addNewLabel : 'Tambah'}</span></>
     return (
         <GlobalPage docTitle={props.title} isPlainHeader={true} isDashboard={true} isNoFooter={true} isOpen={isOpened}
                     onClick={onClick}>
@@ -27,8 +29,10 @@ const GlobalDashboardPage = (props) => {
                 <div className={styles.center}>
                     <div className={styles.top}>
                         {!props.isHideTitle && <h1>{props.title}</h1>}
-                        {props.addNewLink && <Link
-                            href={props.addNewLink}><a><AddLineIcon sizs={32}/><span>Tambah</span></a></Link>}
+                        {props.addNewLink && !props.addNewOnClick &&
+                        <Link href={props.addNewLink}><a>{addNewLbl}</a></Link>}
+                        {!props.addNewLink && props.addNewOnClick &&
+                        <button onClick={props.addNewOnClick}>{addNewLbl}</button>}
                     </div>
                     {props.children}
                 </div>
@@ -74,7 +78,8 @@ GlobalDashboardPage.propTypes = {
     title: PropTypes.string.isRequired,
     isHideTitle: PropTypes.bool,
     addNewLink: PropTypes.string,
-    addNewLabel: PropTypes.string
+    addNewLabel: PropTypes.string,
+    addNewOnClick: PropTypes.func
 }
 LinkItem.propTypes = {
     isTitle: PropTypes.bool,

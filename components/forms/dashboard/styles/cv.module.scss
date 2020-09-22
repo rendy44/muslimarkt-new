@@ -1,0 +1,16 @@
+@import "styles/mainUtil";
+
+form.frmAdd {
+  label {
+    margin: 0;
+    text-align: center;
+
+    svg {
+      margin: auto;
+    }
+  }
+
+  input[type=file] {
+    display: none;
+  }
+}

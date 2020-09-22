@@ -71,7 +71,8 @@
         font-size: 1.5rem;
       }
 
-      a {
+      a, button {
+        cursor: pointer;
         z-index: 999999;
         position: fixed;
         bottom: 2rem;
@@ -135,7 +136,7 @@
           font-size: 1.75rem;
         }
 
-        a {
+        a, button {
           position: relative;
           bottom: unset;
           right: unset;

@@ -25,7 +25,15 @@ const ItemPlaceholder = (props) => {
         </div>
     )
 }
-
+const ItemWrapper = (props) => {
+    return (
+        <div className={styles.item}>
+            <div className={styles.inner}>
+                {props.children}
+            </div>
+        </div>
+    )
+}
 const Item = (props) => {
     const [isDeleted, setIsDeleted] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -76,17 +84,21 @@ const Item = (props) => {
             })
     }
     return (!isDeleted && <div className={props.extraClass ? `${props.extraClass} ${styles.item}` : styles.item}>
-            {isLoading ? <FullLoading/> : <div className={styles.inner}>
-                <div className={styles.title}>
-                    <Link href={props.linkTo} as={props.linkAs}><a>{props.title}</a></Link>
-                </div>
-                <div className={styles.action}>
-                    <button onClick={onClick}><DeleteBinLineIcon size={16}/></button>
-                </div>
-                <div className={styles.body}>
-                    {props.children}
-                </div>
-            </div>}
+            {isLoading ? <FullLoading/> :
+                <div className={props.isStandOut ? `${styles.inner} ${styles.odd}` : styles.inner}>
+                    <div className={styles.title}>
+                        {props.linkAs ? <Link href={props.linkTo} as={props.linkAs}><a>{props.title}</a></Link> :
+                            <a href={props.linkTo} target={'_blank'} rel={'nofollow'}>{props.title}</a>}
+                    </div>
+                    <div className={styles.action}>
+                        {props.isWithMoreAction && props.moreAction && props.moreActionIcon &&
+                        <button onClick={props.moreAction}>{props.moreActionIcon}</button>}
+                        {!props.isHideDelete && <button onClick={onClick}><DeleteBinLineIcon size={16}/></button>}
+                    </div>
+                    <div className={styles.body}>
+                        {props.children}
+                    </div>
+                </div>}
         </div>
     )
 }
@@ -106,11 +118,16 @@ Item.propTypes = {
     linkAs: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     deleteEndpoint: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired
+    slug: PropTypes.string.isRequired,
+    isHideDelete: PropTypes.bool,
+    isStandOut: PropTypes.bool,
+    isWithMoreAction: PropTypes.bool,
+    moreAction: PropTypes.func,
+    moreActionIcon: PropTypes.object
 }
 ItemInfo.propTypes = {
     label: PropTypes.string,
     value: PropTypes.string
 }
 
-export {ListItems, Item, ItemInfo, ItemPlaceholder}
+export {ListItems, Item, ItemWrapper, ItemInfo, ItemPlaceholder}

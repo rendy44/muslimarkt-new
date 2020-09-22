@@ -306,4 +306,4 @@ ToggleItem.propTypes = {
     onChange: PropTypes.func
 }
 
-export {Form, TextBox, TextArea, DropDown, DateDropDown, IdInput, ImageToggle, ToggleItem}
+export {Form, TextBox, TextArea, DropDown, DateDropDown, IdInput, ImageToggle, ToggleItem, FormGroup}
