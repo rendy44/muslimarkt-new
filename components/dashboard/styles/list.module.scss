@@ -50,7 +50,6 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: $danger;
           color: $white;
           border: 1px solid rgba($black, .1);
           margin-bottom: .5rem;
@@ -70,6 +69,10 @@
 
           &:first-child {
             background-color: $success;
+          }
+
+          &.del {
+            background-color: $danger;
           }
         }
       }

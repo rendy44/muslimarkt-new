@@ -25,7 +25,7 @@ const Form = (props) => {
                 <Button isSubmit={true}
                         label={props.isLoading ? 'Loading...' : (props.submitLabel ? props.submitLabel : 'Submit')}
                         isDisabled={props.isDisabled || props.isLoading}
-                        rightIcon={props.useArrowIcon ? <ArrowRightLineIcon size={20}/> : <></>}/>
+                        rightIcon={props.useArrowIcon ? <ArrowRightLineIcon size={20}/> : <></>} isSmall={true}/>
                 {props.otherLink &&
                 <LinkButton href={props.otherLink} label={props.otherLabel ? props.otherLabel : 'Batal'}
                             variant={props.otherVariant ? props.otherVariant : 'outline-invert'}/>}

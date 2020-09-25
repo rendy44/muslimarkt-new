@@ -16,7 +16,7 @@ export default function PageAccount() {
                                 <p>Silahkan lengkapi profil Anda untuk mendapatkan kesempatan lebih besar untuk
                                     mendepatkan
                                     pekerjaan impian Anda.</p>
-                                <p><LinkButton href={'/akun/edit'} label={'Perbarui Profil'} variant={'warning'}/></p>
+                                <p><LinkButton href={'/akun/edit'} label={'Perbarui Profil'} variant={'warning'} isSmall={true}/></p>
                             </div>
                             <div className={'col-sm-1-2 col-md-2-5'}>
                                 <p><strong>Lainnya:</strong></p>

@@ -93,7 +93,7 @@ const Item = (props) => {
                     <div className={styles.action}>
                         {props.isWithMoreAction && props.moreAction && props.moreActionIcon &&
                         <button onClick={props.moreAction}>{props.moreActionIcon}</button>}
-                        {!props.isHideDelete && <button onClick={onClick}><DeleteBinLineIcon size={16}/></button>}
+                        {!props.isHideDelete && <button className={styles.del} onClick={onClick}><DeleteBinLineIcon size={16}/></button>}
                     </div>
                     <div className={styles.body}>
                         {props.children}
