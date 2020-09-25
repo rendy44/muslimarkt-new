@@ -9,6 +9,7 @@ import SettingsLineIcon from "remixicon-react/SettingsLineIcon";
 import LogoutCircleRLineIcon from "remixicon-react/LogoutCircleRLineIcon";
 import UserContext from "./context/user";
 import {NavName, NavPhoto} from "./placeholder";
+import BuildingLineIcon from "remixicon-react/BuildingLineIcon";
 
 const Toggle = (props) => {
     return (
@@ -23,7 +24,7 @@ const TopNav = (props) => {
     const [isOpened, setIsOpened] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navStyle = props.isDashboard ? `${styles.nav} ${styles.dashboard}` : styles.nav
-    const {userKey, userData} = useContext(UserContext);
+    const {userKey, userType, userData} = useContext(UserContext);
     useEffect(() => {
 
         // Check user key availability.
@@ -65,16 +66,25 @@ const TopNav = (props) => {
                                     </Link>
                                 </div>
                                 <ul className={isOpened ? styles.open : ''}>
-                                    <li>
-                                        <Link href={'/profil'}>
-                                            <a><UserLineIcon size={16}/><span>Lihat profil</span></a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href={'/akun'}>
-                                            <a><SettingsLineIcon size={16}/><span>Akun saya</span></a>
-                                        </Link>
-                                    </li>
+                                    {'employer' === userType && <>
+                                        <li>
+                                            <Link href={'/perusahaan'}>
+                                                <a><SettingsLineIcon size={16}/><span>Pengaturan</span></a>
+                                            </Link>
+                                        </li>
+                                    </>}
+                                    {'employee' === userType && <>
+                                        <li>
+                                            <Link href={'/profil'}>
+                                                <a><UserLineIcon size={16}/><span>Lihat profil</span></a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href={'/akun'}>
+                                                <a><SettingsLineIcon size={16}/><span>Akun saya</span></a>
+                                            </Link>
+                                        </li>
+                                    </>}
                                     <li>
                                         <Link href={'/keluar'}>
                                             <a><LogoutCircleRLineIcon size={16}/><span>Keluar</span></a>
