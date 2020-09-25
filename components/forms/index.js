@@ -28,7 +28,7 @@ const Form = (props) => {
                         rightIcon={props.useArrowIcon ? <ArrowRightLineIcon size={20}/> : <></>} isSmall={true}/>
                 {props.otherLink &&
                 <LinkButton href={props.otherLink} label={props.otherLabel ? props.otherLabel : 'Batal'}
-                            variant={props.otherVariant ? props.otherVariant : 'outline-invert'}/>}
+                            variant={props.otherVariant ? props.otherVariant : 'outline-invert'} isSmall={true}/>}
             </div>
         </form>
     )
