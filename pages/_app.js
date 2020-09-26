@@ -124,6 +124,10 @@ export default function MyApp({Component, pageProps}) {
                                 // Save loading state.
                                 setIsLoaded(true)
                             }
+                        } else {
+
+                            // Save loading state.
+                            setIsLoaded(true)
                         }
 
                     } else {
@@ -140,12 +144,16 @@ export default function MyApp({Component, pageProps}) {
                     console.log(err)
                 })
         } else {
+
             // Detect if current page is not a free access page.
             if (!freePage.includes(router.pathname)) {
 
                 // Redirect to login page.
                 router.push('/masuk')
             }
+
+            // Save loading state.
+            setIsLoaded(true)
         }
     }, [userKey])
     return (isLoaded ?
