@@ -146,7 +146,7 @@ export default function MyApp({Component, pageProps}) {
         } else {
 
             // Detect if current page is not a free access page.
-            if (!freePage.includes(router.pathname)) {
+            if (!freePage.includes(router.pathname) && 'lowongan' !== parentPath) {
 
                 // Redirect to login page.
                 router.push('/masuk')
