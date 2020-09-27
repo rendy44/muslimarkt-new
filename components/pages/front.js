@@ -11,7 +11,7 @@ const Hero = () => {
             <h1 className={styles.title}>Portal Pekerjaan<br/>Kaum Muslimin</h1>
             <p className={styles.lead}>Insya Allah berkah dan amanah</p>
             <div className={styles.action}>
-                <LinkButton href={'/semua-lowongan'} label={'Telusuri Lowongan'} variant={'warning'} rightIcon={true}/>
+                <LinkButton href={'/lowongan'} label={'Telusuri Lowongan'} variant={'warning'} rightIcon={true}/>
             </div>
         </Section>
     )

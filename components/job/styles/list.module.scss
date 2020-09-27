@@ -8,5 +8,120 @@
 }
 
 .results {
+  padding: 2rem 0;
   background-color: $light;
+}
+
+.jobItems {
+  display: flex;
+  flex-direction: column;
+
+  .job {
+    margin-bottom: 1rem;
+
+    .inner {
+      background-color: $white;
+      border: 1px solid rgba($black, .1);
+      padding: 1rem;
+      @include borderRadius(.5rem);
+      @include defaultTransition;
+
+      .block {
+        display: flex;
+        align-items: start;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba($black, .1);
+
+        .logo {
+          width: 60px;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        .detail {
+          width: calc(100% - 60px);
+          padding-left: 1rem;
+
+          a.title {
+            h3 {
+              font-weight: 600;
+              line-height: 1.4;
+              margin-bottom: .5rem;
+            }
+          }
+
+          p.company {
+            font-weight: 500;
+            line-height: 1.4;
+            color: $main;
+            margin: 0 0 1rem;
+          }
+
+          p.location {
+            font-size: .9rem;
+            margin: 0 0 .5rem;
+            display: flex;
+            align-items: center;
+
+            svg {
+              color: grey;
+              margin-right: 1rem;
+            }
+          }
+
+          p.salary {
+            font-size: .9rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+
+            svg {
+              color: grey;
+              margin-right: 1rem;
+            }
+          }
+        }
+      }
+
+      .update {
+        padding-top: 1rem;
+
+        > p {
+          font-size: .8rem;
+          margin: 0;
+          display: flex;
+          align-items: center;
+
+          svg {
+            color: grey;
+            margin-right: .5rem;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .inner {
+        @include boxShadow;
+      }
+    }
+  }
+
+  @include breakpoint(768px) {
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .job {
+      width: 50%;
+      padding: 0 .5rem;
+    }
+  }
+
+  @include breakpoint(992px) {
+    .job {
+      width: 33.333333333%;
+    }
+  }
 }
