@@ -1,0 +1,12 @@
+@import "styles/mainUtil";
+
+.filter {
+  padding: 2rem 0;
+  background-color: $white;
+  border-bottom: 1px solid rgba($black, .1);
+  @include boxShadow;
+}
+
+.results {
+  background-color: $light;
+}

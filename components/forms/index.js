@@ -21,7 +21,7 @@ const Form = (props) => {
             <div className={styles.fields}>
                 {props.children}
             </div>
-            <div className={styles.action}>
+            {!props.isNoAction && <div className={styles.action}>
                 <Button isSubmit={true}
                         label={props.isLoading ? 'Loading...' : (props.submitLabel ? props.submitLabel : 'Submit')}
                         isDisabled={props.isDisabled || props.isLoading}
@@ -29,7 +29,7 @@ const Form = (props) => {
                 {props.otherLink &&
                 <LinkButton href={props.otherLink} label={props.otherLabel ? props.otherLabel : 'Batal'}
                             variant={props.otherVariant ? props.otherVariant : 'outline-invert'} isSmall={true}/>}
-            </div>
+            </div>}
         </form>
     )
 }
@@ -163,8 +163,9 @@ const DateDropDown = (props) => {
                     </div>
                     {props.isWithCheckbox && <div className={styles.cb}>
                         <input id={`${props.name}_cb`} name={`${props.name}_cb`} value={'yes'} type={'checkbox'}
-                               onChange={props.onChangeCheckbox} ref={props.reference} checked={props.isDisabled}/> <label
-                        htmlFor={`${props.name}_cb`}>{props.labelCheckbox}</label>
+                               onChange={props.onChangeCheckbox} ref={props.reference} checked={props.isDisabled}/>
+                        <label
+                            htmlFor={`${props.name}_cb`}>{props.labelCheckbox}</label>
                     </div>}
                 </div>
             </div>
@@ -243,7 +244,8 @@ Form.propTypes = {
     otherLabel: PropTypes.string,
     otherVariant: PropTypes.string,
     isDisabled: PropTypes.bool,
-    useArrowIcon: PropTypes.bool
+    useArrowIcon: PropTypes.bool,
+    isNoAction: PropTypes.bool
 }
 IdInput.propTypes = {
     name: PropTypes.string.isRequired,

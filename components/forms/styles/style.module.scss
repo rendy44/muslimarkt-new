@@ -92,6 +92,10 @@
         @include borderBottomRightRadius(.5rem);
       }
     }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   .imageToggle {
@@ -177,6 +181,8 @@
   }
 
   .action {
+    margin-top: 2rem;
+
     button {
       margin-right: 1rem;
     }
