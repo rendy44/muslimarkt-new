@@ -8,11 +8,11 @@ import TwitterLineIcon from "remixicon-react/TwitterLineIcon";
 import YoutubeLineIcon from "remixicon-react/YoutubeLineIcon";
 import LinkedinLineIcon from "remixicon-react/LinkedinLineIcon";
 import LinksLineIcon from "remixicon-react/LinksLineIcon";
-import FsLightbox from 'fslightbox-react';
 import {useState} from "react";
 import {Button, LinkButton} from "../button";
 import HeartLineIcon from "remixicon-react/HeartLineIcon";
 import HeartFillIcon from "remixicon-react/HeartFillIcon";
+import {Slider, SliderItem} from "../slider";
 
 const CompanyOverview = (props) => {
     return (
@@ -60,27 +60,21 @@ const ApplyAction = (props) => {
     )
 }
 const CompanyGallery = (props) => {
-    const [openSlide, setOpenSlide] = useState(false)
+    const [page, setPage] = useState(1)
+
+    const onChangePage = (page) => {
+        setPage(page)
+    }
     return (
-        <>
-            <FsLightbox
-                toggler={openSlide}
-                sources={props.sources}
-            />
-            <ul className={styles.gallery}>
-                {props.sources.map((gal, index) => {
-                    return (
-                        <li key={index}>
-                            <a onClick={() => {
-                                setOpenSlide(!openSlide)
-                            }}>
-                                <img src={gal} alt={'Galery'}/>
-                            </a>
-                        </li>
-                    )
-                })}
-            </ul>
-        </>
+        <Slider onChangePage={onChangePage}>
+            {props.sources.map((gal, index) => {
+                return (
+                    <SliderItem key={index} isActive={index === page - 1}>
+                        <img src={gal} alt={'Galery'}/>
+                    </SliderItem>
+                )
+            })}
+        </Slider>
     )
 }
 const CardBlock = (props) => {
