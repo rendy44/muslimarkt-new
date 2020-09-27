@@ -137,6 +137,48 @@
   }
 }
 
+.applyAction {
+  display: flex;
+  align-items: center;
+
+  > a {
+    margin-right: .5rem;
+  }
+
+  > button {
+    height: 48px;
+    width: 48px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $white;
+    color: $danger !important;
+  }
+}
+
+.actionDesktop {
+  display: none;
+  border-bottom: 1px solid rgba($black, .1);
+  @include breakpoint(768px) {
+    display: flex;
+    padding: 1rem 1rem 1.5rem;
+  }
+}
+
+.actionMobile {
+  padding: 1rem 0;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  border-bottom: 1px solid rgba($black, .1);
+  z-index: 2;
+
+  @include breakpoint(768px) {
+    display: none;
+  }
+}
+
 .cardBlock {
   background-color: $white;
   margin-bottom: 1rem;

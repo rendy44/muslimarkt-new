@@ -10,6 +10,9 @@ import LinkedinLineIcon from "remixicon-react/LinkedinLineIcon";
 import LinksLineIcon from "remixicon-react/LinksLineIcon";
 import FsLightbox from 'fslightbox-react';
 import {useState} from "react";
+import {Button, LinkButton} from "../button";
+import HeartLineIcon from "remixicon-react/HeartLineIcon";
+import HeartFillIcon from "remixicon-react/HeartFillIcon";
 
 const CompanyOverview = (props) => {
     return (
@@ -33,6 +36,26 @@ const CompanyOverview = (props) => {
                     <li>Pendidikan<span>Diploma (D3)</span></li>
                 </ul>
             </div>
+        </Section>
+    )
+}
+const ActionButton = (props) => {
+    const [isLiked, setIsLiked] = useState(false)
+    const like = (e) => {
+        setIsLiked(!isLiked)
+    }
+    return (
+        <div className={styles.applyAction}>
+            <LinkButton href={'#'} label={'Lamar'} variant={'success'}/>
+            <Button label={isLiked ? <HeartFillIcon size={20}/> : <HeartLineIcon size={20}/>}
+                    variant={'outline-invert'} onClick={like}/>
+        </div>
+    )
+}
+const ApplyAction = (props) => {
+    return (
+        <Section id={'apply'} extraClass={styles.actionMobile}>
+            <ActionButton/>
         </Section>
     )
 }
@@ -61,8 +84,9 @@ const CompanyGallery = (props) => {
     )
 }
 const CardBlock = (props) => {
+    const cssClass = props.extraClass ? `${styles.cardBlock} ${props.extraClass}` : styles.cardBlock
     return (
-        <div className={props.isTransparentMobile ? `${styles.cardBlock} ${styles.transparent}` : styles.cardBlock}>
+        <div className={props.isTransparentMobile ? `${cssClass} ${styles.transparent}` : cssClass}>
             {props.title && <div className={styles.title}><h3>{props.title}</h3></div>}
             <div className={styles.body}>{props.children}</div>
         </div>
@@ -106,6 +130,9 @@ const JobDetail = (props) => {
                     </CardBlock>
                 </div>
                 <div className={styles.sidebar}>
+                    <div className={styles.actionDesktop}>
+                        <ActionButton/>
+                    </div>
                     <CardBlock isTransparentMobile={true} title={'Tentang Perusahaan'}>
                         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
                             Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
@@ -167,10 +194,11 @@ const JobDetail = (props) => {
 
 CardBlock.propTypes = {
     isTransparentMobile: PropTypes.bool,
-    title: PropTypes.string
+    title: PropTypes.string,
+    extraClass: PropTypes.string
 }
 CompanyGallery.propTypes = {
     sources: PropTypes.array
 }
 
-export {CompanyOverview, JobDetail}
+export {CompanyOverview, ApplyAction, JobDetail}

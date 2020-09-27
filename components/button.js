@@ -9,6 +9,7 @@ const Button = (props) => {
     const isSmallCss = props.isSmall ? styles.small : ''
     return (
         <button
+            onClick={props.onClick}
             className={`${styles.button} ${variant} ${isSmallCss}`}
             type={props.isSubmit ? 'submit' : 'button'}
             disabled={props.isDisabled}>
@@ -32,10 +33,11 @@ const LinkButton = (props) => {
 Button.propTypes = {
     isSubmit: PropTypes.bool,
     variant: PropTypes.string,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.any.isRequired,
     isDisabled: PropTypes.bool,
     rightIcon: PropTypes.object,
-    isSmall: PropTypes.bool
+    isSmall: PropTypes.bool,
+    onClick: PropTypes.func
 }
 LinkButton.propTypes = {
     variant: PropTypes.string,
