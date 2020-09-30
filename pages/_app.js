@@ -162,6 +162,7 @@ export default function MyApp({Component, pageProps}) {
                 userData: userData,
                 userKey: userKey,
                 userType: userType,
+                saveUserData: saveUserData,
                 saveUserKey: saveUserKey,
                 saveUserType: saveUserType,
                 signOut: signOut

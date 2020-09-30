@@ -5,6 +5,10 @@ export default class User {
         return new Connector('register', 'post', args)
     }
 
+    static login(args) {
+        return new Connector('login', 'post', args)
+    }
+
     static activate(key) {
         return new Connector('validate/' + key, 'post')
     }
