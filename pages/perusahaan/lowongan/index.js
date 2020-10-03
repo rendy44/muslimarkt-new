@@ -1,7 +1,10 @@
-import { GlobalDashboardPage } from "../../../components/dashboard";
+import {GlobalDashboardPage} from "../../../components/dashboard";
 
 export default function PageAdminJob(props) {
     return (
-        <GlobalDashboardPage title={'Lowongan'} isEmployer={true}>Yes</GlobalDashboardPage>
+        <GlobalDashboardPage title={'Lowongan'} isEmployer={true}
+                             addNewLink={'/perusahaan/lowongan/tambah'}>
+            Yaa
+        </GlobalDashboardPage>
     )
 }
