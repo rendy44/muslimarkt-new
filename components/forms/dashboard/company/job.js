@@ -10,7 +10,7 @@ const FormJob = (props) => {
     const onSubmit = (data, e) => {
 
     }
-    return <Form onSubmit={handleSubmit(onSubmit)}>
+    return <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Simpan'}>
         <TextBox name={'position'} type={'text'} reference={register({required: true})} errorsObj={errors}
                  label={'Posisi'}
                  placeholder={'Posisi pekerjaan'} icon={<SuitcaseLineIcon size={32}/>}/>
