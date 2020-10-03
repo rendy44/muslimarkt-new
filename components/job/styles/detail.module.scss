@@ -140,6 +140,7 @@
 .applyAction {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   > a {
     margin-right: .5rem;
@@ -152,8 +153,25 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: $white;
-    color: $danger !important;
+    background-color: $warning;
+    color: $white !important;
+    z-index: 999999;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    @include boxShadow;
+  }
+
+  @include breakpoint(992px) {
+    > button {
+      color: $danger !important;
+      background-color: $white;
+      box-shadow: none !important;
+      position: relative;
+      bottom: unset;
+      right: unset;
+      z-index: unset;
+    }
   }
 }
 
@@ -243,7 +261,7 @@
   background-color: $light;
   padding: 2rem 0;
 
-  .inner {
+  .grid {
     display: flex;
     flex-direction: column;
 
@@ -331,17 +349,17 @@
   }
 
   @include breakpoint(768px) {
-    .inner {
+    .grid {
       flex-direction: row;
       position: relative;
 
       .content {
-        width: 66.666666667%;
+        width: 65%;
         padding-right: 1rem;
       }
 
       .sidebar {
-        width: 33.333333333%;
+        width: 35%;
         position: sticky;
         position: -webkit-sticky;
         top: 100px;
@@ -351,6 +369,18 @@
           padding-left: 1rem;
           margin-bottom: 0;
         }
+      }
+    }
+  }
+
+  @include breakpoint(992px) {
+    .grid {
+      .content {
+        width: 66.666666667%;
+      }
+
+      .sidebar {
+        width: 33.333333333%;
       }
     }
   }

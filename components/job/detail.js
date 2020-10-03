@@ -46,7 +46,7 @@ const ActionButton = (props) => {
     }
     return (
         <div className={styles.applyAction}>
-            <LinkButton href={'#'} label={'Lamar'} variant={'success'}/>
+            <LinkButton href={'#'} label={'Lamar Sekarang'} variant={'success'}/>
             <Button label={isLiked ? <HeartFillIcon size={20}/> : <HeartLineIcon size={20}/>}
                     variant={'outline-invert'} onClick={like}/>
         </div>
@@ -89,7 +89,7 @@ const CardBlock = (props) => {
 const JobDetail = (props) => {
     return (
         <Section id={'jobDesc'} extraClass={styles.jobDesc}>
-            <div className={styles.inner}>
+            <div className={styles.grid}>
                 <div className={styles.content}>
                     <CardBlock title={'Deskripsi Pekerjaan'}>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
