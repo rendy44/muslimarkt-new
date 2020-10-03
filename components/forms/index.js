@@ -46,8 +46,11 @@ const TextBox = (props) => {
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
-                <input defaultValue={props.value} id={props.name} name={props.name} type={props.type}
-                       ref={props.reference} placeholder={props.placeholder}/>
+                <div className={styles.multi}>
+                    {props.prefix && <span className={styles.prefix}>{props.prefix}</span>}
+                    <input defaultValue={props.value} id={props.name} name={props.name} type={props.type}
+                           ref={props.reference} placeholder={props.placeholder}/>
+                </div>
             </div>
         </FormGroup>
     )
@@ -84,11 +87,14 @@ const DropDown = (props) => {
             {props.icon && <div className={styles.icon}>{props.icon}</div>}
             <div className={styles.input}>
                 {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
-                <select id={props.name} onChange={onChange} ref={props.reference}
-                        value={value}
-                        name={props.name}>
-                    <DropDownValues values={props.values}/>
-                </select>
+                <div className={styles.multi}>
+                    <select id={props.name} onChange={onChange} ref={props.reference}
+                            value={value}
+                            name={props.name}>
+                        <DropDownValues values={props.values}/>
+                    </select>
+                    {props.affix && <span>{props.affix}</span>}
+                </div>
             </div>
         </FormGroup>
     )
@@ -264,7 +270,8 @@ TextBox.propTypes = {
     type: PropTypes.string.isRequired,
     reference: PropTypes.func.isRequired,
     errorsObj: PropTypes.object.isRequired,
-    value: PropTypes.string
+    value: PropTypes.string,
+    prefix: PropTypes.string
 }
 TextArea.propTypes = {
     name: PropTypes.string.isRequired,
@@ -286,6 +293,7 @@ DropDown.propTypes = {
     errorsObj: PropTypes.object.isRequired,
     values: PropTypes.array.isRequired,
     value: PropTypes.string,
+    affix: PropTypes.string
 }
 DateDropDown.propTypes = {
     name: PropTypes.string.isRequired,

@@ -26,6 +26,10 @@
           display: flex;
           align-items: center;
 
+          span.prefix {
+            margin-right: .5rem;
+          }
+
           .inner {
             display: flex;
 
