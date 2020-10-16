@@ -11,12 +11,13 @@
       border-bottom: none;
       position: relative;
       display: flex;
-      align-items: center;
+      align-items: start;
       @include defaultTransition;
 
       .icon {
         margin-right: 1.5rem;
         color: grey;
+        margin-top: .5rem;
       }
 
       .input {
@@ -53,6 +54,16 @@
             label {
               margin: 0 0 0 .5rem;
             }
+          }
+        }
+
+        span.desc {
+          font-size: .8rem;
+          color: grey;
+
+          &:before {
+            content: '*';
+            margin-right: .1rem;
           }
         }
 

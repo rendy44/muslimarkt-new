@@ -51,6 +51,7 @@ const TextBox = (props) => {
                     <input defaultValue={props.value} id={props.name} name={props.name} type={props.type}
                            ref={props.reference} placeholder={props.placeholder}/>
                 </div>
+                {props.description && <span className={styles.desc}>{props.description}</span>}
             </div>
         </FormGroup>
     )
@@ -62,7 +63,7 @@ const TextArea = (props) => {
             <div className={styles.input}>
                 {props.label && <label htmlFor={props.name} className={styles.label}>{props.label}</label>}
                 <textarea id={props.name} name={props.name} ref={props.reference} defaultValue={props.value}
-                          placeholder={props.placeholder}/>
+                          placeholder={props.placeholder} rows={props.rows ? props.rows : 3}/>
             </div>
         </FormGroup>
     )
@@ -271,7 +272,8 @@ TextBox.propTypes = {
     reference: PropTypes.func.isRequired,
     errorsObj: PropTypes.object.isRequired,
     value: PropTypes.string,
-    prefix: PropTypes.string
+    prefix: PropTypes.string,
+    description: PropTypes.string
 }
 TextArea.propTypes = {
     name: PropTypes.string.isRequired,
@@ -280,7 +282,8 @@ TextArea.propTypes = {
     placeholder: PropTypes.string,
     reference: PropTypes.func.isRequired,
     errorsObj: PropTypes.object.isRequired,
-    value: PropTypes.string
+    value: PropTypes.string,
+    rows: PropTypes.number
 }
 DropDownValues.propTypes = {
     values: PropTypes.array.isRequired
