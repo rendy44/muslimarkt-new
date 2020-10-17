@@ -5,6 +5,14 @@ export default class Job {
         return new Connector('job/' + key, 'post', args)
     }
 
+    static frontAll() {
+        return new Connector('vacancy', 'get')
+    }
+
+    static frontDetail(slug) {
+        return new Connector('vacancy/' + slug, 'get')
+    }
+
     static detail(key, slug) {
         return new Connector('job/' + slug + '/' + key, 'get')
     }

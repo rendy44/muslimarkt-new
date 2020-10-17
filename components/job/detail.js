@@ -19,21 +19,21 @@ const CompanyOverview = (props) => {
         <Section id={'compOverview'} extraClass={styles.companyOverview}>
             <div className={styles.inner}>
                 <div className={styles.logo}>
-                    <img src={'/logo.png'} alt={'Logo perusahaan'}/>
+                    <img src={props.logo} alt={'Logo perusahaan'}/>
                 </div>
                 <div className={styles.detail}>
-                    <h1 className={styles.title}>WordPress Developer</h1>
-                    <Link href={'/perusahaan/abc'}><a className={styles.company}>PT. Nama Perusahaan<span
-                        className={styles.location}>Jawa Timur, Indonesia</span></a></Link>
-                    <p className={styles.salary}>Rp 5.000.000 - 9.000.000</p>
+                    <h1 className={styles.title}>{props.position}</h1>
+                    <Link href={'/perusahaan/abc'}><a className={styles.company}>{props.company}<span
+                        className={styles.location}>{props.location}</span></a></Link>
+                    <p className={styles.salary}>{props.salary ? `Rp ${props.salary}` : 'dirahasiakan'}</p>
                 </div>
             </div>
             <div className={styles.extras}>
                 <ul>
-                    <li>Industri<span>Teknologi Informasi</span></li>
-                    <li>Tipe<span>Kontrak</span></li>
-                    <li>Pengalaman<span>2 tahun</span></li>
-                    <li>Pendidikan<span>Diploma (D3)</span></li>
+                    <li>Industri<span>{props.industry}</span></li>
+                    <li>Tipe<span>{props.type}</span></li>
+                    <li>Pengalaman<span>{props.experience}</span></li>
+                    <li>Pendidikan<span>{props.education}</span></li>
                 </ul>
             </div>
         </Section>
@@ -186,6 +186,17 @@ const JobDetail = (props) => {
     )
 }
 
+CompanyOverview.propTypes = {
+    logo: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    company: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    salary: PropTypes.string,
+    industry: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    experience: PropTypes.string.isRequired,
+    education: PropTypes.string.isRequired
+}
 CardBlock.propTypes = {
     isTransparentMobile: PropTypes.bool,
     title: PropTypes.string,

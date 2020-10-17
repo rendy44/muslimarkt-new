@@ -11,7 +11,7 @@
       border-bottom: none;
       position: relative;
       display: flex;
-      align-items: start;
+      align-items: flex-start;
       @include defaultTransition;
 
       .icon {
