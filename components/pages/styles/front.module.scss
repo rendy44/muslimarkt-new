@@ -2,10 +2,15 @@
 
 .hero {
   background-color: $white;
-  height: 400px;
+  //height: 400px;
   text-align: center;
   display: flex;
   align-items: center;
+
+  .bg {
+    position: relative;
+    z-index: 2;
+  }
 
   h1.title {
     color: darken($main, 10%);
@@ -24,11 +29,15 @@
   }
 
   @include breakpoint(768px) {
-    background-image: url('/hero.jpg');
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-size: 65%;
     text-align: left;
+    .bg {
+      padding: 1rem 0;
+      background-color: transparent;
+      background-image: url('/hero2.png');
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      background-size: 60%;
+    }
 
     h1.title {
       font-size: 3.25rem;
@@ -36,9 +45,10 @@
   }
 
   @include breakpoint(992px) {
-    //background-size: 65%;
-    height: calc(100vh - 70px);
     min-height: 500px;
+    .bg {
+      padding: 2rem 0;
+    }
 
     h1.title {
       font-size: 4rem;
@@ -52,7 +62,9 @@
   }
 
   @include breakpoint(1200px) {
-    background-size: inherit;
+    .bg {
+      padding: 4rem 0;
+    }
     h1.title {
       font-size: 5rem;
     }

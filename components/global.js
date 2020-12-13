@@ -41,7 +41,7 @@ const Section = (props) => {
     return (
         <div className={props.extraClass ? `${elmClass} ${props.extraClass}` : elmClass}>
             <div className={'frow-container'}>
-                <div className={styles.inner}>
+                <div className={props.innerExtraClass ? `${styles.inner} ${props.innerExtraClass}` : styles.inner}>
                     {props.title && <div className={props.isTitleCenter ? 'frow text-center' : 'frow row-start'}>
                         <div className={'col-sm-2-3'}><h2 className={styles.title}>{props.title}</h2></div>
                     </div>}
@@ -83,6 +83,7 @@ GenericPage.propTypes = {
 Section.propTypes = {
     id: PropTypes.string.isRequired,
     extraClass: PropTypes.string,
+    innerExtraClass: PropTypes.string,
     title: PropTypes.string,
     isTitleCenter: PropTypes.bool,
     isDark: PropTypes.bool

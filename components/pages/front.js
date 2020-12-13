@@ -7,7 +7,7 @@ import {Slider, SliderItem} from "../slider";
 
 const Hero = () => {
     return (
-        <Section id={'hero'} extraClass={styles.hero}>
+        <Section id={'hero'} extraClass={styles.hero} innerExtraClass={styles.bg}>
             <h1 className={styles.title}>Portal Pekerjaan<br/>Kaum Muslimin</h1>
             <p className={styles.lead}>Insya Allah berkah dan amanah</p>
             <div className={styles.action}>
