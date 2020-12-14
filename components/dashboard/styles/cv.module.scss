@@ -1,6 +1,9 @@
 @import "styles/mainUtil";
 
-.cv {
-  .inner {
+.addWrapper {
+  overflow: visible !important;
+
+  .add {
+    @include boxShadow();
   }
 }

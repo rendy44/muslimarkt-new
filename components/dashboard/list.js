@@ -27,8 +27,8 @@ const ItemPlaceholder = (props) => {
 }
 const ItemWrapper = (props) => {
     return (
-        <div className={styles.item}>
-            <div className={styles.inner}>
+        <div className={props.extraClass ? `${styles.item} ${props.extraClass}` : styles.item}>
+            <div className={props.innerExtraClass ? `${styles.inner} ${props.innerExtraClass}` : styles.inner}>
                 {props.children}
             </div>
         </div>
@@ -93,7 +93,8 @@ const Item = (props) => {
                     <div className={styles.action}>
                         {props.isWithMoreAction && props.moreAction && props.moreActionIcon &&
                         <button onClick={props.moreAction}>{props.moreActionIcon}</button>}
-                        {!props.isHideDelete && <button className={styles.del} onClick={onClick}><DeleteBinLineIcon size={16}/></button>}
+                        {!props.isHideDelete &&
+                        <button className={styles.del} onClick={onClick}><DeleteBinLineIcon size={16}/></button>}
                     </div>
                     <div className={styles.body}>
                         {props.children}
@@ -111,6 +112,10 @@ const ItemInfo = (props) => {
     )
 }
 
+ItemWrapper.propTypes = {
+    extraClass: PropTypes.string,
+    innerExtraClass: PropTypes.string
+}
 Item.propTypes = {
     extraClass: PropTypes.string,
     isDeleted: PropTypes.bool,

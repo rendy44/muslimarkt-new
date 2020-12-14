@@ -21,7 +21,7 @@ const CVFile = (props) => {
 }
 const CVAdd = (props) => {
     return (
-        <ItemWrapper>
+        <ItemWrapper extraClass={styles.addWrapper} innerExtraClass={styles.add}>
             <FormCV/>
         </ItemWrapper>
     )

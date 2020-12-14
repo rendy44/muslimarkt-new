@@ -81,7 +81,8 @@
       }
 
       &.odd {
-        background-color: lighten($success, 63%);
+        background-color: lighten($success, 60%);
+        border-color: $success;
       }
     }
 
