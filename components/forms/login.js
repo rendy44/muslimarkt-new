@@ -1,8 +1,8 @@
-import { useForm } from "react-hook-form";
-import { Form, TextBox } from "./index";
-import { useState, useContext } from "react";
-import { useRouter } from "next/router";
-import { FullLoading } from "../global";
+import {useForm} from "react-hook-form";
+import {Form, TextBox} from "./index";
+import {useState, useContext} from "react";
+import {useRouter} from "next/router";
+import {FullLoading} from "../global";
 import MailLineIcon from "remixicon-react/MailLineIcon";
 import LockPasswordLineIcon from "remixicon-react/LockPasswordLineIcon";
 import UserContext from '../context/user'
@@ -13,9 +13,9 @@ import withReactContent from 'sweetalert2-react-content'
 const FormLogin = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [dataForm, setDataForm] = useState([])
-    const { register, handleSubmit, watch, errors } = useForm();
+    const {register, handleSubmit, watch, errors} = useForm();
     const router = useRouter()
-    const { saveUserData, saveUserKey, saveUserType } = useContext(UserContext)
+    const {saveUserData, saveUserKey, saveUserType} = useContext(UserContext)
 
     const onSubmit = (data) => {
 
@@ -38,8 +38,16 @@ const FormLogin = () => {
                     saveUserKey(result.data.data.user_key)
                     saveUserType(result.data.data.type)
 
+                    // Route destination after logging-in.
+                    let afterLoginPage = '/jenis';
+
+                    // Maybe update rout based on user type.
+                    if (result.data.data.type) {
+                        afterLoginPage = 'employee' === result.data.data.type ? '/akun' : '/perusahaan'
+                    }
+
                     // Send redirection after success login.
-                    router.push('employee' === result.data.data.tyoe ? '/akun' : '/perusahaan')
+                    router.push(afterLoginPage)
                 } else {
 
                     // Instance sweet alert.
@@ -55,15 +63,16 @@ const FormLogin = () => {
             })
     }
 
-    return (isLoading ? <FullLoading /> :
+    return (isLoading ? <FullLoading/> :
         <Form onSubmit={handleSubmit(onSubmit)} submitLabel={'Masuk'} otherLink={'/daftar'} otherLabel={'Daftar'}
-            useArrowIcon={true}>
-            <TextBox name={'email'} icon={<MailLineIcon size={32} />} label={'Alamat email'} type={'email'}
-                reference={register({ required: true })} errorsObj={errors} placeholder={'Contoh: nama@gmail.com'} value={dataForm.email} />
-            <TextBox name={'password'} icon={<LockPasswordLineIcon size={32} />} label={'Kata sandi'}
-                type={'password'}
-                reference={register({ required: true, minLength: 8 })} errorsObj={errors}
-                placeholder={'Minimal 8 digit'} value={dataForm.password} />
+              useArrowIcon={true}>
+            <TextBox name={'email'} icon={<MailLineIcon size={32}/>} label={'Alamat email'} type={'email'}
+                     reference={register({required: true})} errorsObj={errors} placeholder={'Contoh: nama@gmail.com'}
+                     value={dataForm.email}/>
+            <TextBox name={'password'} icon={<LockPasswordLineIcon size={32}/>} label={'Kata sandi'}
+                     type={'password'}
+                     reference={register({required: true, minLength: 8})} errorsObj={errors}
+                     placeholder={'Minimal 8 digit'} value={dataForm.password}/>
         </Form>)
 }
 
