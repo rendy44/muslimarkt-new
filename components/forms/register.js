@@ -10,15 +10,15 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 const FormRegister = () => {
-    const [fieldEmail, setFieldEmail] = useState('')
+    const [dataForm, setDataForm] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const {register, handleSubmit, errors} = useForm();
     const router = useRouter()
 
-    const onEmailChange = (e) => {
-        setFieldEmail(e.target.value)
-    }
     const onSubmit = (data) => {
+
+        // Save form data into state.
+        setDataForm(data)
 
         // Enable loading status.
         setIsLoading(true)
@@ -52,7 +52,7 @@ const FormRegister = () => {
               useArrowIcon={true}>
             <TextBox name={'email'} icon={<MailLineIcon size={32}/>} label={'Alamat email'} type={'email'}
                      reference={register({required: true})} errorsObj={errors}
-                     placeholder={'Contoh: nama@gmail.com'} value={fieldEmail} onChange={onEmailChange}/>
+                     placeholder={'Contoh: nama@gmail.com'} value={dataForm.email}/>
             <TextBox name={'password'} icon={<LockPasswordLineIcon size={32}/>} label={'Kata sandi'}
                      type={'password'}
                      reference={register({required: true, minLength: 8})} errorsObj={errors}
